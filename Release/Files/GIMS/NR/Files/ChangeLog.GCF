@@ -1,0 +1,88 @@
+#(
+	#(	/*Languages*/
+		#English
+	), #(	/*Dates*/
+		0,
+		"4.5.2017 19:26 UTC",
+		"2.4.2017 10:52 UTC",
+		"30.3.2017 20:10 UTC",
+		"4.2.2017 20:59 UTC",
+		"14.1.2017 13:46 UTC",
+		"3.1.2017 20:57 UTC",
+		"10.5.2016 20:26 UTC",
+		"5.5.2016 19:9 UTC",
+		"12.1.2016 21:2 UTC",
+		"31.12.2015 14:18 UTC",
+		"20.12.2015 12:42 UTC",
+		"12.12.2015 20:42 UTC",
+		"3.12.2015 20:26 UTC",
+		"7.11.2015 21:33 UTC",
+		"19.10.2015 22:49 UTC",
+		"27.9.2015 15:48 UTC",
+		"25.9.2015 21:33 UTC",
+		"10.9.2015 18:29 UTC"
+	), #(	/*Language * Date * Changes*/
+		#(	--Language
+			#(	--date changes
+				"Improved modifier selection to get rid of some \"Unknown system exception\" errors"
+			), #(	--date changes
+				"Fixed TEXCOORD* channel names import",
+				"Fixed UV offset and scale apply"
+			), #(	--date changes
+				"Added GIMS settings button"
+			), #(	--date changes
+				"Fixed UI errors"
+			), #(	--date changes
+				"Fixed smoothing groups import in MAX versions after 2012"
+			), #(	--date changes
+				"Improved files import speed"
+			), #(	--date changes
+				"Fixed \"Can't find faces for bone #X\" error",
+				"Fixed some UI errors"
+			), #(	--date changes
+				"Added post-update cleanup"
+			), #(	--date changes
+				"Fixed presets with incorrect paths loading",
+				"Cache reset"
+			), #(	--date changes
+				"Improved the import staging to conserve RAM",
+				"Stability improvements"
+			), #(	--date changes
+				"Fixed the unique material storage on import",
+				"Fixed import errors"
+			), #(	--date changes
+				"Multiple position channels will create multiple meshes to prevent data loss",
+				"Texture files'll be searched with multiple extensions in next order: dds, tga, png, gif, jpg, bmp",
+				"Added core rules and presets loading errors workaround",
+				"Fixed file type check on import"
+			), #(	--date changes
+				"Removed the texture path selection",
+				"Improved the bones menu performance",
+				"Imported mesh wire colors'll be random",
+				"Cache reset",
+				"Install notes update"
+			), #(	--date changes
+				"Fixed the scale function",
+				"Fixed the preset and engine menus GC glitches",
+				"Cache reset"
+			), #(	--date changes
+				"Added skinning weights divider auto-detection",
+				"Fixed bones import bug"
+			), #(	--date changes
+				"Added skinned mesh splitting",
+				"Added Frostbite 2 and 3.5 game engines support",
+				"Added few vertex declaration filters",
+				"Fixed channel order applying",
+				"Fixed settings saving on main layout leave"
+			), #(	--date changes
+				"Added RIP files size checks",
+				"Fixed creation of meshes without UV coords"
+			), #(	--date changes
+				"Improved error reports",
+				"Fixed settings saving errors"
+			), #(	--date changes
+				"Initial build with RIP files import"
+			)
+		)
+	)
+)
