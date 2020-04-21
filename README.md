@@ -9,7 +9,6 @@ Ninja Ripper
 GTA V
 
 =====SYSTEM REQUIREMENTS=====
-
 PC:
 	RAM: minimum 2 Gb(with equal or bigger swap file), recommended 4 or more.
 	Internet connection(for setup and updates).
@@ -18,16 +17,14 @@ Software:
 	.NET Framework 4.0.
 	Any 3D MAX version from 9(with Service Pack 2 and "AvGuard DLX Extension") to 2016.
 	Also, it's highly recommended to install the latest 3D MAX updates and service packs.
-  
-  =====CREDITS=====
+
+=====CREDITS=====
 
 Developer: Mansurov Sergey a.K.a. 3Doomer
 Skype: treedoomer
 E-mail: 3Doomer2@gmail.com
 
 =====LINKS=====
-
-3Doomer2@gmail.com
 
 Max Payne 3 script support:
 	Russian forum: http://gtamaps.net/forum/index.php?showtopic=14862
