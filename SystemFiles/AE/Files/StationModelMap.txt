@@ -1,0 +1,142 @@
+//Station models
+//Separate parameters using <Tab>
+//
+//Format:
+//
+//ID	Name			Models...
+//
+0		NehÃ©bru		
+1		Mahasa			
+2		Anesa			
+3		GÃ©hlon			
+4		PosÃ©ho			
+5		Decimus			
+6		Emisto			
+7		Binon			
+8		Taygete			
+9		Coppolite		
+10		Thynome			
+11		S'porrk			
+12		Ukka N'ima		
+13		Ekrr U'rra		
+14		K'ane			
+15		T'rry T'rry		
+16		N'arrki			
+17		Me'tokka		
+18		P'errka			
+19		Ma'rrkka		
+20		Kallsta Omba	
+21		Euclades		
+22		Dekato			
+23		Psa Tori		
+24		Sao Noma		
+25		S'inokk			
+26		F'err			
+27		B'akka			
+28		B'errokk		
+29		Ga'kkrr			
+30		NÃ©hma			
+31		Neso Aehma		
+32		Duhnu			
+33		NÃ©h Suhnu		
+34		Narsaxa			
+35		Io Ombak		
+36		Dendra Ekta		
+37		Carme			
+38		Nepis			
+39		Tsoj Delev		
+40		Valadon			
+41		Ko-on			
+42		Epigome			
+43		Arpalys			
+44		Isonoma			
+45		Ãhna			
+46		Himo			
+47		BosmÃ©h			
+48		Sahi			
+49		SiamÃ©h			
+50		P'arrenkk		
+51		Rr'ostam		
+52		G'ukkion		
+53		Ba'rrtu			
+54		K'mirkk			
+55		Kappa			
+56		Suttnar			
+57		Tornard			
+58		B'akrram		
+59		E'kkide			
+60		Kkit S'ukk		
+61		L'ikirr			
+62		Makke S'ik		
+63		A'rk Oomk		
+64		Bak W'ok		
+65		Lopat			
+66		Inari Onu		
+67		Orcon			
+68		Sorox			
+69		Oni				
+70		Dis				
+71		Unotok			
+72		Zepar			
+73		Lon Nion		
+74		Kanado			
+75		Deuter IV		
+76		Yrdal Gedal		
+77		Heinsten		
+78		Var Hastra		
+79		Kernstal		
+80		Kumppa			
+81		Teres			
+82		Plural Z		
+83		Marktesh		
+84		Urda Arcturius	
+85		Genoh			
+86		Hamina			
+87		GesÃ©hn			
+88		AoÃ©h			
+89		Ahma Ãsoh		
+90		Festus			
+91		Dima			
+92		Fejar			
+93		Maissa			
+94		Sobotnik		
+95		Gome C			
+96		Kalun Amir		
+97		Nyrand			
+98		Alioth			
+99		Damarque I		
+100		Kothar			
+101		Valkyrie		
+102		Scion			
+103		Coromesk		
+104		Nosdron			
+105		Var Destro		
+106		Sao Perula		
+107		Quineros		
+108		Kaamo			
+109		Naneroh			
+110		Valpatro		
+111		Luur			
+112		Var Lupra		
+113		Tadram			
+114		Midantha		
+115		Tergalon		
+116		Psa Leri		
+117		Merlur			
+118		Sao Laros		
+119		Lan ManÃ©h		
+120		KatashÃ¡n		
+121		NÃ©van			
+122		Okana			
+123		ShelÃ©n			
+124		Vu's			
+125		Bor M'okk		
+126		Bak S'ondorr	
+127		Kan'Tarr		
+128		M'Ankk			
+129		Va'lerrm		
+130		O'muarkk		
+131		Bra'Murr		
+132		Bervegor		
+133		Merxde			
+134		Selbah			

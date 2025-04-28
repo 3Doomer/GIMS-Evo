@@ -1,0 +1,2071 @@
+//Model textures match list
+//
+//Format: use <Tab> before texture names
+//
+//model_name
+//	texture 1
+//	texture 2
+//	texture ..
+//
+//Main
+//bars
+bar_visitor_bobolan
+	visitor_bobolan
+bar_visitor_glow
+	bar_visitor_glow_midorian
+bar_visitor_grey
+	visitor_grey
+bar_visitor_multipod
+	visitor_multipod
+bar_visitor_nivelian
+	visitor_nivelian
+bar_visitor_shadow
+	bar_visitor_shadow
+bar_visitor_terran_f
+	visitor_terran_f
+bar_visitor_terran_m
+	visitor_terran_m
+bar_visitor_vossk
+	visitor_vossk
+bar_vossk_bot_a_anim_alpha
+	bar_vossk_diffuse
+	bar_vossk_normal_specular
+bar_vossk_bot_b_anim_alpha
+	bar_vossk_diffuse
+	bar_vossk_normal_specular
+bar_vossk_bot_c_anim_alpha
+	bar_vossk_diffuse
+	bar_vossk_normal_specular
+//fx
+hyperdrive
+	hyper_drive
+explosion_anim_lookat_add
+	explosion
+explosion_anim_lookat_alpha
+	explosion
+explosion_debris_anim_add
+	explosion
+explosion_debris_anim_alpha
+	explosion
+explosion_debris_anim_lookat_alpha
+	explosion
+explosion_emp_anim_lookat_add
+	explosion_emp
+explosion_void_station_add
+explosion_void_station_add_lookat
+explosion_void_station_alpha_lookat
+	explosion_void_station
+impact_000_lookat_anim_add
+	projectiles
+impact_001_lookat_anim_add
+	projectiles
+impact_002_lookat_anim_add
+	projectiles
+impact_003_lookat_anim_add
+	projectiles
+impact_004_lookat_anim_add
+	projectiles
+impact_005_lookat_anim_add
+	projectiles
+impact_006_lookat_anim_add
+	projectiles
+muzzle_flash_000_anim_add
+	projectiles
+muzzle_flash_001_anim_add
+	projectiles
+muzzle_flash_002_anim_add
+	projectiles
+muzzle_flash_003_anim_add
+	projectiles
+muzzle_flash_004_anim_add
+	projectiles
+muzzle_flash_005_anim_add
+	projectiles
+muzzle_flash_006_anim_add
+	projectiles
+muzzle_flash_007_anim_add
+	projectiles
+muzzle_flash_008_anim_add
+	projectiles
+projectile_000_anim_add
+	projectiles
+projectile_001_anim_add
+	projectiles
+projectile_002_anim_add
+	projectiles
+projectile_003_anim_add
+	projectiles
+projectile_004_anim_add
+	projectiles
+projectile_005_anim_add
+	projectiles
+projectile_006_anim_add
+	projectiles
+projectile_007_anim_add
+	projectiles
+projectile_008_anim_add
+	projectiles
+projectile_009_anim_add
+	projectiles
+projectile_010_anim_add
+	projectiles
+projectile_011_anim_add
+	projectiles
+projectile_012_anim_add
+	projectiles
+projectile_013_anim_add
+	projectiles
+projectile_014_anim_add
+	projectiles
+projectile_015_anim_add
+	projectiles
+projectile_016_anim_add
+	projectiles
+projectile_017_anim_add
+	projectiles
+projectile_018_anim_add
+	projectiles
+projectile_019_anim_add
+	projectiles
+projectile_020_anim_add
+	projectiles
+projectile_021_anim_add
+	projectiles
+projectile_022_anim_add
+	projectiles
+projectile_023_anim_add
+	projectiles
+projectile_024_anim_add
+	projectiles
+projectile_025_anim_add
+	projectiles
+projectile_026_anim_add
+	projectiles
+projectile_027_anim_add
+	projectiles
+projectile_028_anim_add
+	projectiles
+projectile_029_anim_add
+	projectiles
+projectile_030_anim_add
+	projectiles
+projectile_068_anim_add
+	projectiles
+projectile_069_anim_add
+	projectiles
+projectile_070_anim_add
+	projectiles
+//galaxymap
+map_bg_plane
+	galaxymap_bg
+map_fog_layer_0
+	galaxymap_fog_layer_0
+map_fog_layer_1
+	galaxymap_fog_layer_1
+map_orbit
+	galaxymap_orbit
+map_planet_ring
+	galaxymap_planets_diffuse
+map_planet_000
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_001
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_002
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_003
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_004
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_005
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_006
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_007
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_008
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_009
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_010
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_011
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_012
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_013
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_014
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_015
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_016
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_017
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_018
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_019
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_020
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_021
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_planet_022
+	galaxymap_planets_diffuse
+	galaxymap_planets_normal_specular
+map_sun_000
+	sun_000
+map_sun_001
+	sun_001
+map_sun_002
+	sun_002
+map_sun_003
+	sun_003
+map_sun_004
+	sun_004
+map_sun_005
+	sun_005
+map_sun_006
+	sun_006
+map_sun_007
+	sun_007
+map_sun_008
+	sun_008
+map_sun_009
+	sun_009
+//jumpgates
+jumpgate_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+jumpgate_midorian_anim_add
+	glow_midorian
+jumpgate_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+jumpgate_midorian_jump_anim_add
+	glow_midorian
+jumpgate_midorian_lod_1
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+jumpgate_midorian_lod_2
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+jumpgate_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+jumpgate_nivelian_anim_add
+	glow_nivelian
+jumpgate_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+jumpgate_nivelian_jump_anim_add
+	glow_nivelian
+jumpgate_nivelian_lod_1
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+jumpgate_nivelian_lod_1_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+jumpgate_nivelian_lod_2
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+jumpgate_nivelian_lod_2_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+jumpgate_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+jumpgate_terran_anim_add
+	glow_terran
+jumpgate_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+jumpgate_terran_jump_anim_add
+	glow_terran
+jumpgate_terran_lod_1
+	stations_terran_diffuse
+	stations_terran_normal_specular
+jumpgate_terran_lod_2
+	stations_terran_diffuse
+	stations_terran_normal_specular
+jumpgate_vossk_anim
+	stations_vossk_diffuse
+	stations_vossk_normal_specular
+jumpgate_vossk_anim_add
+	stations_vossk_diffuse
+	stations_vossk_normal_specular
+jumpgate_vossk_emissive
+	stations_vossk_diffuse
+	stations_vossk_normal_specular
+jumpgate_vossk_jump_anim_add
+	stations_vossk_diffuse
+	stations_vossk_normal_specular
+jumpgate_vossk_lod_1_anim
+	stations_vossk_diffuse
+	stations_vossk_normal_specular
+jumpgate_vossk_lod_1_emissive
+	stations_vossk_diffuse
+	stations_vossk_normal_specular
+jumpgate_vossk_lod_2_anim
+	stations_vossk_diffuse
+	stations_vossk_normal_specular
+jumpgate_vossk_lod_2_emissive
+	stations_vossk_diffuse
+	stations_vossk_normal_specular
+//misc
+asteroid_01
+	asteroid_01_diffuse
+	asteroid_01_normal_specular
+asteroid_01_explosion_anim
+	asteroid_01_diffuse
+	asteroid_01_normal_specular
+asteroid_01_junk
+	asteroid_01_diffuse
+	asteroid_01_normal_specular
+asteroid_01_lod_1
+	asteroid_01_diffuse
+	asteroid_01_normal_specular
+asteroid_01_lod_2
+	asteroid_01_diffuse
+	asteroid_01_normal_specular
+asteroid_01_lod_3
+	asteroid_01_diffuse
+	asteroid_01_normal_specular
+asteroid_explosion_anim_alpha
+	asteroid_explosion
+asteroid_void
+	asteroid_void_diffuse
+	asteroid_void_normal_specular
+asteroid_void_explosion_anim
+	asteroid_void_diffuse
+	asteroid_void_normal_specular
+asteroid_void_junk
+	asteroid_void_diffuse
+	asteroid_void_normal_specular
+asteroid_void_lod_1
+	asteroid_void_diffuse
+	asteroid_void_normal_specular
+asteroid_void_lod_2
+	asteroid_void_diffuse
+	asteroid_void_normal_specular
+asteroid_void_lod_3
+	asteroid_void_diffuse
+	asteroid_void_normal_specular
+beer
+	beer_and_bra_diffuse
+	beer_and_bra_normal_specular
+bra
+	beer_and_bra_diffuse
+	beer_and_bra_normal_specular
+bomb_emp_a
+	bomb_emp_a_diffuse
+	bomb_emp_a_normal_specular
+bomb_emp_a_add
+	bomb_rocket_fx
+bomb_explosive_a
+	bomb_explosive_a_diffuse
+	bomb_explosive_a_normal_specular
+bomb_explosive_a_add
+	bomb_rocket_fx
+bomb_explosive_b
+	bomb_explosive_b_diffuse
+	bomb_explosive_b_normal_specular
+bomb_explosive_b_add
+	bomb_rocket_fx
+container_005_void
+	stations_void_diffuse
+plane
+	space_particle_diffuse
+	space_particle_normal_specular
+wormhole_anim_add
+	wormhole
+//ships
+battleship_terran
+	battleship_terran_diffuse
+	battleship_terran_normal_specular
+battleship_terran_engine_add
+	glow_terran
+battleship_terran_explosion_anim
+	battleship_terran_dmg_diffuse
+	battleship_terran_dmg_normal_specular
+battleship_terran_lights_add
+	battleship_terran_diffuse
+	battleship_terran_normal_specular
+battleship_terran_lights_emissive
+	battleship_terran_diffuse
+	battleship_terran_normal_specular
+battleship_terran_lod_1
+	battleship_terran_diffuse
+	battleship_terran_normal_specular
+battleship_terran_lod_2
+	battleship_terran_diffuse
+	battleship_terran_normal_specular
+cargo_001_midorian
+	cargo_midorian_diffuse
+	cargo_midorian_normal_specular
+cargo_001_midorian_container
+	cargo_midorian_diffuse
+	cargo_midorian_normal_specular
+cargo_001_midorian_container_lod_1
+	cargo_midorian_diffuse
+	cargo_midorian_normal_specular
+cargo_001_midorian_container_lod_2
+	cargo_midorian_diffuse
+	cargo_midorian_normal_specular
+cargo_001_midorian_engine_add
+	glow_midorian
+cargo_001_midorian_explosion_anim
+	cargo_midorian_dmg_diffuse
+	cargo_midorian_dmg_normal_specular
+cargo_001_midorian_lights_emissive
+	cargo_midorian_diffuse
+	cargo_midorian_normal_specular
+cargo_001_midorian_lod_1
+	cargo_midorian_diffuse
+	cargo_midorian_normal_specular
+cargo_001_midorian_lod_2
+	cargo_midorian_diffuse
+	cargo_midorian_normal_specular
+cargo_002_nivelian
+	cargo_nivelian_diffuse
+	cargo_nivelian_normal_specular
+cargo_002_nivelian_engine_add
+	glow_nivelian
+cargo_002_nivelian_explosion_anim
+	cargo_nivelian_dmg_diffuse
+	cargo_nivelian_dmg_normal_specular
+cargo_002_nivelian_lights_add
+	cargo_nivelian_diffuse
+	cargo_nivelian_normal_specular
+cargo_002_nivelian_lod_1
+	cargo_nivelian_diffuse
+	cargo_nivelian_normal_specular
+cargo_002_nivelian_lod_2
+	cargo_nivelian_diffuse
+	cargo_nivelian_normal_specular
+cargo_003_terran
+	cargo_terran_diffuse
+	cargo_terran_normal_specular
+cargo_003_terran_engine_add
+	glow_terran
+cargo_003_terran_explosion_anim
+	cargo_terran_dmg_diffuse
+	cargo_terran_dmg_normal_specular
+cargo_003_terran_lights_add
+	cargo_terran_diffuse
+	cargo_terran_normal_specular
+cargo_003_terran_lights_emissive
+	cargo_terran_diffuse
+	cargo_terran_normal_specular
+cargo_003_terran_lod_1
+	cargo_terran_diffuse
+	cargo_terran_normal_specular
+cargo_003_terran_lod_2
+	cargo_terran_diffuse
+	cargo_terran_normal_specular
+cargo_004_vossk
+	cargo_vossk_diffuse
+	cargo_vossk_normal_specular
+cargo_004_vossk_engine_add
+	glow_vossk
+cargo_004_vossk_explosion_anim
+	cargo_vossk_dmg_diffuse
+	cargo_vossk_dmg_normal_specular
+cargo_004_vossk_lights_emissive
+	cargo_vossk_diffuse
+	cargo_vossk_normal_specular
+cargo_004_vossk_lod_1
+	cargo_vossk_diffuse
+	cargo_vossk_normal_specular
+cargo_004_vossk_lod_2
+	cargo_vossk_diffuse
+	cargo_vossk_normal_specular
+ship_000_midorian
+	ship_000_midorian_diffuse
+	ship_000_midorian_normal_specular
+ship_000_midorian_engine_add
+	glow_midorian
+ship_000_midorian_engine_glow_add
+	ship_engine_glow
+ship_000_midorian_lights_add
+	ship_000_midorian_diffuse
+	ship_000_midorian_normal_specular
+ship_000_midorian_lod_1
+	ship_000_midorian_diffuse
+	ship_000_midorian_normal_specular
+ship_000_midorian_lod_2
+	ship_000_midorian_diffuse
+	ship_000_midorian_normal_specular
+ship_001_terran
+	ship_001_terran_diffuse
+	ship_001_terran_normal_specular
+ship_001_terran_engine_add
+	glow_terran
+ship_001_terran_engine_glow_add
+	ship_engine_glow
+ship_001_terran_lights_add
+	ship_001_terran_diffuse
+	ship_001_terran_normal_specular
+ship_001_terran_lod_1
+	ship_001_terran_diffuse
+	ship_001_terran_normal_specular
+ship_001_terran_lod_2
+	ship_001_terran_diffuse
+	ship_001_terran_normal_specular
+ship_002_pirates
+	ship_002_pirates_diffuse
+	ship_002_pirates_normal_specular
+ship_002_pirates_engine_add
+	glow_pirates
+ship_002_pirates_engine_glow_add
+	ship_engine_glow
+ship_002_pirates_lights_add
+	ship_002_pirates_diffuse
+	ship_002_pirates_normal_specular
+ship_002_pirates_lod_1
+	ship_002_pirates_diffuse
+	ship_002_pirates_normal_specular
+ship_002_pirates_lod_2
+	ship_002_pirates_diffuse
+	ship_002_pirates_normal_specular
+ship_003_midorian
+	ship_003_midorian_diffuse
+	ship_003_midorian_normal_specular
+ship_003_midorian_engine_add
+	glow_midorian
+ship_003_midorian_engine_glow_add
+	ship_engine_glow
+ship_003_midorian_lights_add
+	ship_003_midorian_diffuse
+	ship_003_midorian_normal_specular
+ship_003_midorian_lod_1
+	ship_003_midorian_diffuse
+	ship_003_midorian_normal_specular
+ship_003_midorian_lod_2
+	ship_003_midorian_diffuse
+	ship_003_midorian_normal_specular
+ship_004_nivelian
+	ship_004_nivelian_diffuse
+	ship_004_nivelian_normal_specular
+ship_004_nivelian_engine_add
+	glow_nivelian
+ship_004_nivelian_engine_glow_add
+	ship_engine_glow
+ship_004_nivelian_lights_add
+	ship_004_nivelian_diffuse
+	ship_004_nivelian_normal_specular
+ship_004_nivelian_lod_1
+	ship_004_nivelian_diffuse
+	ship_004_nivelian_normal_specular
+ship_004_nivelian_lod_2
+	ship_004_nivelian_diffuse
+	ship_004_nivelian_normal_specular
+ship_005_terran
+	ship_005_terran_diffuse
+	ship_005_terran_normal_specular
+ship_005_terran_engine_add
+	glow_terran
+ship_005_terran_engine_glow_add
+	ship_engine_glow
+ship_005_terran_lights_add
+	ship_005_terran_diffuse
+	ship_005_terran_normal_specular
+ship_005_terran_lod_1
+	ship_005_terran_diffuse
+	ship_005_terran_normal_specular
+ship_005_terran_lod_2
+	ship_005_terran_diffuse
+	ship_005_terran_normal_specular
+ship_006_midorian
+	ship_006_midorian_diffuse
+	ship_006_midorian_normal_specular
+ship_006_midorian_engine_add
+	glow_midorian
+ship_006_midorian_engine_glow_add
+	ship_engine_glow
+ship_006_midorian_lights_add
+	ship_006_midorian_diffuse
+	ship_006_midorian_normal_specular
+ship_006_midorian_lod_1
+	ship_006_midorian_diffuse
+	ship_006_midorian_normal_specular
+ship_006_midorian_lod_2
+	ship_006_midorian_diffuse
+	ship_006_midorian_normal_specular
+ship_007_terran
+	ship_007_terran_diffuse
+	ship_007_terran_normal_specular
+ship_007_terran_engine_add
+	glow_terran
+ship_007_terran_engine_glow_add
+	ship_engine_glow
+ship_007_terran_lights_add
+	ship_007_terran_diffuse
+	ship_007_terran_normal_specular
+ship_007_terran_lod_1
+	ship_007_terran_diffuse
+	ship_007_terran_normal_specular
+ship_007_terran_lod_2
+	ship_007_terran_diffuse
+	ship_007_terran_normal_specular
+ship_008_void
+	ship_008_void_diffuse
+	ship_008_void_normal_specular
+ship_008_void_engine_add
+	glow_void
+ship_008_void_engine_glow_add
+	ship_engine_glow
+ship_008_void_lights_add
+	ship_008_void_diffuse
+	ship_008_void_normal_specular
+ship_008_void_lod_1
+	ship_008_void_diffuse
+	ship_008_void_normal_specular
+ship_008_void_lod_2
+	ship_008_void_diffuse
+	ship_008_void_normal_specular
+ship_009_vossk
+	ship_009_vossk_diffuse
+	ship_009_vossk_normal_specular
+ship_009_vossk_engine_add
+	glow_vossk
+ship_009_vossk_engine_glow_add
+	ship_engine_glow
+ship_009_vossk_lights_add
+	ship_009_vossk_diffuse
+	ship_009_vossk_normal_specular
+ship_009_vossk_lod_1
+	ship_009_vossk_diffuse
+	ship_009_vossk_normal_specular
+ship_009_vossk_lod_2
+	ship_009_vossk_diffuse
+	ship_009_vossk_normal_specular
+ship_010_terran
+	ship_010_terran_diffuse
+	ship_010_terran_normal_specular
+ship_010_terran_engine_add
+	glow_terran
+ship_010_terran_engine_glow_add
+	ship_engine_glow
+ship_010_terran_lights_add
+	ship_010_terran_diffuse
+	ship_010_terran_normal_specular
+ship_010_terran_lod_1
+	ship_010_terran_diffuse
+	ship_010_terran_normal_specular
+ship_010_terran_lod_2
+	ship_010_terran_diffuse
+	ship_010_terran_normal_specular
+ship_011_pirates
+	ship_011_pirates_diffuse
+	ship_011_pirates_normal_specular
+ship_011_pirates_engine_add
+	glow_pirates
+ship_011_pirates_engine_glow_add
+	ship_engine_glow
+ship_011_pirates_lights_add
+	ship_011_pirates_diffuse
+	ship_011_pirates_normal_specular
+ship_011_pirates_lod_1
+	ship_011_pirates_diffuse
+	ship_011_pirates_normal_specular
+ship_011_pirates_lod_2
+	ship_011_pirates_diffuse
+	ship_011_pirates_normal_specular
+ship_012_nivelian
+	ship_012_nivelian_diffuse
+	ship_012_nivelian_normal_specular
+ship_012_nivelian_engine_add
+	glow_nivelian
+ship_012_nivelian_engine_glow_add
+	ship_engine_glow
+ship_012_nivelian_lights_add
+	ship_012_nivelian_diffuse
+	ship_012_nivelian_normal_specular
+ship_012_nivelian_lod_1
+	ship_012_nivelian_diffuse
+	ship_012_nivelian_normal_specular
+ship_012_nivelian_lod_2
+	ship_012_nivelian_diffuse
+	ship_012_nivelian_normal_specular
+ship_016_nivelian
+	ship_016_nivelian_diffuse
+	ship_016_nivelian_normal_specular
+ship_016_nivelian_engine_add
+	glow_nivelian
+ship_016_nivelian_engine_glow_add
+	ship_engine_glow
+ship_016_nivelian_lights_add
+	ship_016_nivelian_diffuse
+	ship_016_nivelian_normal_specular
+ship_016_nivelian_lod_1
+	ship_016_nivelian_diffuse
+	ship_016_nivelian_normal_specular
+ship_016_nivelian_lod_2
+	ship_016_nivelian_diffuse
+	ship_016_nivelian_normal_specular
+ship_017_terran
+	ship_017_terran_diffuse
+	ship_017_terran_normal_specular
+ship_017_terran_engine_add
+	glow_terran
+ship_017_terran_engine_glow_add
+	ship_engine_glow
+ship_017_terran_lights_add
+	ship_017_terran_diffuse
+	ship_017_terran_normal_specular
+ship_017_terran_lod_1
+	ship_017_terran_diffuse
+	ship_017_terran_normal_specular
+ship_017_terran_lod_2
+	ship_017_terran_diffuse
+	ship_017_terran_normal_specular
+ship_018_nivelian
+	ship_018_nivelian_diffuse
+	ship_018_nivelian_normal_specular
+ship_018_nivelian_engine_add
+	glow_nivelian
+ship_018_nivelian_engine_glow_add
+	ship_engine_glow
+ship_018_nivelian_lights_add
+	ship_018_nivelian_diffuse
+	ship_018_nivelian_normal_specular
+ship_018_nivelian_lod_1
+	ship_018_nivelian_diffuse
+	ship_018_nivelian_normal_specular
+ship_018_nivelian_lod_2
+	ship_018_nivelian_diffuse
+	ship_018_nivelian_normal_specular
+ship_019_midorian
+	ship_019_midorian_diffuse
+	ship_019_midorian_normal_specular
+ship_019_midorian_engine_add
+	glow_midorian
+ship_019_midorian_engine_glow_add
+	ship_engine_glow
+ship_019_midorian_lights_add
+	ship_019_midorian_diffuse
+	ship_019_midorian_normal_specular
+ship_019_midorian_lod_1
+	ship_019_midorian_diffuse
+	ship_019_midorian_normal_specular
+ship_019_midorian_lod_2
+	ship_019_midorian_diffuse
+	ship_019_midorian_normal_specular
+ship_020_midorian
+	ship_020_midorian_diffuse
+	ship_020_midorian_normal_specular
+ship_020_midorian_engine_add
+	glow_midorian
+ship_020_midorian_engine_glow_add
+	ship_engine_glow
+ship_020_midorian_lights_add
+	ship_020_midorian_diffuse
+	ship_020_midorian_normal_specular
+ship_020_midorian_lod_1
+	ship_020_midorian_diffuse
+	ship_020_midorian_normal_specular
+ship_020_midorian_lod_2
+	ship_020_midorian_diffuse
+	ship_020_midorian_normal_specular
+ship_021_nivelian
+	ship_021_nivelian_diffuse
+	ship_021_nivelian_normal_specular
+ship_021_nivelian_engine_add
+	glow_nivelian
+ship_021_nivelian_engine_glow_add
+	ship_engine_glow
+ship_021_nivelian_lights_add
+	ship_021_nivelian_diffuse
+	ship_021_nivelian_normal_specular
+ship_021_nivelian_lod_1
+	ship_021_nivelian_diffuse
+	ship_021_nivelian_normal_specular
+ship_021_nivelian_lod_2
+	ship_021_nivelian_diffuse
+	ship_021_nivelian_normal_specular
+ship_022_terran
+	ship_022_terran_diffuse
+	ship_022_terran_normal_specular
+ship_022_terran_engine_add
+	glow_terran
+ship_022_terran_engine_glow_add
+	ship_engine_glow
+ship_022_terran_lights_add
+	ship_022_terran_diffuse
+	ship_022_terran_normal_specular
+ship_022_terran_lod_1
+	ship_022_terran_diffuse
+	ship_022_terran_normal_specular
+ship_022_terran_lod_2
+	ship_022_terran_diffuse
+	ship_022_terran_normal_specular
+ship_023_pirates
+	ship_023_pirates_diffuse
+	ship_023_pirates_normal_specular
+ship_023_pirates_engine_add
+	glow_pirates
+ship_023_pirates_engine_glow_add
+	ship_engine_glow
+ship_023_pirates_lights_add
+	ship_023_pirates_diffuse
+	ship_023_pirates_normal_specular
+ship_023_pirates_lod_1
+	ship_023_pirates_diffuse
+	ship_023_pirates_normal_specular
+ship_023_pirates_lod_2
+	ship_023_pirates_diffuse
+	ship_023_pirates_normal_specular
+ship_024_pirates
+	ship_024_pirates_diffuse
+	ship_024_pirates_normal_specular
+ship_024_pirates_engine_add
+	glow_pirates
+ship_024_pirates_engine_glow_add
+	ship_engine_glow
+ship_024_pirates_lights_add
+	ship_024_pirates_diffuse
+	ship_024_pirates_normal_specular
+ship_024_pirates_lod_1
+	ship_024_pirates_diffuse
+	ship_024_pirates_normal_specular
+ship_024_pirates_lod_2
+	ship_024_pirates_diffuse
+	ship_024_pirates_normal_specular
+ship_025_pirates
+	ship_025_pirates_diffuse
+	ship_025_pirates_normal_specular
+ship_025_pirates_engine_add
+	glow_pirates
+ship_025_pirates_engine_glow_add
+	ship_engine_glow
+ship_025_pirates_lights_add
+	ship_025_pirates_diffuse
+	ship_025_pirates_normal_specular
+ship_025_pirates_lod_1
+	ship_025_pirates_diffuse
+	ship_025_pirates_normal_specular
+ship_025_pirates_lod_2
+	ship_025_pirates_diffuse
+	ship_025_pirates_normal_specular
+ship_026_terra
+	ship_026_terran_diffuse
+	ship_026_terran_normal_specular
+ship_026_terran_engine_add
+	glow_terran
+ship_026_terran_engine_glow_add
+	ship_engine_glow
+ship_026_terran_lights_add
+	ship_026_terran_diffuse
+	ship_026_terran_normal_specular
+ship_026_terran_lod_1
+	ship_026_terran_diffuse
+	ship_026_terran_normal_specular
+ship_026_terran_lod_2
+	ship_026_terran_diffuse
+	ship_026_terran_normal_specular
+ship_027_terran
+	ship_027_terran_diffuse
+	ship_027_terran_normal_specular
+ship_027_terran_engine_add
+	glow_terran
+ship_027_terran_engine_glow_add
+	ship_engine_glow
+ship_027_terran_lights_add
+	ship_027_terran_diffuse
+	ship_027_terran_normal_specular
+ship_027_terran_lod_1
+	ship_027_terran_diffuse
+	ship_027_terran_normal_specular
+ship_027_terran_lod_2
+	ship_027_terran_diffuse
+	ship_027_terran_normal_specular
+ship_028_terran
+	ship_028_terran_diffuse
+	ship_028_terran_normal_specular
+ship_028_terran_engine_add
+	glow_terran
+ship_028_terran_engine_glow_add
+	ship_engine_glow
+ship_028_terran_lights_add
+	ship_028_terran_diffuse
+	ship_028_terran_normal_specular
+ship_028_terran_lod_1
+	ship_028_terran_diffuse
+	ship_028_terran_normal_specular
+ship_028_terran_lod_2
+	ship_028_terran_diffuse
+	ship_028_terran_normal_specular
+ship_029_pirates
+	ship_029_pirates_diffuse
+	ship_029_pirates_normal_specular
+ship_029_pirates_engine_add
+	glow_pirates
+ship_029_pirates_engine_glow_add
+	ship_engine_glow
+ship_029_pirates_lights_add
+	ship_029_pirates_diffuse
+	ship_029_pirates_normal_specular
+ship_029_pirates_lod_1
+	ship_029_pirates_diffuse
+	ship_029_pirates_normal_specular
+ship_029_pirates_lod_2
+	ship_029_pirates_diffuse
+	ship_029_pirates_normal_specular
+ship_030_midorian
+	ship_030_midorian_diffuse
+	ship_030_midorian_normal_specular
+ship_030_midorian_engine_add
+	glow_midorian
+ship_030_midorian_engine_glow_add
+	ship_engine_glow
+ship_030_midorian_lights_add
+	ship_030_midorian_diffuse
+	ship_030_midorian_normal_specular
+ship_030_midorian_lod_1
+	ship_030_midorian_diffuse
+	ship_030_midorian_normal_specular
+ship_030_midorian_lod_2
+	ship_030_midorian_diffuse
+	ship_030_midorian_normal_specular
+ship_031_nivelian
+	ship_031_nivelian_diffuse
+	ship_031_nivelian_normal_specular
+ship_031_nivelian_engine_add
+	glow_nivelian
+ship_031_nivelian_engine_glow_add
+	ship_engine_glow
+ship_031_nivelian_lights_add
+	ship_031_nivelian_diffuse
+	ship_031_nivelian_normal_specular
+ship_031_nivelian_lod_1
+	ship_031_nivelian_diffuse
+	ship_031_nivelian_normal_specular
+ship_031_nivelian_lod_2
+	ship_031_nivelian_diffuse
+	ship_031_nivelian_normal_specular
+ship_032_pirates
+	ship_032_pirates_diffuse
+	ship_032_pirates_normal_specular
+ship_032_pirates_engine_add
+	glow_pirates
+ship_032_pirates_engine_glow_add
+	ship_engine_glow
+ship_032_pirates_lights_add
+	ship_032_pirates_diffuse
+	ship_032_pirates_normal_specular
+ship_032_pirates_lod_1
+	ship_032_pirates_diffuse
+	ship_032_pirates_normal_specular
+ship_032_pirates_lod_2
+	ship_032_pirates_diffuse
+	ship_032_pirates_normal_specular
+ship_033_terran
+	ship_033_terran_diffuse
+	ship_033_terran_normal_specular
+ship_033_terran_engine_add
+	glow_terran
+ship_033_terran_engine_glow_add
+	ship_engine_glow
+ship_033_terran_lights_add
+	ship_033_terran_diffuse
+	ship_033_terran_normal_specular
+ship_033_terran_lod_1
+	ship_033_terran_diffuse
+	ship_033_terran_normal_specular
+ship_033_terran_lod_2
+	ship_033_terran_diffuse
+	ship_033_terran_normal_specular
+ship_034_terran
+	ship_034_terran_diffuse
+	ship_034_terran_normal_specular
+ship_034_terran_engine_add
+	glow_terran
+ship_034_terran_engine_glow_add
+	ship_engine_glow
+ship_034_terran_lights_add
+	ship_034_terran_diffuse
+	ship_034_terran_normal_specular
+ship_034_terran_lod_1
+	ship_034_terran_diffuse
+	ship_034_terran_normal_specular
+ship_034_terran_lod_2
+	ship_034_terran_diffuse
+	ship_034_terran_normal_specular
+ship_035_nivelian
+	ship_035_nivelian_diffuse
+	ship_035_nivelian_normal_specular
+ship_035_nivelian_engine_add
+	glow_nivelian
+ship_035_nivelian_engine_glow_add
+	ship_engine_glow
+ship_035_nivelian_lights_add
+	ship_035_nivelian_diffuse
+	ship_035_nivelian_normal_specular
+ship_035_nivelian_lod_1
+	ship_035_nivelian_diffuse
+	ship_035_nivelian_normal_specular
+ship_035_nivelian_lod_2
+	ship_035_nivelian_diffuse
+	ship_035_nivelian_normal_specular
+ship_036_terran
+	ship_036_terran_diffuse
+	ship_036_terran_normal_specular
+ship_036_terran_engine_add
+	glow_terran
+ship_036_terran_engine_glow_add
+	ship_engine_glow
+ship_036_terran_lights_add
+	ship_036_terran_diffuse
+	ship_036_terran_normal_specular
+ship_036_terran_lod_1
+	ship_036_terran_diffuse
+	ship_036_terran_normal_specular
+ship_036_terran_lod_2
+	ship_036_terran_diffuse
+	ship_036_terran_normal_specular
+ship_042_retro
+	ship_042_retro_diffuse
+	ship_042_retro_normal_specular
+ship_042_retro_engine_glow_add
+	ship_engine_glow
+ship_042_retro_lights_add
+	ship_042_retro_diffuse
+	ship_042_retro_normal_specular
+ship_042_retro_lod_1
+	ship_042_retro_diffuse
+	ship_042_retro_normal_specular
+ship_042_retro_lod_2
+	ship_042_retro_diffuse
+	ship_042_retro_normal_specular
+ship_043_retro
+	ship_043_retro_diffuse
+	ship_043_retro_normal_specular
+ship_043_retro_engine_glow_add
+	ship_engine_glow
+ship_043_retro_lights_add
+	ship_043_retro_diffuse
+	ship_043_retro_normal_specular
+ship_043_retro_lod_1
+	ship_043_retro_diffuse
+	ship_043_retro_normal_specular
+ship_043_retro_lod_2
+	ship_043_retro_diffuse
+	ship_043_retro_normal_specular
+sn_ship_059_modified_engine_glow_add
+	ship_engine_glow
+ship_061_elite_nivelian_prototype
+	ship_061_elite_nivelian_prototype_diffuse
+	ship_061_elite_nivelian_prototype_normal_specular
+ship_061_elite_nivelian_prototype_engine_glow_add
+	ship_engine_glow
+ship_061_elite_nivelian_prototype_lights_add
+	ship_061_elite_nivelian_prototype_diffuse
+	ship_061_elite_nivelian_prototype_normal_specular
+ship_062_prototype
+	ship_062_prototype_diffuse
+	ship_062_prototype_normal_specular
+ship_062_prototype_engine_glow_add
+	ship_engine_glow
+ship_062_prototype_lights_add
+	ship_062_prototype_diffuse
+	ship_062_prototype_normal_specular
+ship_063_vossk_prototype
+	ship_063_vossk_diffuse
+	ship_063_vossk_normal_specular
+ship_063_vossk_prototype_engine_glow_add
+	ship_engine_glow
+ship_063_vossk_prototype_lights_add
+	ship_063_vossk_diffuse
+	ship_063_vossk_normal_specular
+ship_063_vossk_prototype_lights_emissive
+	ship_063_vossk_diffuse
+	ship_063_vossk_normal_specular
+//stations
+station_000_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_000_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_000_nivelian_lights_add
+	glow_nivelian
+station_001_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_001_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_001_nivelian_lights_add
+	glow_nivelian
+station_002_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_002_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_002_nivelian_lights_add
+	glow_nivelian
+station_003_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_003_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_003_nivelian_lights_add
+	glow_nivelian
+station_004_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_004_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_004_nivelian_lights_add
+	glow_nivelian
+station_030_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_030_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_030_nivelian_lights_add
+	glow_nivelian
+station_031_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_031_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_031_nivelian_lights_add
+	glow_nivelian
+station_032_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_032_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_032_nivelian_lights_add
+	glow_nivelian
+station_033_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_033_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_033_nivelian_lights_add
+	glow_nivelian
+station_045_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_045_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_045_nivelian_lights_add
+	glow_nivelian
+station_046_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_046_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_046_nivelian_lights_add
+	glow_nivelian
+station_047_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_047_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_047_nivelian_lights_add
+	glow_nivelian
+station_048_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_048_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_048_nivelian_lights_add
+	glow_nivelian
+station_049_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_049_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_049_nivelian_lights_add
+	glow_nivelian
+station_085_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_085_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_085_nivelian_lights_add
+	glow_nivelian
+station_086_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_086_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_086_nivelian_lights_add
+	glow_nivelian
+station_087_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_087_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_087_nivelian_lights_add
+	glow_nivelian
+station_088_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_088_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_088_nivelian_lights_add
+	glow_nivelian
+station_089_nivelian
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_089_nivelian_emissive
+	stations_nivelian_diffuse
+	stations_nivelian_normal_specular
+station_089_nivelian_lights_add
+	glow_nivelian
+station_005_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_005_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_005_terran_lights_add
+	glow_terran
+station_006_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_006_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_006_terran_lights_add
+	glow_terran
+station_007_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_007_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_007_terran_lights_add
+	glow_terran
+station_008_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_008_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_008_terran_lights_add
+	glow_terran
+station_009_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_009_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_009_terran_lights_add
+	glow_terran
+station_010_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_010_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_010_terran_lights_add
+	glow_terran
+station_035_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_035_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_035_terran_lights_add
+	glow_terran
+station_036_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_036_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_036_terran_lights_add
+	glow_terran
+station_037_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_037_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_037_terran_lights_add
+	glow_terran
+station_038_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_038_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_038_terran_lights_add
+	glow_terran
+station_039_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_039_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_039_terran_lights_add
+	glow_terran
+station_040_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_040_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_040_terran_lights_add
+	glow_terran
+station_041_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_041_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_041_terran_lights_add
+	glow_terran
+station_042_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_042_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_042_terran_lights_add
+	glow_terran
+station_043_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_043_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_043_terran_lights_add
+	glow_terran
+station_044_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_044_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_044_terran_lights_add
+	glow_terran
+station_055_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_055_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_055_terran_lights_add
+	glow_terran
+station_056_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_056_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_056_terran_lights_add
+	glow_terran
+station_057_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_057_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_057_terran_lights_add
+	glow_terran
+station_065_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_065_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_065_terran_lights_add
+	glow_terran
+station_066_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_066_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_066_terran_lights_add
+	glow_terran
+station_067_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_067_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_067_terran_lights_add
+	glow_terran
+station_068_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_068_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_068_terran_lights_add
+	glow_terran
+station_069_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_069_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_069_terran_lights_add
+	glow_terran
+station_070_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_070_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_070_terran_lights_add
+	glow_terran
+station_071_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_071_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_071_terran_lights_add
+	glow_terran
+station_072_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_072_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_072_terran_lights_add
+	glow_terran
+station_073_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_073_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_073_terran_lights_add
+	glow_terran
+station_074_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_074_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_074_terran_lights_add
+	glow_terran
+station_080_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_080_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_081_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_081_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_081_terran_lights_add
+	glow_terran
+station_082_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_082_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_082_terran_lights_add
+	glow_terran
+station_083_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_083_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_083_terran_lights_add
+	glow_terran
+station_084_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_084_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_084_terran_lights_add
+	glow_terran
+station_090_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_090_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_090_terran_lights_add
+	glow_terran
+station_091_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_091_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_091_terran_lights_add
+	glow_terran
+station_092_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_092_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_092_terran_lights_add
+	glow_terran
+station_093_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_093_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_093_terran_lights_add
+	glow_terran
+station_094_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_094_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_094_terran_lights_add
+	glow_terran
+station_095_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_095_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_095_terran_lights_add
+	glow_terran
+station_096_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_096_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_096_terran_lights_add
+	glow_terran
+station_097_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_097_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_097_terran_lights_add
+	glow_terran
+station_098_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_098_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_098_terran_lights_add
+	glow_terran
+station_099_terran
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_099_terran_emissive
+	stations_terran_diffuse
+	stations_terran_normal_specular
+station_099_terran_lights_add
+	glow_terran
+station_020_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_020_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_020_midorian_lights_add
+	glow_midorian
+station_021_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_021_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_021_midorian_lights_add
+	glow_midorian
+station_022_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_022_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_022_midorian_lights_add
+	glow_midorian
+station_023_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_023_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_023_midorian_lights_add
+	glow_midorian
+station_024_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_024_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_024_midorian_lights_add
+	glow_midorian
+station_075_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_075_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_075_midorian_lights_add
+	glow_midorian
+station_076_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_076_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_076_midorian_lights_add
+	glow_midorian
+station_077_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_077_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_077_midorian_lights_add
+	glow_midorian
+station_078_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_078_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_078_midorian_lights_add
+	glow_midorian
+station_079_midorian
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_079_midorian_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_079_midorian_lights_add
+	glow_midorian
+station_kaamo_club
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_kaamo_club_emissive
+	stations_midorian_diffuse
+	stations_midorian_normal_specular
+station_kaamo_club_fx_anim
+	tex_player_station_fx
+station_kaamo_club_fx_anim_add
+	tex_player_station_fx
+station_kaamo_club_fx_anim_alpha
+	tex_player_station_fx
+station_kaamo_club_fx_anim_emissive
+	tex_player_station_fx
+station_pirates
+	stations_pirates_diffuse
+	stations_pirates_normal_specular
+station_pirates_emissive
+	stations_pirates_diffuse
+	stations_pirates_normal_specular
+station_pirates_explosion_anim
+	stations_pirates_dmg_diffuse
+	stations_pirates_dmg_normal_specular
+station_pirates_lights_add
+	glow_pirates
+station_void
+	stations_void_diffuse
+	stations_void_normal_specular
+station_void_add
+	stations_void_glow
+station_void_emissive
+	stations_void_diffuse
+	stations_void_normal_specular
+station_vossk
+	stations_vossk_normal_specular
+	tex_player_station_fx
+station_vossk_emissive
+	stations_vossk_normal_specular
+	tex_player_station_fx
+station_vossk_lights_add
+	glow_vossk
+//Supernova
+//fx
+sn_fireworks_lookat_anim_add
+	sn_fireworks
+sn_plasma_explosion_anim_lookat_add
+	sn_plasma_explosion
+sn_plasma_gun_fx_valkyrie_beam_anim_add
+	sn_plasma_gun_fx_valkyrie
+sn_plasma_gun_fx_valkyrie_cone_anim_add
+	sn_plasma_gun_fx_valkyrie
+sn_plasma_gun_fx_valkyrie_star_add
+	sn_plasma_gun_fx_valkyrie
+sn_plasma_stream_anim_add
+	sn_plasma_stream
+	sn_plasma_stream_normal
+sn_projectile_207_anim_add
+	sn_projectiles
+sn_projectile_222_anim_add
+	sn_projectiles
+sn_projectile_228_anim_add
+	sn_projectiles
+sn_projectile_229_anim_alpha
+	sn_projectiles
+sn_projectile_231_anim_add
+	sn_projectiles
+sn_ship_blaze_flames_anim_add
+	sn_ship_blaze_flames
+	sn_ship_blaze_flames_normal
+sn_ship_blaze_glow_anim_add
+	sn_ship_blaze_glow
+sn_shock_blast_glow_anim_lookat_add
+	sn_shock_blast_glow
+sn_shock_blast_sphere_anim_add
+	sn_shock_blast_sphere
+sn_sun_explosion_core_anim_add
+	sn_sun_explosion_core
+sn_sun_explosion_ring_anim_add
+	sn_sun_explosion_ring
+//galaxymap
+sn_map_planet_024
+	sn_galaxymap_planets
+sn_map_planet_025
+	sn_galaxymap_planets
+sn_map_planet_026
+	sn_galaxymap_planets
+sn_map_sun_011
+	sn_galaxymap_planets
+//misc
+sn_asteroid_magma_explosion_anim
+	sn_asteroid_magma_explosion
+sn_gas_cloud_green_anim_lookat_add
+	sn_gas_plasma
+	sn_gas_plasma_normal
+sn_gas_cloud_red_anim_lookat_add
+	sn_gas_plasma
+	sn_gas_plasma_normal
+sn_gas_cloud_violet_anim_lookat_add
+	sn_gas_plasma
+	sn_gas_plasma_normal
+sn_plasma_blue_anim_lookat_add
+	sn_gas_plasma
+	sn_gas_plasma_normal
+sn_plasma_green_anim_lookat_add
+	sn_gas_plasma
+	sn_gas_plasma_normal
+sn_plasma_red_anim_lookat_add
+	sn_gas_plasma
+	sn_gas_plasma_normal
+sn_plasma_violet_anim_lookat_add
+	sn_gas_plasma
+	sn_gas_plasma_normal
+sn_secure_container_nivelian
+	cargo_nivelian_diffuse
+	cargo_nivelian_normal_specular
+sn_secure_container_nivelian_add
+	cargo_nivelian_diffuse
+	cargo_nivelian_normal_specular
+sn_plasma_array_midorian_explosion_anim
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_001
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_001_alpha
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular 
+sn_plasma_array_midorian_stage_001_anim_add
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_001_lod_1
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_002
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_002_alpha
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_002_anim_add
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_002_lod_1
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_003
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_003_alpha
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_003_anim_add
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_003_lod_1
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_004
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_004_alpha
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_004_anim_add
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_004_lod_1
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_005
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_005_alpha
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_005_glow_anim_add
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_005_lights_anim_add
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_array_midorian_stage_005_lod_1
+	sn_plasma_array_midorian_diffuse
+	sn_plasma_array_midorian_normal_specular
+sn_plasma_gun_valkyrie
+	sn_plasma_gun_valkyrie_diffuse
+	sn_plasma_gun_valkyrie_normal_specular
+sn_plasma_gun_valkyrie_alpha
+	sn_plasma_gun_valkyrie_diffuse
+	sn_plasma_gun_valkyrie_normal_specular
+sn_plasma_gun_valkyrie_lights_add
+	sn_plasma_gun_valkyrie_diffuse
+	sn_plasma_gun_valkyrie_normal_specular
+sn_plasma_gun_valkyrie_lod_1
+	sn_plasma_gun_valkyrie_diffuse
+	sn_plasma_gun_valkyrie_normal_specular
+sn_plasma_gun_valkyrie_lod_2
+	sn_plasma_gun_valkyrie_diffuse
+	sn_plasma_gun_valkyrie_normal_specular
+//stations
+sn_burning_station
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_burning_station_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_burning_station_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular 
+sn_burning_station_fire_anim_add
+	sn_burning_station_fire
+	sn_burning_station_fire_normal
+sn_burning_station_fire_anim_alpha
+	sn_burning_station_fire
+	sn_burning_station_fire_normal
+sn_burning_station_fire_intro_anim_add
+	sn_burning_station_fire
+	sn_burning_station_fire_normal
+sn_burning_station_fire_intro_anim_alpha
+	sn_burning_station_fire
+	sn_burning_station_fire_normal
+sn_burning_valkyrie_stage_1_fire_anim_add
+	sn_burning_station_fire
+	sn_burning_station_fire_normal
+sn_burning_valkyrie_stage_1_smoke_anim_alpha
+	sn_burning_station_fire
+	sn_burning_station_fire_normal
+sn_burning_valkyrie_stage_2_fire_anim_add
+	sn_burning_station_fire
+	sn_burning_station_fire_normal
+sn_burning_valkyrie_stage_2_smoke_anim_alpha
+	sn_burning_station_fire
+	sn_burning_station_fire_normal
+sn_station_112_midorian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_112_midorian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_113_midorian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_113_midorian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_113_midorian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_114_midorian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_114_midorian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_114_midorian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_115_midorian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_115_midorian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_115_midorian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_116_midorian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_116_midorian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_116_midorian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_117_midorian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_117_midorian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_117_midorian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_118_midorian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_118_midorian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_118_midorian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_119_nivelian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_119_nivelian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_119_nivelian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_120_nivelian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_120_nivelian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_120_nivelian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_121_nivelian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_121_nivelian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_121_nivelian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_122_nivelian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_122_nivelian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_122_nivelian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_123_nivelian
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_123_nivelian_add
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_123_nivelian_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_midorian_wrecked
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_midorian_wrecked_alpha_emissive
+	sn_stations_midorian_wrecked_diffuse
+	sn_stations_midorian_wrecked_normal_specular
+sn_station_mining_plant_part1
+	sn_station_mining_plant_part1_diffuse
+	sn_station_mining_plant_part1_normal_specular
+sn_station_mining_plant_part1_add
+	sn_station_mining_plant_part1_diffuse
+	sn_station_mining_plant_part1_normal_specular
+sn_station_mining_plant_part1_alpha
+	sn_station_mining_plant_part1_diffuse
+	sn_station_mining_plant_part1_normal_specular
+sn_station_mining_plant_part1_emissive
+	sn_station_mining_plant_part1_diffuse
+	sn_station_mining_plant_part1_normal_specular
+sn_station_mining_plant_part1_fire_anim_add
+	sn_station_mining_plant_part1_diffuse
+	sn_station_mining_plant_part1_normal_specular
+sn_station_mining_plant_part1_glow_anim_add
+	sn_station_mining_plant_part1_diffuse
+	sn_station_mining_plant_part1_normal_specular
+sn_station_mining_plant_lod_1_part1
+	sn_station_mining_plant_part1_diffuse
+	sn_station_mining_plant_part1_normal_specular
+sn_station_mining_plant_lod_2_part1
+	sn_station_mining_plant_part1_diffuse
+	sn_station_mining_plant_part1_normal_specular
+sn_station_mining_plant_part2
+	sn_station_mining_plant_part2_diffuse
+	sn_station_mining_plant_part2_normal_specular
+sn_station_mining_plant_part2_add
+	sn_station_mining_plant_part2_diffuse
+	sn_station_mining_plant_part2_normal_specular
+sn_station_mining_plant_part2_emissive
+	sn_station_mining_plant_part2_diffuse
+	sn_station_mining_plant_part2_normal_specular
+sn_station_mining_plant_lod_1_part2
+	sn_station_mining_plant_part2_diffuse
+	sn_station_mining_plant_part2_normal_specular
+sn_station_mining_plant_lod_2_part2
+	sn_station_mining_plant_part2_diffuse
+	sn_station_mining_plant_part2_normal_specular

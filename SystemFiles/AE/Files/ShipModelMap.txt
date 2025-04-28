@@ -1,0 +1,69 @@
+//Ship models
+//Separate parameters using <Tab>
+//
+//Format:
+//
+//ID	Name					Base								Engine									EngineGlow											Lights											Emissive									LOD_1								LOD_2								Explosion
+//
+0		Betty					ship_000_midorian					ship_000_midorian_engine_add			ship_000_midorian_engine_glow_add					ship_000_midorian_lights_add					-											ship_000_midorian_lod_1				ship_000_midorian_lod_2
+1		Teneta					ship_001_terran						ship_001_terran_engine_add				ship_001_terran_engine_glow_add						ship_001_terran_lights_add						-											ship_001_terran_lod_1				ship_001_terran_lod_2
+2		Hiro					ship_002_pirates					ship_002_pirates_engine_add				ship_002_pirates_engine_glow_add					ship_002_pirates_lights_add						-											ship_002_pirates_lod_1				ship_002_pirates_lod_2
+3		Badger					ship_003_midorian					ship_003_midorian_engine_add			ship_003_midorian_engine_glow_add					ship_003_midorian_lights_add					-											ship_003_midorian_lod_1				ship_003_midorian_lod_2
+4		Dace					ship_004_nivelian					ship_004_nivelian_engine_add			ship_004_nivelian_engine_glow_add					ship_004_nivelian_lights_add					-											ship_004_nivelian_lod_1				ship_004_nivelian_lod_2
+5		Inflict					ship_005_terran						ship_005_terran_engine_add				ship_005_terran_engine_glow_add						ship_005_terran_lights_add						-											ship_005_terran_lod_1				ship_005_terran_lod_2
+6		Hector					ship_006_midorian					ship_006_midorian_engine_add			ship_006_midorian_engine_glow_add					ship_006_midorian_lights_add					-											ship_006_midorian_lod_1				ship_006_midorian_lod_2
+7		Anaan					ship_007_terran						ship_007_terran_engine_add				ship_007_terran_engine_glow_add						ship_007_terran_lights_add						-											ship_007_terran_lod_1				ship_007_terran_lod_2
+8		VoidX					ship_008_void						ship_008_void_engine_add				ship_008_void_engine_glow_add						ship_008_void_lights_add						-											ship_008_void_lod_1					ship_008_void_lod_2
+9		H'Soc					ship_009_vossk						ship_009_vossk_engine_add				ship_009_vossk_engine_glow_add						ship_009_vossk_lights_add						-											ship_009_vossk_lod_1				ship_009_vossk_lod_2
+10		Phantom					ship_010_terran						ship_010_terran_engine_add				ship_010_terran_engine_glow_add						ship_010_terran_lights_add						-											ship_010_terran_lod_1				ship_010_terran_lod_2
+11		Hernstein				ship_011_pirates					ship_011_pirates_engine_add				ship_011_pirates_engine_glow_add					ship_011_pirates_lights_add						-											ship_011_pirates_lod_1				ship_011_pirates_lod_2
+12		Type 43					ship_012_nivelian					ship_012_nivelian_engine_add			ship_012_nivelian_engine_glow_add					ship_012_nivelian_lights_add					-											ship_012_nivelian_lod_1				ship_012_nivelian_lod_2
+13		Vossk cargo				cargo_004_vossk						cargo_004_vossk_engine_add				-													-												cargo_004_vossk_lights_emissive				cargo_004_vossk_lod_1				cargo_004_vossk_lod_2				cargo_004_vossk_explosion_anim
+14		Terran battleship		battleship_terran					battleship_terran_engine_add			-													battleship_terran_lights_add					battleship_terran_lights_emissive			battleship_terran_lod_1				battleship_terran_lod_2				battleship_terran_explosion_anim
+15		Terran cargo			cargo_003_terran					cargo_003_terran_engine_add				-													cargo_003_terran_lights_add						cargo_003_terran_lights_emissive			cargo_003_terran_lod_1				cargo_003_terran_lod_2				cargo_003_terran_explosion_anim
+16		Kinzer					ship_016_nivelian					ship_016_nivelian_engine_add			ship_016_nivelian_engine_glow_add					ship_016_nivelian_lights_add					-											ship_016_nivelian_lod_1				ship_016_nivelian_lod_2
+17		Ward					ship_017_terran						ship_017_terran_engine_add				ship_017_terran_engine_glow_add						ship_017_terran_lights_add						-											ship_017_terran_lod_1				ship_017_terran_lod_2
+18		Hatsuyuki				ship_018_nivelian					ship_018_nivelian_engine_add			ship_018_nivelian_engine_glow_add					ship_018_nivelian_lights_add					-											ship_018_nivelian_lod_1				ship_018_nivelian_lod_2
+19		Nuyang II				ship_019_midorian					ship_019_midorian_engine_add			ship_019_midorian_engine_glow_add					ship_019_midorian_lights_add					-											ship_019_midorian_lod_1				ship_019_midorian_lod_2
+20		Cicero					ship_020_midorian					ship_020_midorian_engine_add			ship_020_midorian_engine_glow_add					ship_020_midorian_lights_add					-											ship_020_midorian_lod_1				ship_020_midorian_lod_2
+21		Aegir					ship_021_nivelian					ship_021_nivelian_engine_add			ship_021_nivelian_engine_glow_add					ship_021_nivelian_lights_add					-											ship_021_nivelian_lod_1				ship_021_nivelian_lod_2
+22		Groza					ship_022_terran						ship_022_terran_engine_add				ship_022_terran_engine_glow_add						ship_022_terran_lights_add						-											ship_022_terran_lod_1				ship_022_terran_lod_2
+23		Azov					ship_023_pirates					ship_023_pirates_engine_add				ship_023_pirates_engine_glow_add					ship_023_pirates_lights_add						-											ship_023_pirates_lod_1				ship_023_pirates_lod_2
+24		Velasco					ship_024_pirates					ship_024_pirates_engine_add				ship_024_pirates_engine_glow_add					ship_024_pirates_lights_add						-											ship_024_pirates_lod_1				ship_024_pirates_lod_2
+25		Tyrion					ship_025_pirates					ship_025_pirates_engine_add				ship_025_pirates_engine_glow_add					ship_025_pirates_lights_add						-											ship_025_pirates_lod_1				ship_025_pirates_lod_2
+26		Hera					ship_026_terran						ship_026_terran_engine_add				ship_026_terran_engine_glow_add						ship_026_terran_lights_add						-											ship_026_terran_lod_1				ship_026_terran_lod_2
+27		Taipan					ship_027_terran						ship_027_terran_engine_add				ship_027_terran_engine_glow_add						ship_027_terran_lights_add						-											ship_027_terran_lod_1				ship_027_terran_lod_2
+28		Veteran					ship_028_terran						ship_028_terran_engine_add				ship_028_terran_engine_glow_add						ship_028_terran_lights_add						-											ship_028_terran_lod_1				ship_028_terran_lod_2
+29		Mantis					ship_029_pirates					ship_029_pirates_engine_add				ship_029_pirates_engine_glow_add					ship_029_pirates_lights_add						-											ship_029_pirates_lod_1				ship_029_pirates_lod_2
+39		Berger Cross XT			ship_030_midorian					ship_030_midorian_engine_add			ship_030_midorian_engine_glow_add					ship_030_midorian_lights_add					-											ship_030_midorian_lod_1				ship_030_midorian_lod_2
+31		Salvehn					ship_031_nivelian					ship_031_nivelian_engine_add			ship_031_nivelian_engine_glow_add					ship_031_nivelian_lights_add					-											ship_031_nivelian_lod_1				ship_031_nivelian_lod_2
+32		Wasp					ship_032_pirates					ship_032_pirates_engine_add				ship_032_pirates_engine_glow_add					ship_032_pirates_lights_add						-											ship_032_pirates_lod_1				ship_032_pirates_lod_2
+33		Furious					ship_033_terran						ship_033_terran_engine_add				ship_033_terran_engine_glow_add						ship_033_terran_lights_add						-											ship_033_terran_lod_1				ship_033_terran_lod_2
+34		Razor 6					ship_034_terran						ship_034_terran_engine_add				ship_034_terran_engine_glow_add						ship_034_terran_lights_add						-											ship_034_terran_lod_1				ship_034_terran_lod_2
+35		Night Owl				ship_035_nivelian					ship_035_nivelian_engine_add			ship_035_nivelian_engine_glow_add					ship_035_nivelian_lights_add					-											ship_035_nivelian_lod_1				ship_035_nivelian_lod_2
+36		Cormorant				ship_036_terran						ship_036_terran_engine_add				ship_036_terran_engine_glow_add						ship_036_terran_lights_add						-											ship_036_terran_lod_1				ship_036_terran_lod_2
+37		Cronus					v_ship_037_deep_science				v_ship_037_deep_science_engine_add		v_ship_037_deep_science_engine_glow_add				v_ship_037_deep_science_lights_anim_add
+38		Typhon					v_ship_038_deep_science				v_ship_038_deep_science_engine_add		v_ship_038_deep_science_engine_glow_add				v_ship_038_deep_science_lights_anim_add
+39		S'Kanarr				v_ship_039_vossk					v_ship_039_vossk_engine_add				v_ship_039_vossk_engine_glow_add					v_ship_039_vossk_lights_add						-											v_ship_039_vossk_lod_1				v_ship_039_vossk_lod_2
+40		Nemesis					v_ship_040_deep_science				v_ship_040_deep_science_engine_add		v_ship_040_deep_science_engine_glow_add				v_ship_040_deep_science_lights_add
+41		K'Suukk					v_ship_041_vossk					v_ship_041_vossk_engine_add				v_ship_041_vossk_engine_glow_add					v_ship_041_vossk_lights_add						-											v_ship_041_vossk_lod_1				v_ship_041_vossk_lod_2
+42		Vol Noor				ship_042_retro						-										ship_042_retro_engine_glow_add						ship_042_retro_lights_add						-											ship_042_retro_lod_1				ship_042_retro_lod_2
+43		Wraith					ship_043_retro						-										ship_043_retro_engine_glow_add						ship_043_retro_lights_add						-											ship_043_retro_lod_1				ship_043_retro_lod_2
+44		Specter					sn_ship_044_elite_nivelian			sn_ship_044_elite_nivelian_engine_add	sn_ship_044_elite_nivelian_engine_glow_add			sn_ship_044_elite_nivelian_lights				-											sn_ship_044_elite_nivelian_lod_1	sn_ship_044_elite_nivelian_lod_2
+45		Blood Star				sn_ship_045_most_wanted				sn_ship_045_most_wanted_engine_add		sn_ship_045_most_wanted_engine_glow_add				sn_ship_045_most_wanted_lights					-											sn_ship_045_most_wanted_lod_1		sn_ship_045_most_wanted_lod_2
+46		Blue Fyre				sn_ship_046_most_wanted				sn_ship_046_most_wanted_engine_add		sn_ship_046_most_wanted_engine_glow_add				sn_ship_046_most_wanted_lights_add				-											sn_ship_046_most_wanted_lod_1		sn_ship_046_most_wanted_lod_2
+47		Gator Custom			sn_ship_047_most_wanted				sn_ship_047_most_wanted_engine_add		sn_ship_047_most_wanted_engine_glow_add				sn_ship_047_most_wanted_lights_add				-											sn_ship_047_most_wanted_lod_1		sn_ship_047_most_wanted_lod_2
+48		Amboss					sn_ship_048_most_wanted				sn_ship_048_most_wanted_engine_add		sn_ship_048_most_wanted_engine_glow_add				sn_ship_048_most_wanted_lights					-											sn_ship_048_most_wanted_lod_1		sn_ship_048_most_wanted_lod_2
+49		Scimitar				sn_ship_049_boss_nivelian			sn_ship_049_boss_nivelian_engine_add	sn_ship_049_boss_nivelian_engine_glow_add			sn_ship_049_boss_nivelian_lights_add
+51		Rhino					sn_ship_051_dropship_terran			sn_ship_051_dropship_terran_engine_add	sn_ship_051_dropship_terran_engine_glow_add			sn_ship_051_dropship_terran_lights				-											sn_ship_051_dropship_terran_lod_1	sn_ship_051_dropship_terran_lod_2
+52		Gryphon					sn_ship_052_retro					sn_ship_052_retro_engine_add			sn_ship_052_retro_engine_glow_add					sn_ship_052_retro_lights_add					-											sn_ship_052_retro_lod_1				sn_ship_052_retro_lod_2
+54		Na'srrk					sn_ship_054_vossk					sn_ship_054_vossk_engine_add			sn_ship_054_vossk_engine_glow_add					sn_ship_054_vossk_lights_add					sn_ship_054_vossk_emissive					sn_ship_054_vossk_lod_1				sn_ship_054_vossk_lod_2
+55		Groza MK II				sn_ship_055_modified				-										sn_ship_055_modified_engine_glow_add				sn_ship_055_modified_lights_add
+56		Berger Cross Special	sn_ship_056_modified				-										sn_ship_056_modified_engine_glow_add				sn_ship_056_modified_lights_add
+57		Kinzer RS				sn_ship_057_modified				-										sn_ship_057_modified_engine_glow_add				sn_ship_057_modified_lights_add
+58		Phantom XT				sn_ship_058_modified				-										sn_ship_058_modified_engine_glow_add				sn_ship_058_modified_lights_add
+59		Teneta R.E.D.			sn_ship_059_modified				-										sn_ship_059_modified_engine_glow_add				sn_ship_059_modified_lights_add
+60		Darkzov					sn_ship_060_modified				-										sn_ship_060_modified_engine_glow_add				sn_ship_060_modified_lights_add
+61		Ghost					ship_061_elite_nivelian_prototype	-										ship_061_elite_nivelian_prototype_engine_glow_add	ship_061_elite_nivelian_prototype_lights_add
+62		Dark Angel				ship_062_prototype					-										ship_062_prototype_engine_glow_add					ship_062_prototype_lights_add
+63		N'Tirrk					ship_063_vossk_prototype			-										ship_063_vossk_prototype_engine_glow_add			ship_063_vossk_prototype_lights_add				ship_063_vossk_prototype_lights_emissive

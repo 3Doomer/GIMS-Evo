@@ -1,0 +1,46 @@
+#(
+	#(	/*Languages*/
+		#English
+	), #(	/*Dates*/
+		0,
+		"10.4.2015 17:32 UTC",
+		"12.3.2015 20:8 UTC",
+		"21.2.2015 19:18 UTC",
+		"16.11.2014 16:1 UTC",
+		"18.10.2014 13:58 UTC",
+		"13.10.2014 13:19 UTC",
+		"12.10.2014 2:3 UTC"
+	), #(	/*Language * Date * Changes*/
+		#(	--Language
+			#(	--date changes
+				"Changed exporting objects selection list to a TreeView"
+			), #(	--date changes
+				"Updated the texture cache logic",
+				"Fixed material error reporting system"
+			), #(	--date changes
+				"Added weapons binary file import/export"
+			), #(	--date changes
+				"Fixed models import/export",
+				"	Animations're temporarily removed"
+			), #(	--date changes
+				"Added auto material \"Alpha from color\" setting",
+				"Fixed animations import",
+				"Added collisions and models export"
+			), #(	--date changes
+				"Fixed model>textures map handling",
+				"Added imported model meshes vertex color display",
+				"Models with \"-add\" in name'll have",
+				"	material flag \"Alpha from color\" checked"
+			), #(	--date changes
+				"Added model>textures map support",
+				"Opacity animation import fix",
+				"Material:",
+				"	Fixed alpha and animation",
+				"	Added \"Alpha from color\" button to see how black",
+				"		transparent textures'll be seen ingame"
+			), #(	--date changes
+				"Initial build"
+			)
+		)
+	)
+)

@@ -1,0 +1,177 @@
+#(
+	#(	/*Languages*/
+		#English
+	), #(	/*Dates*/
+		0,
+		"9.5.2017 20:27 UTC",
+		"2.4.2017 10:52 UTC",
+		"30.3.2017 20:10 UTC",
+		"20.2.2017 20:21 UTC",
+		"4.2.2017 20:59 UTC",
+		"22.1.2017 13:31 UTC",
+		"16.1.2017 7:39 UTC",
+		"14.1.2017 14:57 UTC",
+		"14.1.2017 13:46 UTC",
+		"4.1.2017 14:34 UTC",
+		"3.1.2017 21:48 UTC",
+		"3.1.2017 20:57 UTC",
+		"3.1.2017 19:51 UTC",
+		"3.1.2017 16:28 UTC",
+		"10.5.2016 21:32 UTC",
+		"9.5.2016 18:46 UTC",
+		"8.5.2016 21:38 UTC",
+		"8.5.2016 13:16 UTC",
+		"7.5.2016 23:34 UTC",
+		"5.5.2016 20:3 UTC",
+		"5.5.2016 19:9 UTC",
+		"13.1.2016 21:2 UTC",
+		"31.12.2015 14:18 UTC",
+		"20.12.2015 12:42 UTC",
+		"11.11.2015 8:1 UTC",
+		"8.11.2015 12:35 UTC"
+	), #(	/*Language * Date * Changes*/
+		#(	--Language
+			#(	--date changes
+--				"Added openFormats OVR(vehicle recording) import/export support",
+				"Changed openFormats ODR format version for new OpenIV release",
+				"Fixed collisions with empty materials import",
+				"Fixed 2nd vertex colors(illumination) export",
+--				"Fixed normals export",
+				"Removed source geometry weld and smoothing groups flattening on collision export"
+			), #(	--date changes
+				"Improved modifier selection to get rid of some \"Unknown system exception\" errors"
+			), #(	--date changes
+				"Added GIMS settings button",
+				"Added reset cache button",
+				"Improved interface layouts"
+			), #(	--date changes
+				"Fixed previously messed up models export",
+				"Fixed \"Cannot get mesh from this object\" error on export"
+			), #(	--date changes
+				"Added material editor \"Options\" button, which shows the same menu as right-click on the material preview",
+				"Improved skinned model fake bones creation",
+				"Changed default model LOD levels to 9998(just in case, not like it's so crucial)",
+				"Fixed \"Bone ID out of range\" error on model import",
+				"Fixed Geometry type collision meshes transform export"
+			), #(	--date changes
+				"Added \"Revert bone transforms\" button for Model and Model Dictionary UI(it won't work with previously imported models)",
+				"Improved the material editor:",
+				"	Added material list copy and paste functions",
+				"	Added shader vertex components info field",
+				"	Fixed long parameter names appearance",
+				"Added a Model modifier, and moved it together with Bone and Light modifiers to \"Imposters\" creatable object category",
+				"Added some of GTA IV and Max Payne 3 material texture slots and embed flags conversion",
+				"Improved model normals import",
+				"Fixed some import and export bugs"
+			), #(	--date changes
+				"Added 2nd model vertex color alpha import and export, it's in Green alpha channel component; 1st color alpha moved to the Red one",
+				"Added default Composite child flags",
+				"Improved material visuals",
+				"Fixed unwanted fake bone creation and \"Bone ID out of range\" error on model import",
+				"Fixed material editor errors, face select and apply functions",
+				"Removed error reports at wrong openFormats file syntax detection"
+			), #(	--date changes
+				"Added mesh face group count limit - 65535",
+				"Fixed model smoothing groups import in MAX versions after 2012",
+				"Fixed mesh faces with zero smoothing group export"
+			), #(	--date changes
+				"Allowed non-composite model collisions",
+				"Fixed parentless model meshes export",
+				"Fixed undefined Materials value passing to the DumpMesh fn from StructFromScene fn"
+			), #(	--date changes
+				"Added system memory check before models export",
+				"Added import dialog separate file types",
+				"Improved import and export speed and memory consumption, it's 2 times better now",
+				"Optimized MAXFactory.SPSToGIMSParamType fn",
+				"Changed default shader parameter values to minimum",
+				"Changed BufferMgr mode to #StreamTxt for RAM economy on import and export",
+				"Replaced an exception on import or export when needed vertex declaration doesn't exist with a result generation",
+				"Restricted non-composite model collisions, since they won't work anyway",
+				"Fixed model normals import and export",
+				"Fixed collision limits and their checks",
+				"Fixed model mesh \"Edit mesh\" and \"Edit poly\" modifiers handling at export",
+				"Fixed model collisions origin export"
+			), #(	--date changes
+				"Improved DB loading and models import/export speed",
+				"Fixed mesh bone count calculation, that was messing up skinned meshes",
+				"Cache reset"
+			), #(	--date changes
+				"Fixed \"Unknown property: \"x\" in undefined\" error in MAXFactory.ObjectMgr.StructFromScene fn"
+			), #(	--date changes
+				"Fixed model geometry bounds export(they were in reverse order)",
+				"Fixed model light Extents and CullingPlane parameters export"
+			), #(	--date changes
+				"Improved missing embedded textures handling - such textures'll be exported as external, without corrupting the resource",
+				"Set higher bone count limits(they still aren't proper)",
+				"Fixed model export \"Unknown property: \"joints\" in undefined\" error, caused by limits guided result invalidation",
+				"Fixed model export \"No \"deleteItem\" function for (strCollectionNode...\" error, caused by limits guided result invalidation",
+				"Fixed model export \"No \"get\" function for undefined\" error in Write fn of grcShadingGroup, caused by missing texture info in old scenes."
+			), #(	--date changes
+				"Added models export with collisions support",
+				"Added texture dictionary texture parameters UI",
+				"Added unused collision verts cleaning up on import",
+				"Improved the material editor:",
+				"	Added steps for numerical shader value editors(shown as ticks on sliders)",
+				"	Added embedded texture parameters UI",
+				"	Fixed submaterial functions",
+				"Improved game core loading when errors occur",
+				"Changed exporting objects selection list to a TreeView",
+				"Fixed collisions export:",
+				"	Fixed NaNs when no meshes supplied",
+				"	Fixed collision primitives",
+				"	Fixed export of objects without parent",
+				"Fixed models import:",
+				"	Fixed bone scale limits reading",
+				"	Fixed dummy bone names and meshes placement when no skeleton supplied",
+				"	Fixed vertex color components order",
+				"Fixed an error when importing files with unknown extension"
+			), #(	--date changes
+				"Fixed OBN collisions import",
+				"Fixed simultaneous collisions and models import error"
+			), #(	--date changes
+				"Fixed wrong collision file path error at import",
+				"Possibly fixed the material editor rendering",
+				"Removed BoneDataCRCs DB building"
+			), #(	--date changes
+				"Collisions export speedup",
+				"Added an option to calculate collision face siblings in OpenIV",
+				"Fixed collision vertex colors export",
+				"Fixed some errors"
+			), #(	--date changes
+				"Added post-update cleanup",
+				"Fixed empty meshes import",
+				"Fixed material editor error when the material's changed outside of it"
+			), #(	--date changes
+				"Improved the textures search",
+				"Fixed some of the errors"
+			), #(	--date changes
+				"Fixed drawable dictionaries import"
+			), #(	--date changes
+				"Added openFormats collisions export",
+				"Added openFormats models import",
+				"Added shaders config reader",
+				"Added material editor",
+				"Added phBound type check",
+				"Added bone DataCRC DB",
+				"OpenIV not found error was made a bit easier to understand.",
+				"Cache reset"
+			), #(	--date changes
+				"Improved the import staging to conserve RAM",
+				"Fixed primitive collision box transform import",
+				"Stability improvements"
+			), #(	--date changes
+				"Removed debug data",
+				"Optimized UI"
+			), #(	--date changes
+				"Adaptation to the new openFormats",
+				"Primitive collisions creation optimization",
+				"Fixed primitive cylinders creation"
+			), #(	--date changes
+				"Added materials.dat file cache invalidation when materialfx.dat file is updated",
+				"Improved the primitive box collisions import"
+			), #(	--date changes
+				"Initial build with openFormats bounds import"
+			)
+		)
+	)
+)

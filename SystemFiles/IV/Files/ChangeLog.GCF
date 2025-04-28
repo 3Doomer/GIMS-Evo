@@ -1,0 +1,42 @@
+#(
+	#(	/*Languages*/
+		#English
+	), #(	/*Dates*/
+		0,
+		"11.6.2013 10:57 UTC",
+		"10.6.2013 10:16 UTC",
+		"24.2.2013 21:12 UTC",
+		"11.2.2013 22:52 UTC"
+	), #(	/*Language * Date * Changes*/
+		#(	--Language
+			#(	--date changes
+				"Collisions export",
+				"Models export",
+				"NavMeshes import fix",
+				"Model lights import fix",
+				"Model/Collision dictionary children hashnames import fix",
+				"Fragment children properties import fix",
+				"GUI update, added tools:",
+				"	Material editor:",
+				"		Added thumbnails",
+				"		Preview shaders:",
+				"			Update",
+				"			Added gta_vehicle_paint3",
+				"	Scene helpers",
+				"	Game path changer",
+				"Performance improvements"
+			), #(	--date changes
+				"Fragments import fix"
+			), #(	--date changes
+				"Skinning import fix",
+				"WFT car import splitting fix",
+				"ODD import fix",
+				"Performance improvements"
+			), #(	--date changes
+				"System update"
+			), #(	--date changes
+				"Initial build with resources import"
+			)
+		)
+	)
+)

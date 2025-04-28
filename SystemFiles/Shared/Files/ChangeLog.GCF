@@ -1,0 +1,304 @@
+#(
+	#(	/*Languages*/
+		#English
+	), #(	/*Dates*/
+		0,
+		"9.5.2017 20:27 UTC",
+		"4.5.2017 19:26 UTC",
+		"2.4.2017 10:52 UTC",
+		"30.3.2017 20:10 UTC",
+		"25.2.2017 21:42 UTC",
+		"23.2.2017 19:17 UTC",
+		"20.2.2017 20:21 UTC",
+		"4.2.2017 20:59 UTC",
+		"22.1.2017 13:31 UTC",
+		"16.1.2017 7:39 UTC",
+		"14.1.2017 14:57 UTC",
+		"4.1.2017 14:34 UTC",
+		"3.1.2017 20:57 UTC",
+		"3.1.2017 16:28 UTC",
+		"10.5.2016 21:32 UTC",
+		"8.5.2016 21:38 UTC",
+		"8.5.2016 13:16 UTC",
+		"7.5.2016 23:34 UTC",
+		"5.5.2016 19:9 UTC",
+		"13.1.2016 21:2 UTC",
+		"31.12.2015 14:18 UTC",
+		"25.12.2015 20:58 UTC",
+		"12.12.2015 20:42 UTC",
+		"9.12.2015 22:7 UTC",
+		"6.12.2015 15:53 UTC",
+		"3.12.2015 20:26 UTC",
+		"11.11.2015 8:1 UTC",
+		"8.11.2015 12:35 UTC",
+		"19.10.2015 22:49 UTC",
+		"27.9.2015 15:48 UTC",
+		"25.9.2015 21:33 UTC",
+		"16.9.2015 16:3 UTC",
+		"13.4.2015 11:19 UTC",
+		"10.4.2015 17:42 UTC",
+		"8.4.2015 11:4 UTC",
+		"7.4.2015 20:44 UTC",
+		"15.3.2015 11:29 UTC",
+		"13.3.2015 6:1 UTC",
+		"11.6.2013 10:57 UTC",
+		"10.6.2013 10:16 UTC",
+		"24.2.2013 21:12 UTC",
+		"11.2.2013 22:52 UTC"
+	), #(	/*Language * Date * Changes*/
+		# (	--Language
+			#(	--date changes
+--				"Added EGIMS_V_VehicleRecording object plugin for GTA V core",
+				"Fixed DumpMesh fn colors collection yet again",
+				"Renamed ArrayOps.Join3ArraysIntoResult fn to JoinArraysIntoResult, and changed args"
+			), # (	--date changes
+				"Improved modifier selection to get rid of some \"Unknown system exception\" errors",
+				"Fixed .NET library compilation on old runtime versions",
+				"Fixed GIMS.Download fn(it was able to download outdated files)",
+				"Copied GIMS.Download and GIMS.CheckConnection functions to GIMS.Core.CoreOps"
+			), # (	--date changes
+				"Changed GUIMgr.ProgressUpdateInterval to 200",
+				"Optimized GUI.BuildCNodeTree fn",
+				"Removed file core validity check if it doesn't exist"
+			), # (	--date changes
+				"Added EULA",
+				"Added \"Convert materials to game type\" tool",
+				"Added \"Embed game material textures\" tool",
+				"Added GIMS settings",
+				"Improved telemetry",
+				"Improved interface layouts",
+				"Fixed error reporting",
+				"Removed generic TreeView checkboxes"
+			), # (	--date changes
+				"Added BufferMgr.GetErrorInfo fn for buffer location reports.",
+				"Added more ObjectMgr.DumpMesh fn profiling points.",
+				"Added Comparator override for remaining quick search and sort fns.",
+				"Added unique user ID storage.",
+				"Changed main script version.",
+				"Changed ServerURL in the main script and core config.",
+				"Moved initial heap allocation from the main script to the Shared core.",
+				"Removed code comments from the main script.",
+				"Extended abort information."
+			), #(	--date changes
+				"Fixed DumpMesh fn 2nd vertex color channel collection"
+			), #(	--date changes
+				"Implemented .NET GetJenkinsHash fn that works a lot faster than a MAXScript one",
+				"Fixed DumpMesh fn colors collection, and added some more error reporting info",
+				"Optimized .NET GetMD5Hash fn"
+			), #(	--date changes
+				"Added some checks to fix some bugs in future",
+				"Improved MAX UI behavior during heavy tasks",
+				"Improved the error handling",
+				"Fixed MaterialOps.RecastTexturePath fn error when it can't get the texture name"
+			), #(	--date changes
+				"Added initial transform value containers for MP3 and V bones",
+				"Added GTA V Model modifier, and moved it together with Bone and Light modifiers to \"Imposters\" creatable object category",
+				"Improved ObjectMgr.SetMeshNormals fn - it's applying per-vertex normals too",
+				"Fixed too long lines showing up in the UI, which probably caused stack overflow on error report"
+			), #(	--date changes
+				"Added CoreOps.TryGetGameMAXFactory fn for TypeLibrary materials",
+				"Added ArrayOps.Join3ArraysIntoResult fn",
+				"Added ObjectMgr.DumpMesh fn per-vertex averaged normals collection and 2nd vertex color channel alpha collection",
+				"Added ObjectMgr.CreateMesh fn 2nd vertex color channel alpha creation",
+				"Added target directory creation to BufferMgr.WriteFile and Create fns",
+				"Added StringOps.oFTypeExec fn IDMask length check",
+				"Improved GTA V material visuals",
+				"Refactored TypeLibrary plugin meshes building",
+				"Fixed GUIMgr.FindControl fn \"Unknown property: name in undefined\" error",
+				"Fixed error reporting API errors"
+			), #(	--date changes
+				"Changed ObjectMgr.CreateMesh fn SG parameter default value to #Set and removed #None case handling, that fixes wrong smoothing groups in MAX versions after 2012",
+				"Fixed ObjectMgr.DumpMesh fn work with zero smoothing group faces"
+			), #(	--date changes
+				"Added syntax sugar TryGetProperty fn",
+				"Added ConfigOps.IsDatetimeNewerThan fn",
+				"Added ondemand cache files invalidation by date",
+				"Added ObjectMgr.StoreModData fn CollapseToMesh flag, which fixes non-mesh node ObjectMgr.RestoreModData fn work after modifier stack collapse",
+				"Added ValueOps.AsoFText fn BufferID parameter for direct buffer writing",
+				"Added ArrayOps.AppendMHL fn ValuePropertyName parameter",
+				"Added ArrayOps.AppendSorted fn EndID and IsPreallocated parameters",
+				"Added ArrayOps PreallocatedInsertItem and PreallocatedMHLInsertItem fns",
+				"Added BufferMgr #NETBinStream mode for .NET stream - based binary IO",
+				"Added syntax sugar TryAccess fn",
+				"Improved Arrange selection tool - now it restores the selection after completion",
+				"Improved SystemMgr FileRename and FileCopy fns to skip copying the same or already existing file",
+				"Improved ConfigOps.GetTime fn to return file time in UTC",
+				"Optimized a lot of core functions",
+				"Fixed ObjectMgr.DumpMesh fn normals and tangents collection, and wrong skin bone types processing",
+				"Fixed BufferMgr.WriteVal fn work with binary types",
+				"Fixed ObjectMgr.SetMeshNormals fn",
+				"Fixed \"Can't find the layout LastLayout in langpack English of core Shared\" error when going to a previous UI page without current.",
+				"Fixed BufferMgr #StreamTxt mode",
+				"Readme update"
+			), #(	--date changes
+				"Added syntax sugar FloatCompare fn",
+				"Added profiler memory info",
+				"Improved Compare fn using FloatCompare fn",
+				"Optimized PasteImage, SetMeshNormals, CreateMesh, and DumpMesh fns",
+				"Changed EGIMS_V_Model plugin CalcDataCRC parameter default value to false"
+			), #(	--date changes
+				"Added GTA V material Update event handler, which fixes old scene materials"
+			), #(	--date changes
+				"Changed main script version",
+				"Added message generation when the file to read doesn't exist",
+				"Added GTA V material texture parameters container",
+				"Added out of disk space error handling",
+				"Added TreeView with checkboxes UI element, and used it in exporting objects selection page",
+				"Restored core files validity check",
+				"Improved Core.ValueOps.ConvertStruct fn in ArrayParameter->BitArray param conversion",
+				"Improved Core.MAXFactory.SceneOps.GetObjTypeInfo fn, now it can find meshes without game-specific modifiers(like an Editable Mesh with Skin modifier)",
+				"Improved GTA V objects UI:",
+				"	Unified bones UI, added a pick button for bone Mirror ID, dynamically linked these IDs",
+				"	Unified lights UI, added culling plane controls",
+				"	Renamed model \"Force DataCRC\" checkbox to \"Recalculate DataCRC\" and inverted its logic",
+				"Improved Core.ObjectMgr.SetMeshNormals fn:",
+				"	Added value type conversion if it's invalid",
+				"	Added InvalidNormalDummy parameter",
+				"	Added CoordsysTM parameter",
+				"Improved Core.ObjectMgr.CreateMesh fn:",
+				"	Added InvalidNormalDummy parameter for SetMeshNormals fn",
+				"	Added NormalsCoordsysTM parameter for SetMeshNormals fn",
+				"Improved the code profiler, and moved it from the main script to the Shared core",
+				"Changed CheckBox and SwitchBox appearance",
+				"Changed creatable objects list lines appearance - they looks like buttons now",
+				"Fixed GTA V modifier objects creation - every object in selection will receive a separate instance",
+				"Fixed Core.ValueOps.Compare fn - it wasn't enable to properly compare true to false",
+				"Fixed Core.ValueOps.TypeCast fn - it wasn't enable to convert Float values to #Float",
+				"Fixed Core.ObjectMgr.CalculateVolumeAndCenterOfMass fn - it was returning NaN on meshes without faces",
+				"Fixed Core.ObjectMgr.DumpMesh fn:",
+				"	Now it wouldn't default mesh color channels when they aren't already present there",
+				"	Added NormalsCoordsysTM parameter for normals and tangents transform origin",
+				"Fixed \"Progress stage went out of bounds\" error",
+				"Fixed error reporting API errors",
+				"Renamed \"NETRage\" library to \"GIMSOps\""
+			), #(	--date changes
+				"Added launch counter timeout to prevent hanging after game core loading",
+				"Added ThreadMgr for future asyncronous operations",
+				"Changed main script version"
+			), #(	--date changes
+				"Improved GTA V shape collision plugins",
+				"Fixed export nodes collector",
+				"Fixed file existance check in buffered reader",
+				"Fixed AddInfo in error reports",
+				"Fixed some other errors"
+			), #(	--date changes
+				"Added post-update cleanup",
+				"Added output directory creation on file write",
+				"Fixed long AddInfos in error reports"
+			), #(	--date changes
+				"Improved the textures search",
+				"Improved warning and error results",
+				"Improved the error reporting system",
+				"Fixed game launch errors for these guys who updated the Shared core, but refused to update the GTA V one",
+				"Fixed some other errors"
+			), #(	--date changes
+				"Added GIMS to Standard material converter",
+				"Improved array and scene mesh operations",
+				"Improved the GTA V material",
+				"Improved the error handling",
+				"Improved the CPU time and memory management",
+				"Files writing speedup",
+				"Fixed rotateable display size calculation",
+				"Fixed GTA V primitive collision meshes disappearing",
+				"Stability improvements",
+				"Removed GTA IV stuff",
+				"Changed main script version"
+			), #(	--date changes
+				"Improved the error reporting system",
+				"GIMS will try to update its main script by itself on future updates",
+				"Optimized object plugins memory consumption",
+				"Stability improvements",
+				"Changed main script version"
+			), #(	--date changes
+				"Improved the file operations",
+				"UI improvements",
+				"Fixed AsoFText fn result on empty arrays"
+			), #(	--date changes
+				"Improved the texture searcher",
+				"Fixed error report game core detection",
+				"Other changes"
+			), #(	--date changes
+				"Fixed UI hanging after garbage collection",
+				"Fixed the file operation errors"
+			), #(	--date changes
+				"Fixed the launch counter",
+				"Install notes update"
+			), #(	--date changes
+				"Improved the launch counter",
+				"Changed the main script version",
+				"Fixed the download system for old 3Ds MAX versions",
+				"Minor changes"
+			), #(	--date changes
+				"Fixed the Max Payne 3 material initialization bug"
+			), #(	--date changes
+				"Added cache hit result parameter and force invalidate flag",
+				"Optimized object plugins"
+			), #(	--date changes
+				"Fixed skinning and normals import",
+				"Fixed GC errors on old MAX versions",
+				"Fixed the update system",
+				"Performance and stability improvements",
+				"Changed main script version"
+			), #(	--date changes
+				"Mesh creation improvements",
+				"Improved progress info updating",
+				"Added internet connection timeout to prevent hanging at start",
+				"Changed main script version"
+			), #(	--date changes
+				"Added file functions",
+				"Improved the file reader:",
+				"	Added EndOfFile handling option",
+				"	Added NAN floating point read detection"
+			), #(	--date changes
+				"Improved messages and reports copy function"
+			), #(	--date changes
+				"Changed the main script version",
+				"ChangeLog now will be displayed before update",
+				"Improved UI",
+				"Fixed the update system",
+				"Fixed material errors",
+				"Other improvements"
+			), #(	--date changes
+				"Refactoring"
+			), #(	--date changes
+				"Added errors and warnings occurrence counter",
+				"Improved the error reporting system",
+				"Improved the object creator",
+				"Fixed launch counter errors"
+			), #(	--date changes
+				"Fixed MP3 material error on old MAX versions"
+			), #(	--date changes
+				"Added selected files check",
+				"Added support links into the core version info UI",
+				"Added launch counter",
+				"Fixed TypeLibrary material errors",
+				"Fixed main window errors",
+				"Other improvements"
+			), #(	--date changes
+				"Upgraded the error report system"
+			), #(	--date changes
+				"Main script update",
+				"Install/update system fix",
+				"Performance improvements",
+				"GUI update:",
+				"	Changed layout format",
+				"	Added Clone tool",
+				"	Some insignificant changes",
+				"Readme update"
+			), #(	--date changes
+				"Bugreport system fix"
+			), #(	--date changes
+				"Readme update",
+				"Main script update",
+				"GIMS installation paths fix",
+				"Performance improvements"
+			), #(	--date changes
+				"Texture searcher fix",
+				"Updater fix",
+				"Main script update"
+			), #(	--date changes
+				"Initial build"
+			)
+		)
+	)
+)
