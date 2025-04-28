@@ -15,20 +15,20 @@
 		FlipV = true,
 		ImportMode = true,
 		FormatIndex = 0,
-		PositionX = "0.0",
-		PositionY = "0.0",
-		PositionZ = "0.0",
-		RotationX = "90.0",
-		RotationY = "0.0",
-		RotationZ = "0.0",
-		Scale = "1.0",
-		OffsetU = "0.0",
-		OffsetV = "0.0",
-		ScaleU = "1.0",
-		ScaleV = "1.0",
-		Diffuse = "0",
-		Bump = "2",
-		Specular = "1",
+		PositionX = 0.0,
+		PositionY = 0.0,
+		PositionZ = 0.0,
+		RotationX = 90.0,
+		RotationY = 0.0,
+		RotationZ = 0.0,
+		Scale = 1.0,
+		OffsetU = 0.0,
+		OffsetV = 0.0,
+		ScaleU = 1.0,
+		ScaleV = 1.0,
+		Diffuse = 0,
+		Bump = 2,
+		Specular = 1,
 		Path = "",
 		IDs = "0-99999"
 	)
@@ -947,7 +947,10 @@
 										local	BoneID = (VertBoneIDs[j] += 1)
 										if
 											BoneID < 0 or
-											BoneID > 1024
+											BoneID > 1024 or (
+												(IsKindOf BoneID Float) and
+												((TypeCast (BoneID * 1000) Integer) != ((TypeCast BoneID Integer) * 1000))
+											)
 										then (
 											AddResult #Error (
 												FormatText \

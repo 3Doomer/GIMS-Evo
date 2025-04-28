@@ -884,6 +884,72 @@
 								unsupplied, --#NORMAL,
 								unsupplied --#TANGENT
 							)
+					),
+					(	--also 7
+						VDMapstr \
+							SourceChannelNames:#(
+								#POSITION,
+								#TEXCOORD,
+								#TEXCOORD,
+								#TEXCOORD,
+								#COLOR,
+								#NORMAL,
+								#TANGENT
+							) \
+							SourceValueTypeIDs: #(
+								3,	--#POSITION,
+								3,	--#TEXCOORD,
+								3,	--#TEXCOORD,
+								3,	--#TEXCOORD,
+								2,	--#COLOR,
+								1,	--#NORMAL,
+								1	--#TANGENT
+							) \
+							SourceValueCounts: #(
+								4,	--#POSITION,
+								2,	--#TEXCOORD,
+								2,	--#TEXCOORD,
+								2,	--#TEXCOORD,
+								4,	--#COLOR,
+								4,	--#NORMAL,
+								4	--#TANGENT
+							) \
+							TargetChannelNames:#(
+								#POSITION,
+								#TEXCOORD,
+								#TEXCOORD,
+								#TEXCOORD,
+								#COLOR,
+								#NORMAL,
+								#TANGENT
+							) \
+							TargetTypeIDs: #(
+								3,	--#POSITION,
+								3,	--#TEXCOORD,
+								3,	--#TEXCOORD,
+								3,	--#TEXCOORD,
+								2,	--#COLOR,
+								1,	--#NORMAL,
+								1	--#TANGENT
+							) \
+							TargetChannelPerValueMods:#(
+								#XYZMultWDiv6553500,	--#POSITION,
+								unsupplied,				--#TEXCOORD,
+								unsupplied,				--#TEXCOORD,
+								unsupplied,				--#TEXCOORD,
+								unsupplied,				--#COLOR,
+								unsupplied,				--#NORMAL,
+								unsupplied				--#TANGENT
+							) \
+							TargetChannelModifiers:#(
+								unsupplied,			--#POSITION,
+								#(1024, #Divide),	--#TEXCOORD,
+								#(32768, #Divide),	--#TEXCOORD,
+								#(1024, #Divide),	--#TEXCOORD,
+								#(255, #Divide),	--#COLOR,
+								unsupplied,			--#NORMAL,
+								unsupplied			--#TANGENT
+							)
 					)
 				)
 			)

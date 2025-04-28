@@ -1,0 +1,54 @@
+//--------------------------------------
+//--- 010 Editor v3.1 Binary Template
+//
+// File:
+// Author:
+// Revision:
+// Purpose:
+//--------------------------------------
+typedef struct {
+    UBYTE Day;
+    UBYTE Month;
+    SHORT Year;
+    UBYTE Hour;
+    UBYTE Minute;
+} Date <read=date_read>;
+
+string date_read (Date& v) {
+    string s;
+    SPrintf(s, "%d.%d.%d %d:%d UTC", v.Day, v.Month, v.Year, v.Hour, v.Minute);
+    return s;
+} 
+
+typedef struct {
+    string FileName;
+    int FileSize;
+    Date ChangeDate;
+} Module <read=module_read>;
+
+string module_read (Module& v) {
+    return v.FileName;
+}
+
+typedef struct {
+    string Hash;
+} FileHash <read=FileHash_read>;
+
+string FileHash_read (FileHash& v) {
+    return v.Hash;
+}
+
+LittleEndian(); 
+
+SetBackColor( cLtBlue );
+Date ReleaseDate;
+Date CacheInvalidationDate;
+UBYTE FileCount;
+
+SetBackColor( cLtGreen );
+Module File[ FileCount ] <optimize=false>;
+
+SetBackColor( cYellow );
+FileHash Hashes[ FileCount ] <optimize=false>;
+
+SetBackColor( cRed );

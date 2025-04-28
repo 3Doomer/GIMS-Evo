@@ -1,4 +1,4 @@
-GIMSVersion = 12
+GIMSVersion = 13
 global	FailText = "Can't load GIMS! Error:\n\n",
 			Checksum = FailText.Count,
 			SharedCore, GameCore, strGUI
@@ -23,12 +23,10 @@ rollout EGIMS_LangSelectRollout "EGIMS_LangSelectRollout" Width:200 Height:31 (
 
 global	TempScriptPath = (Append ScriptsPath "Startup\\"),
 		EGIMS_CoreConfigFileName = "GIMS.ccf",
-		EGIMS_DevGIMSFileName = "GIMS.ms",
-		EGIMS_PublicGIMSFileName = "GIMS.mse",
 		EGIMS_CoreConfigFile = (TempScriptPath + EGIMS_CoreConfigFileName)
 
 struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
-		/*CCF_SPEC*/		ServerURL,
+		/*CCF_SPEC*/		ServerURLs,
 		/*DEFAULT*/			Tag = "Shared",
 							Name = "Shared",
 							RussianSupport, IntlSupport,
@@ -39,7 +37,7 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 							IsUpdateDeclined = false,
 							DevInfoPropList = #(
 								#Tag,
-								#ServerURL,
+								#ServerURLs,
 								#BasePath,
 								#FilesPath,
 								#CachePath,
@@ -133,10 +131,10 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 							/*@<Boolean>*/ fn Start Game NoEH:false = (
 								/*@<GUIDE>
 									Creates all core related directories.
-									If core launcher's found by (FilesPath + GIMS.CoreFile) path, calling it with <MXSFunction> FileIn, thereby loading the core.
+									If core launcher's found in (FilesPath + GIMS.CoreFile) path, calling it with <MXSFunction> FileIn, thereby loading the core.
 									Otherwise:
 									-Deletes all core related files, 
-									-Downloads (ServerURL + Tag + "\\" + GIMS.FilesDir + GIMS.CoreFile) URL to (FilesPath) directory. If succeeded, calling it with <MXSFunction> FileIn, thereby loading the core.
+									-Downloads (ServerURLs + Tag + "\\" + GIMS.FilesDir + GIMS.CoreFile) URL to (FilesPath) directory. If succeeded, calling it with <MXSFunction> FileIn, thereby loading the core.
 									-Otherwise - sets the execution result to false.
 								
 									Sets (Loaded) field to the execution result.
@@ -147,9 +145,18 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 										OriginalException = "",
 										Checksum = FailText.Count,
 										Result = false,
-										CoreFile = GIMS.CoreFile,
-										CoreFilePath = (FilesPath + CoreFile),
 										StarChar = "*"
+										
+								local	CoreFileNameType = (GIMS.CoreFile + (if GIMS.IsDevBuild then GIMS.ScriptExtDev else GIMS.ScriptExtEnc)),
+										CoreFilePath = (FilesPath + CoreFileNameType)
+								if
+									(not GIMS.IsDevBuild) or
+									(not (DoesFileExist CoreFilePath))
+								then (
+									CoreFileNameType = (GIMS.CoreFile + GIMS.ScriptExtEnc)
+									CoreFilePath = (FilesPath + CoreFileNameType)
+								)
+	
 								/*<ERRHANDLERSTART>*/try (
 									GIMS.CurrentGame = Game
 									if
@@ -186,10 +193,10 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 											for tFile in Files do
 												DeleteFile tFile
 											local	URL = (StringStream "")
-											Format "%%/%%" ServerURL Tag GIMS.FilesDir CoreFile To:URL
-											if (GIMS.Download #(URL as string) DownloadPath true) then (
+											Format "GIMS/%/%%" Tag GIMS.FilesDir CoreFileNameType To:URL
+											if (GIMS.Download ServerURLs #(URL as string) DownloadPath true) then (
 												/*<ERRHANDLERSTART>*/try (
-													FileIn (DownloadPath + CoreFile) Quiet:true
+													FileIn (DownloadPath + CoreFileNameType) Quiet:true
 													local	CoreLoader = GIMS.CoreLoader
 													case CoreLoader of (
 														#EULARejected:
@@ -224,15 +231,16 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 										(MatchPattern OriginalException Pattern:("*" + OldVersionError)): (
 											local	ScriptPath = GIMS.ScriptPath,
 													CoreConfigFileName = GIMS.CoreConfigFileName,
-													PublicScriptFileName = GIMS.PublicScriptFileName,
-													MainScriptFilePath = (ScriptPath + PublicScriptFileName),
+													EncScriptFileName = (GIMS.MainScriptFileName + GIMS.ScriptExtEnc),
+													MainScriptFilePath = (ScriptPath + EncScriptFileName),
 													CCFPath = (ScriptPath + CoreConfigFileName),
-													BakMainScriptFilePath = (ScriptPath + PublicScriptFileName + ".bak"),
-													BakCCFPath = (ScriptPath + CoreConfigFileName + ".bak")
+													BakMainScriptFilePath = (ScriptPath + EncScriptFileName + ".bak"),
+													BakCCFPath = (ScriptPath + CoreConfigFileName + ".bak"),
+													ServerPath = "scripts/Startup/"
 											if
 												(FileRename MainScriptFilePath BakMainScriptFilePath) and	--TODO script cant do that, because the file is busy(its this file!)
 												(FileRename CCFPath BakCCFPath) and
-												(GIMS.Download #((ServerURL + PublicScriptFileName), (ServerURL + CoreConfigFileName)) ScriptPath true)
+												(GIMS.Download ServerURLs #((ServerPath + EncScriptFileName), (ServerPath + CoreConfigFileName)) ScriptPath true)
 											then (
 												try
 													FileIn MainScriptFilePath Quiet:true
@@ -318,15 +326,15 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 								*/
 								Tag = "Shared"
 								Name = "Shared"
-								RussianSupport = ""
-								IntlSupport = ""
+								RussianSupport = "3Doomer2@gmail.com"
+								IntlSupport = "3Doomer2@gmail.com"
 								local FailText = ("Can't initialize the " + (Name as String) + " core.\n\n"),
 										Checksum = FailText.Count
 								/*<ERRHANDLERSTART>*/try (
-									if ServerURL == undefined then
-										ServerURL = GIMS.ServerURL
+									if ServerURLs == undefined then
+										ServerURLs = GIMS.ServerURLs
 									else
-										GIMS.ServerURL = ServerURL
+										GIMS.ServerURLs = ServerURLs
 									BasePath = (Append (GIMS.GIMSPath + (Tag as String)) "/")
 									FilesPath = (BasePath + GIMS.FilesDir)
 									BackupPath = (BasePath + GIMS.BackupDir)
@@ -341,9 +349,9 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 	/*FROM_CCF*/	Tag = "NONE",
 					Name = "NONE",
-					RussianSupport = "",
-					IntlSupport = "",
-	/*CCF_SPEC*/	ServerURL,
+					RussianSupport = "3Doomer2@gmail.com",
+					IntlSupport = "3Doomer2@gmail.com",
+	/*CCF_SPEC*/	ServerURLs,
 	/*DEFAULT*/	BasePath, FilesPath, BackupPath, DownloadPath, CachePath, ResourceCachePath,
 						Core, Rules,
 						Installed, Loaded,
@@ -352,7 +360,7 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 						DevInfoPropList = #(
 							#Tag,
 							#Name,
-							#ServerURL,
+							#ServerURLs,
 							#BasePath,
 							#FilesPath,
 							#CachePath,
@@ -378,8 +386,8 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 							local FailText = ("Can't initialize the " + (Name as String) + " core.\n\n"),
 									Checksum = FailText.Count
 							/*<ERRHANDLERSTART>*/try (
-								if ServerURL == undefined then
-									ServerURL = GIMS.ServerURL
+								if ServerURLs == undefined then
+									ServerURLs = GIMS.ServerURLs
 								BasePath = (Append (GIMS.GIMSPath + (Tag as String)) "/")
 								FilesPath = (BasePath + GIMS.FilesDir)
 								BackupPath = (BasePath + GIMS.BackupDir)
@@ -387,8 +395,11 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 								ResourceCachePath = (CachePath + GIMS.ResourceCacheDir)
 								DownloadPath = (BasePath + GIMS.DownloadDir)
 								Loaded = false
-								Installed = (DoesFileExist (FilesPath + GIMS.CoreFile))
 								Core = undefined
+								Installed = (
+									(DoesFileExist (FilesPath + GIMS.CoreFile + GIMS.ScriptExtDev)) or
+									(DoesFileExist (FilesPath + GIMS.CoreFile + GIMS.ScriptExtEnc))
+								)
 							/*<ERRHANDLER>*/) catch (Append FailText (GetCurrentException()))/*<ERRHANDLEREND>*/
 							if FailText.Count != Checksum then
 								MessageBox FailText Title:("GIMS " + (Name as String) + " initialization")
@@ -416,7 +427,7 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 							/*@<GUIDE>
 								Calls (UnInstall) function.
 								Creates all core related directories.
-								Downloads (ServerURL + Tag + "\\" + GIMS.FilesDir + GIMS.CoreFile) URL to (DownloadPath) directory. If succeeded, calling it with <MXSFunction> FileIn, thereby loading the core.
+								Downloads (ServerURLs + Tag + "\\" + GIMS.FilesDir + GIMS.CoreFile) URL to (DownloadPath) directory. If succeeded, calling it with <MXSFunction> FileIn, thereby loading the core.
 								Otherwise - sets the execution result to false.
 							
 								Sets (Installed) and (Loaded) fields to the execution result.
@@ -426,8 +437,8 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 							local FailText = "",
 									OriginalException = "",
 									Checksum = FailText.Count,
-									Result = false,
-									CoreFile = GIMS.CoreFile
+									Result = false
+									
 							/*<ERRHANDLERSTART>*/try (
 								GIMS.CurrentGame = Game
 								UnInstall()
@@ -439,11 +450,12 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 									MakeDir CachePath All:true and
 									MakeDir ResourceCachePath All:true
 								then (
-									local	URL = (StringStream "")
-									Format "%%/%%" ServerURL Tag GIMS.FilesDir CoreFile To:URL
-									if (GIMS.Download #(URL as String) DownloadPath true) then (
+									local	URL = (StringStream ""),
+											CoreFileNameType = (GIMS.CoreFile + (if GIMS.IsDevBuild then GIMS.ScriptExtDev else GIMS.ScriptExtEnc))
+									Format "GIMS/%/%%" Tag GIMS.FilesDir CoreFileNameType To:URL
+									if (GIMS.Download ServerURLs #(URL as String) DownloadPath true) then (
 										/*<ERRHANDLERSTART>*/try (
-											FileIn (DownloadPath + CoreFile) Quiet:true
+											FileIn (DownloadPath + CoreFileNameType) Quiet:true
 											/*<ERRHANDLERSTART>*/try (
 												Result = (GIMS.CoreLoader true)
 											/*<ERRHANDLER>*/) catch (
@@ -513,12 +525,18 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 									MakeDir CachePath All:true and
 									MakeDir ResourceCachePath All:true
 								then (
-									local	CoreFile = (FilesPath + GIMS.CoreFile)
-									if (DoesFileExist CoreFile) then (
+									local	CoreFilePath = (FilesPath + (GIMS.CoreFile + (if GIMS.IsDevBuild then GIMS.ScriptExtDev else GIMS.ScriptExtEnc)))
+									if
+										(not GIMS.IsDevBuild) or
+										(not (DoesFileExist CoreFilePath))
+									then
+										CoreFilePath = (FilesPath + GIMS.CoreFile + GIMS.ScriptExtEnc)
+										
+									if (DoesFileExist CoreFilePath) then (
 										/*<ERRHANDLERSTART>*/try (
 											local	IsFirstLaunch = (Core == undefined)
 											if IsFirstLaunch then
-												FileIn CoreFile Quiet:true
+												FileIn CoreFilePath Quiet:true
 											/*<ERRHANDLERSTART>*/try (
 												Result = (GIMS.CoreLoader IsFirstLaunch)
 											/*<ERRHANDLER>*/) catch (
@@ -970,10 +988,10 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 								LocalApplicationPath, RoamingApplicationPath, CommonApplicationPath,
 								ScriptPath = TempScriptPath,
 								CoreConfigFileName = EGIMS_CoreConfigFileName,
-								DevScriptFileName = EGIMS_DevGIMSFileName,
-								PublicScriptFileName = EGIMS_PublicGIMSFileName,
+								ScriptExtDev = \".ms\",
+								ScriptExtEnc = \".mse\",
+								MainScriptFileName = \"GIMS\",
 								GIMSPath,
-								Extension,
 								CoreLoader,
 								Cores,
 								Shared, Core,
@@ -987,7 +1005,7 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 								CacheDir = \"Cache\\\\\",
 								ResourceCacheDir = \"Resources\\\\\",
 								DownloadDir = \"Download\\\\\",
-								ServerURL = \"http://gims.openiv.com/downloads/GIMS/\",
+								ServerURLs = #(\"https://github.com/3Doomer/GIMS-Evo/raw/master/Release/Files/\", \"https://gims.openiv.com/downloads/GIMS/\"),
 								GUI = (strGUI()),
 								Languages = #(),
 								LangID = 1, 
@@ -1001,12 +1019,11 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 								
 								DevInfoPropList = #(
 									#Version,
-									#ServerURL,
+									#ServerURLs,
 									#LocalApplicationPath,
 									#CommonApplicationPath,
 									#RoamingApplicationPath,
 									#GIMSPath,
-									#Extension,
 									#CoreFile,
 									#ConfigFile,
 									#CacheConfigFile,
@@ -1093,39 +1110,42 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 									CanExec = true
 									(not CancellationPending)
 								),
-								/*@<Boolean>*/ fn Download /*@<String[]>*/ FileList /*@<String>*/ Location /*@<Boolean>*/ ShowGUI Timeout:5000 = (
+								/*@<Boolean>*/ fn Download /*@<String[]>*/ Servers /*@<String[]>*/ FileList /*@<String>*/ Location /*@<Boolean>*/ ShowGUI = (
 									/*@<GUIDE>
 										Downloads (FileList) URLs to (Location) directory.
 										(ShowGUI) argument affects process visibility.
 										
 										Returns the downloading result.
 									*/
-									--Print #FnDownload	--<TODO> remove, debug--<TODO> remove, debug
-									--Print #FileList	--<TODO> remove, debug
-									--Print FileList	--<TODO> remove, debug
+									--Print #FnDownload	--<TO DO> remove, debug
+									--Print #FileList	--<TO DO> remove, debug
+									--Print FileList	--<TO DO> remove, debug
 									if FileList.Count != 0 then (
-										local	Result = true
+					
+										--))))	TODO use Servers with FileList
+					
+										local	Result = true,
+												Timeout = (if Quiet then 5000 else 30000)
 										if (DoWaitAsync CheckConnection FileList[1] Timeout:Timeout) then (
-											--Print #ConnectedAndDownloaded	--<TODO> remove, debug
+											--Print #ConnectedAndDownloaded	--<TO DO> remove, debug
 											local	hash = (TimeStamp()),
 													DownloadUrlToDisk = DragAndDrop.DownloadUrlToDisk
 											for DownFile in FileList while Result do (
-												local	TargetFile = (Location + (FileNameFromPath DownFile))
+												local	TargetFile = (Location + (FileNameFromPath DownFile)),
+														IsDownloaded = (DownloadUrlToDisk (DownFile + \"?is=\" + (hash as String)) TargetFile 0)
 												if
-													(not (DoesFileExist TargetFile)) and (
-														(not (DownloadUrlToDisk (DownFile + \"?is=\" + (hash as String)) TargetFile 0)) or
-														(not (DoesFileExist TargetFile))
-													)
+													(not IsDownloaded) or
+													(not (DoesFileExist TargetFile))
 												then
 													Result = false 
 											)
 										) else
 											Result = false
-										if not Result then (
-											--Print #NotConnectedOrDownloaded	--<TODO> remove, debug
-											for DownFile in FileList do
-												DeleteFile (Location + (FileNameFromPath DownFile))
-										)
+										--if not Result then (
+										--	--Print #NotConnectedOrDownloaded	--<TO DO> remove, debug
+										--	for DownFile in FileList do
+										--		DeleteFile (Location + (FileNameFromPath DownFile))
+										--)
 										Result
 									) else
 										true
@@ -1133,10 +1153,7 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 								/*@<Boolean>*/ fn Load = (
 									/*@<GUIDE>
 										Sets MXS (DragAndDrop.GlobalEnableDragAndDrop) to true.
-										Checks if the main GIMS script file's named as DevScriptFileName or PublicScriptFileName, and located in \"<3D MAX ROOT>\\Scripts\Startup\\\" directory.
-										Sets (Extension) field value to the extension of that file.
-										(IsDevBuild) field value represents that the (Extension) is \".ms\" or not.
-										Adds the (Extension) to the (CoreFile) file name.
+										Checks if the main GIMS script file's properly named, and located in \"<3D MAX ROOT>\\Scripts\Startup\\\" directory.
 									
 										Returns execution result.
 									*/
@@ -1146,21 +1163,21 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 									/*<ERRHANDLERSTART>*/try (
 										DragAndDrop.GlobalEnableDragAndDrop true
 										EscapeEnable = False
-										if (DoesFileExist (ScriptPath + DevScriptFileName)) then (
-											Extension = \".ms\"
-											IsDevBuild = true
-										) else (
-											if (DoesFileExist (ScriptPath + PublicScriptFileName)) then
-												Extension = \".mse\"
-											else
-												throw \"Invalid installation.\nCan't find the GIMS script in \\\"<3D MAX root>\\\\scripts\\\\Startup\\\\\\\" folder.\n\"
-										)
+										
 										local	HookFile = (Append ScriptsPath \"PreloadGIMS.ms\")
 										if not (DoesFileExist HookFile) then
 											HookFile = (Append ScriptsPath \"PreloadGIMS.mse\")
 										if (DoesFileExist HookFile) then
 											FileIn HookFile Quiet:true
-										Append CoreFile Extension
+											
+										local	DevScriptFileName = (MainScriptFileName + ScriptExtDev),
+												EncScriptFileName = (MainScriptFileName + ScriptExtEnc)
+										if (
+											(not (DoesFileExist (ScriptPath + EncScriptFileName))) and
+											((not (DoesFileExist (ScriptPath + DevScriptFileName))) and IsDevBuild)
+										) then
+											throw \"Invalid installation.\nCan't find the GIMS script in \\\"<3D MAX root>\\\\scripts\\\\Startup\\\\\\\" folder.\n\"
+										
 									/*<ERRHANDLER>*/) catch (Append FailText (GetCurrentException()))/*<ERRHANDLEREND>*/
 									if FailText.Count != Checksum then (
 										MessageBox FailText Title:\"GIMS initialization\"

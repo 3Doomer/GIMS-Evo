@@ -1219,7 +1219,7 @@
 											for i = 1 to FacesCount do (
 												local	VCFace = VCFaces[i],
 														PhysFace = Faces[i]
-												for j = 1 to 3 do
+												for j = 3 to 1 by -1 do
 													VertexColors[PhysFace[j]] = VCVerts[VCFace[j]]
 											)
 											for i = 1 to VertCount where No VertexColors[i] do
@@ -2293,39 +2293,44 @@
 																	for SubVertID = 1 to 3 do (
 																	
 																		--calculate vertex hash
+																		--TODO prepare vertex strings instead of indices
+																		
 																		local	PhysVertID = Face[SubVertID],
 																				MapVertIDs = #NoMapVertIDs,
 																				ColorVertID, Color2VertID, NormalsVertID, TangentVertID
-																		Format HashFmtStr PhysVertID To:HashValueSS
+																		Format HashFmtStr (PhysVertID as Integer) To:HashValueSS
 																		if NeedColors then (
 																			ColorVertID = ColorFace[SubVertID]
-																			Format HashFmtStr ColorVertID To:HashValueSS
+																			Format HashFmtStr (ColorVertID as Integer) To:HashValueSS
 																		)
 																		if NeedColors2 then (
 																			Color2VertID = ColorFace2[SubVertID]
-																			Format HashFmtStr Color2VertID To:HashValueSS
+																			Format HashFmtStr (Color2VertID as Integer) To:HashValueSS
 																		)
 																		if NeedUVs then (
 																			MapVertIDs = #()
 																			for ChID = RAWUVCount to 1 by -1 do (
 																				local	MapVertID = RAWMapFaceGroups[ChID][FaceID][SubVertID]
 																				MapVertIDs[ChID] = MapVertID
-																				Format HashFmtStr MapVertID To:HashValueSS
+																				Format HashFmtStr (MapVertID as Integer) To:HashValueSS
 																			)
 																		)
 																		if NeedNormals then (
 																			NormalsVertID = NormalsFace[SubVertID]
-																			Format HashFmtStr NormalsVertID To:HashValueSS
+																			Format HashFmtStr (NormalsVertID as Integer) To:HashValueSS
 																		)
 																		if NeedTangents then (
 																			TangentVertID = TangentFace[SubVertID]
-																			Format HashFmtStr TangentVertID To:HashValueSS
+																			Format HashFmtStr (TangentVertID as Integer) To:HashValueSS
 																		)
 																		local	HashValue = (HashValueSS as String)
 																		Free HashValueSS
 																	
 																		--find place for the vertex
+																		--TODO collect prepared vertex strings
+																		
 																		local	VertID = (QuickSearch Verts HashValue EndID:VertCount PropertyName:VertHashPropName GetInsertionPoint:true Comparator:OrderComparator)
+																		--Format "%\t\t\t%\n" HashValue VertID 	--TO--DO remove, debug
 																		if VertID < 0 then (	--already present
 																			VertID = -VertID	--fix place index
 																			if VertID > VertCount then
@@ -2406,6 +2411,9 @@
 																)
 																
 																--create geometry
+																--TODO put prepared vertex strings instead of components
+
+																
 																local	Positions = #(),
 																		Normals = #(),
 																		Colors = #(),

@@ -63,7 +63,7 @@
 				TextImageRelations = GUIMgr.TextImageRelations,
 				Events = GUIMgr.Events[4],
 				ActTypes = GUIMgr.ActTypes,
-				Transparent = GIMS.GUI.Colour.Transparent
+				CBlack = GIMS.GUI.Colour.CBlack
 		fn PickerFilter Obj = (
 			(IsKindOf Obj EGIMS_GUI_Item)
 		)
@@ -253,63 +253,63 @@
 			)
 		)
 		rollout	EventsRol	"Events"				RolledUp:true	(
-			DotNETControl	lName1	"System.Windows.Forms.Label"	Text:Events[1]	TextAlign:MiddleCenter	BackColor:Transparent
+			DotNETControl	lName1	"System.Windows.Forms.Label"	Text:Events[1]	TextAlign:MiddleCenter	BackColor:CBlack
 			Label			lType1			"Type"		Across:2
 			Label			lDef1				"Core"
 			RadioButtons	EventType1				Align:#Center	Labels:ActTypes	Across:2
 			RadioButtons	EventCore1					Align:#Center	Labels:#("Shared", "Game")
 			EditText		EventName1	"Name"	Align:#Right
 			Label			lsp
-			DotNETControl	lName2	"System.Windows.Forms.Label"	Text:Events[2]	TextAlign:MiddleCenter	BackColor:Transparent
+			DotNETControl	lName2	"System.Windows.Forms.Label"	Text:Events[2]	TextAlign:MiddleCenter	BackColor:CBlack
 			Label			lType2			"Type"		Across:2
 			Label			lDef2				"Core"
 			RadioButtons	EventType2				Align:#Center	Labels:ActTypes	Across:2
 			RadioButtons	EventCore2					Align:#Center	Labels:#("Shared", "Game")
 			EditText		EventName2	"Name"	Align:#Right
 			Label			lsp3
-			DotNETControl	lName3	"System.Windows.Forms.Label"	Text:Events[3]	TextAlign:MiddleCenter	BackColor:Transparent
+			DotNETControl	lName3	"System.Windows.Forms.Label"	Text:Events[3]	TextAlign:MiddleCenter	BackColor:CBlack
 			Label			lType3			"Type"		Across:2
 			Label			lDef3				"Core"
 			RadioButtons	EventType3				Align:#Center	Labels:ActTypes	Across:2
 			RadioButtons	EventCore3					Align:#Center	Labels:#("Shared", "Game")
 			EditText		EventName3	"Name"	Align:#Right
 			Label			lsp4
-			DotNETControl	lName4	"System.Windows.Forms.Label"	Text:Events[4]	TextAlign:MiddleCenter	BackColor:Transparent
+			DotNETControl	lName4	"System.Windows.Forms.Label"	Text:Events[4]	TextAlign:MiddleCenter	BackColor:CBlack
 			Label			lType4			"Type"		Across:2
 			Label			lDef4				"Core"
 			RadioButtons	EventType4				Align:#Center	Labels:ActTypes	Across:2
 			RadioButtons	EventCore4					Align:#Center	Labels:#("Shared", "Game")
 			EditText		EventName4	"Name"	Align:#Right
 			Label			lsp5
-			DotNETControl	lName5	"System.Windows.Forms.Label"	Text:Events[5]	TextAlign:MiddleCenter	BackColor:Transparent
+			DotNETControl	lName5	"System.Windows.Forms.Label"	Text:Events[5]	TextAlign:MiddleCenter	BackColor:CBlack
 			Label			lType5			"Type"		Across:2
 			Label			lDef5				"Core"
 			RadioButtons	EventType5				Align:#Center	Labels:ActTypes	Across:2
 			RadioButtons	EventCore5					Align:#Center	Labels:#("Shared", "Game")
 			EditText		EventName5	"Name"	Align:#Right
 			Label			lsp6
-			DotNETControl	lName6	"System.Windows.Forms.Label"	Text:Events[6]	TextAlign:MiddleCenter	BackColor:Transparent
+			DotNETControl	lName6	"System.Windows.Forms.Label"	Text:Events[6]	TextAlign:MiddleCenter	BackColor:CBlack
 			Label			lType6			"Type"		Across:2
 			Label			lDef6				"Core"
 			RadioButtons	EventType6				Align:#Center	Labels:ActTypes	Across:2
 			RadioButtons	EventCore6					Align:#Center	Labels:#("Shared", "Game")
 			EditText		EventName6	"Name"	Align:#Right
 			Label			lsp7
-			DotNETControl	lName7	"System.Windows.Forms.Label"	Text:Events[7]	TextAlign:MiddleCenter	BackColor:Transparent
+			DotNETControl	lName7	"System.Windows.Forms.Label"	Text:Events[7]	TextAlign:MiddleCenter	BackColor:CBlack
 			Label			lType7			"Type"		Across:2
 			Label			lDef7				"Core"
 			RadioButtons	EventType7				Align:#Center	Labels:ActTypes	Across:2
 			RadioButtons	EventCore7					Align:#Center	Labels:#("Shared", "Game")
 			EditText		EventName7	"Name"	Align:#Right
 			Label			lsp8
-			DotNETControl	lName8	"System.Windows.Forms.Label"	Text:Events[8]	TextAlign:MiddleCenter	BackColor:Transparent
+			DotNETControl	lName8	"System.Windows.Forms.Label"	Text:Events[8]	TextAlign:MiddleCenter	BackColor:CBlack
 			Label			lType8			"Type"		Across:2
 			Label			lDef8				"Core"
 			RadioButtons	EventType8				Align:#Center	Labels:ActTypes	Across:2
 			RadioButtons	EventCore8					Align:#Center	Labels:#("Shared", "Game")
 			EditText		EventName8	"Name"	Align:#Right
 			Label			lsp9
-			DotNETControl	lName9	"System.Windows.Forms.Label"	Text:Events[9]	TextAlign:MiddleCenter	BackColor:Transparent
+			DotNETControl	lName9	"System.Windows.Forms.Label"	Text:Events[9]	TextAlign:MiddleCenter	BackColor:CBlack
 			Label			lType9			"Type"		Across:2
 			Label			lDef9				"Core"
 			RadioButtons	EventType9				Align:#Center	Labels:ActTypes	Across:2
@@ -420,7 +420,7 @@
 				GenFaces = (Faces + (Modify Faces [3, 3, 3] #Add)),
 				MiddleCenter = GIMS.GUI.Align.MiddleCenter,
 				Colors = GUIMgr.Colors,
-				Transparent = GIMS.GUI.Colour.Transparent
+				CBlack = GIMS.GUI.Colour.CBlack
 		fn PickerFilter Obj = (
 			(IsKindOf Obj EGIMS_GUI_Item)
 		)
@@ -487,14 +487,14 @@
 				RadioButtons	HeaderTextAlign	"Align"			Labels:Align[2]	Align:#Left
 			)
 			Group "Events" (
-				DotNETControl	lName1	"System.Windows.Forms.Label"	Text:"Load"	TextAlign:MiddleCenter	BackColor:Transparent
+				DotNETControl	lName1	"System.Windows.Forms.Label"	Text:"Load"	TextAlign:MiddleCenter	BackColor:CBlack
 				Label			lType1				"Type"			Across:2
 				Label			lDef1					"Function"
 				RadioButtons	EvtOnLoadCore	Align:#Center	Across:2	Labels:#("Shared", "Game")
 				EditText		EvtOnLoad			Align:#Right
 				CheckBox		EvtOnLoadWindowOnly	"When new window only"	Align:#Center
 				Label			lsp2
-				DotNETControl	lName2	"System.Windows.Forms.Label"	Text:"Close"	TextAlign:MiddleCenter	BackColor:Transparent
+				DotNETControl	lName2	"System.Windows.Forms.Label"	Text:"Close"	TextAlign:MiddleCenter	BackColor:CBlack
 				Label			lType2				"Type"			Across:2
 				Label			lDef2					"Function"
 				RadioButtons	EvtOnCloseCore	Align:#Center	Across:2	Labels:#("Shared", "Game")

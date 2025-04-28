@@ -386,7 +386,7 @@ global	EGIMS_SetModRules,
 		MaterialOps = (strMaterialOps())
 	)
 	GIMS.CurrentGame.Core.MAXFactory = strMAXFactory()
-	UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback
+	try (UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback) catch ()
 	fn EGIMS_VPRedrawCallback = (
 		/*<ERRHANDLERSTART>*/try (
 			local	Result = (Have GIMS)
@@ -416,11 +416,11 @@ global	EGIMS_SetModRules,
 						GW.UpdateScreen()
 					)
 				) else
-					UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback
+					try (UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback) catch ()
 			) else
-				UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback
+				try (UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback) catch ()
 		/*<ERRHANDLER>*/) catch (
-			UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback
+			try (UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback) catch ()
 			try (
 				local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS
 			) catch

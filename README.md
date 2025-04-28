@@ -32,15 +32,13 @@ Software:
 
 Developer: Mansurov Sergey a.K.a. 3Doomer
 
-Skype: treedoomer
-
 E-mail: 3Doomer2@gmail.com
 
 =====LINKS=====
 
 Max Payne 3 script support:
 
-	Russian forum: http://gtamaps.net/forum/index.php?showtopic=14862
+	Russian forum(DEAD): http://gtamaps.net/forum/index.php?showtopic=14862
 	
 	International forum: http://gtaforums.com/user/203669-3doomer/
 	
@@ -50,6 +48,6 @@ Ninja Ripper script support:
 	
 GTA V script support:
 
-	Russian forum: http://gtamaps.net/forum/index.php?showtopic=14920
+	Russian forum(DEAD): http://gtamaps.net/forum/index.php?showtopic=14920
 	
 	International forum: http://gtaforums.com/topic/836266-vrel-gims-evo-for-gta-v/

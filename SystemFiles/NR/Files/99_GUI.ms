@@ -48,6 +48,7 @@
 						SetTextBoxText = GIMS.Core.GUI.SetTextBoxText,
 						Controls = (GUIMgr.GetNewestLayoutControls()),
 						ControlItems = Controls.Item,
+						DefaultData = GIMS.CurrentGame.Core.TypeLibrary.UIPreset
 						ErrorMessage
 				if No Preset then (
 					for i = 1 to 2 while No Preset do (
@@ -60,7 +61,7 @@
 									GCCFile:FileName \
 									Type:(GetFileNameType FilePath) \
 									IgnoreBehavior:true \
-									DefaultData:GIMS.CurrentGame.Core.TypeLibrary.UIPreset
+									DefaultData:DefaultData
 							)
 						) catch (
 							if i == 2 then
@@ -151,78 +152,78 @@
 			else
 				Res
 		),
-		fn SavePreset FilePath FileName Preset:unsupplied = (
+		fn SavePreset FilePath FileName Preset IsFinished:false = (			
 			local	Contr
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
 			/*<ERRHANDLERSTART>*/try (
-				local	Controls = (GIMS.Core.GUIMgr.GetNewestLayoutControls()),
-						ControlItems = Controls.Item
-				if not Supplied Preset then
-					Preset = (GIMS.CurrentGame.Core.TypeLibrary.UIPreset())
-				for ID = 1 to Controls.Count do (
-					Contr = ControlItems[ID - 1]
-					local	Item = Contr.Tag.Value
-					case Item.Name of (
-						#BonesMode: (
-							Preset.BonesMode = (
-								try
-									(GIMS.NR.Core.GUI.TryParseControlValue Contr Integer)
-								catch
-									13
+				if not IsFinished then (
+					local	Controls = (GIMS.Core.GUIMgr.GetNewestLayoutControls()),
+							ControlItems = Controls.Item
+					for ID = 1 to Controls.Count do (
+						Contr = ControlItems[ID - 1]
+						local	Item = Contr.Tag.Value
+						case Item.Name of (
+							#BonesMode: (
+								Preset.BonesMode = (
+									try
+										(GIMS.NR.Core.GUI.TryParseControlValue Contr Integer)
+									catch
+										13
+								)
 							)
+							#FlipFaces:
+								Preset.FlipFaces = Item.CheckState
+							#MirrorX:
+								Preset.MirrorX = Item.CheckState
+							#MirrorY:
+								Preset.MirrorY = Item.CheckState
+							#MirrorZ:
+								Preset.MirrorZ = Item.CheckState
+							#FlipU:
+								Preset.FlipU = Item.CheckState
+							#FlipV:
+								Preset.FlipV = Item.CheckState
+							#FormatList:
+								Preset.FormatIndex = Contr.SelectedIndex
+							#PosX:
+								Preset.PositionX = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#PosY:
+								Preset.PositionY = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#PosZ:
+								Preset.PositionZ = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#RotX:
+								Preset.RotationX = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#RotY:
+								Preset.RotationY = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#RotZ:
+								Preset.RotationZ = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#Scale:
+								Preset.Scale = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#OffsetU:
+								Preset.OffsetU = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#OffsetV:
+								Preset.OffsetV = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#ScaleU:
+								Preset.ScaleU = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#ScaleV:
+								Preset.ScaleV = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
+							#Diffuse:
+								Preset.Diffuse = (GIMS.NR.Core.GUI.TryParseControlValue Contr Integer)
+							#Bump:
+								Preset.Bump = (GIMS.NR.Core.GUI.TryParseControlValue Contr Integer)
+							#Specular:
+								Preset.Specular = (GIMS.NR.Core.GUI.TryParseControlValue Contr Integer)
+							#PathField:
+								Preset.Path = (GIMS.NR.Core.GUI.TryParseControlValue Contr String)
+							#ModeSwitch:
+								Preset.ImportMode = Item.CheckState
+							#IDField:
+								Preset.IDs = (GIMS.NR.Core.GUI.TryParseControlValue Contr String)
 						)
-						#FlipFaces:
-							Preset.FlipFaces = Item.CheckState
-						#MirrorX:
-							Preset.MirrorX = Item.CheckState
-						#MirrorY:
-							Preset.MirrorY = Item.CheckState
-						#MirrorZ:
-							Preset.MirrorZ = Item.CheckState
-						#FlipU:
-							Preset.FlipU = Item.CheckState
-						#FlipV:
-							Preset.FlipV = Item.CheckState
-						#FormatList:
-							Preset.FormatIndex = Contr.SelectedIndex
-						#PosX:
-							Preset.PositionX = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#PosY:
-							Preset.PositionY = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#PosZ:
-							Preset.PositionZ = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#RotX:
-							Preset.RotationX = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#RotY:
-							Preset.RotationY = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#RotZ:
-							Preset.RotationZ = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#Scale:
-							Preset.Scale = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#OffsetU:
-							Preset.OffsetU = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#OffsetV:
-							Preset.OffsetV = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#ScaleU:
-							Preset.ScaleU = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#ScaleV:
-							Preset.ScaleV = (GIMS.NR.Core.GUI.TryParseControlValue Contr Float)
-						#Diffuse:
-							Preset.Diffuse = (GIMS.NR.Core.GUI.TryParseControlValue Contr Integer)
-						#Bump:
-							Preset.Bump = (GIMS.NR.Core.GUI.TryParseControlValue Contr Integer)
-						#Specular:
-							Preset.Specular = (GIMS.NR.Core.GUI.TryParseControlValue Contr Integer)
-						#PathField:
-							Preset.Path = (GIMS.NR.Core.GUI.TryParseControlValue Contr String)
-						#ModeSwitch:
-							Preset.ImportMode = Item.CheckState
-						#IDField:
-							Preset.IDs = (GIMS.NR.Core.GUI.TryParseControlValue Contr String)
 					)
 				)
 				GIMS.Core.CacheMgr.Write Preset FilePath
-				Preset
+				OK
 			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Contr), #(EGIMS_DumpObjectInfo Contr)))/*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
@@ -282,7 +283,9 @@
 									NextPresetID = FoundID
 									Rules.ActivatePreset NextPresetID
 								)
-								LoadedPresets[NextPresetID] = (SavePreset FilePath FileName)
+								local	NewPreset = GIMS.CurrentGame.Core.TypeLibrary.UIPreset()
+								SavePreset FilePath FileName NewPreset
+								LoadedPresets[NextPresetID] = NewPreset
 								LoadedPresetDates[NextPresetID] = (GetFileModDate FilePath)
 							) else
 								NextPresetID = Rules.ActivePresetID
@@ -378,7 +381,9 @@
 				SetLines FormatList (#("Other") + Rules.EngineVDMapping[1])
 				FormatList.SelectedIndex = 0
 				if NoDefaultPresetFile then (
-					LoadedPresets[1] = (SavePreset DefaultPresetPath DefaultPresetName)
+					local	NewPreset = GIMS.CurrentGame.Core.TypeLibrary.UIPreset()
+					SavePreset DefaultPresetPath DefaultPresetName NewPreset IsFinished:true
+					LoadedPresets[1] = NewPreset
 					LoadedPresetDates[1] = (GetFileModDate DefaultPresetPath)
 				)
 				GIMS.CurrentGame.Rules = Rules
@@ -405,7 +410,7 @@
 					SelectPreset PresetList Args FilePath:((GetFileNamePath Rules.PresetFiles[ActivePresetID]) + "Modified.GSF")
 				) else (
 					local	FilePath = Rules.PresetFiles[ActivePresetID]
-					SavePreset FilePath Rules.PresetNames[ActivePresetID] Preset:LoadedPresets[ActivePresetID]
+					SavePreset FilePath Rules.PresetNames[ActivePresetID] LoadedPresets[ActivePresetID]
 					LoadedPresetDates[ActivePresetID] = (GetFileModDate FilePath)
 				)
 				if Rules.Changed then (
@@ -741,9 +746,9 @@
 							--find bones in scene
 							BoneNodes.Count = DefaultBoneCount
 							SceneBones.Count = Objects.Count
-							for Obj in Objects where
+							for Obj in Objects /*where
 								(IsKindOf Obj Dummy) and
-								Obj.Parent == undefined
+								Obj.Parent == undefined*/
 							do (
 								local	ObjName = Obj.Name
 								if (MatchPattern ObjName Pattern:"bone_*") then (

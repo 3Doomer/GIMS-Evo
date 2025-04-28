@@ -639,19 +639,22 @@
 							Counts = MessageInfo[3],
 							AddInfos = MessageInfo[4]
 					for i = 1 to Messages.Count do (
-						local	Count = Counts[i]
-						if Count > 1 then
-							Format "\t% times: %" Count Messages[i] To:DataStream
-						else
-							Format "\t%" Messages[i] To:DataStream
-						local	AddInfos = AddInfos[i][1]
-						if AddInfos.Count != 0 then (
-							for Msg in AddInfos do
-								Format "...\t%\n" Msg To:DataStream
-						)
+						try (
+							local	Count = Counts[i]
+							if Count > 1 then
+								Format "\t% times: %" Count Messages[i] To:DataStream
+							else
+								Format "\t%" Messages[i] To:DataStream
+							local	AddInfos = AddInfos[i][1]
+							if AddInfos.Count != 0 then (
+								for Msg in AddInfos do
+									Format "...\t%\n" Msg To:DataStream
+							)
+						) catch
+							Format "\t<ERROR1>: %" (GetCurrentException()) To:DataStream
 					)
 				) catch
-					Format "\t<ERROR>: %" (GetCurrentException()) To:DataStream
+					Format "\t<ERROR2>: %" (GetCurrentException()) To:DataStream
 				Format "\n\n[WARNINGS]\n" To:DataStream
 				try (
 					local	MessageInfo = SystemMgr.Warnings,
@@ -659,19 +662,22 @@
 							Counts = MessageInfo[3],
 							AddInfos = MessageInfo[4]
 					for i = 1 to Messages.Count do (
-						local	Count = Counts[i]
-						if Count > 1 then
-							Format "\t% times: %" Count Messages[i] To:DataStream
-						else
-							Format "\t%" Messages[i] To:DataStream
-						local	AddInfos = AddInfos[i][1]
-						if AddInfos.Count != 0 then (
-							for Msg in AddInfos do
-								Format "...\t%\n" Msg To:DataStream
-						)
+						try (
+							local	Count = Counts[i]
+							if Count > 1 then
+								Format "\t% times: %" Count Messages[i] To:DataStream
+							else
+								Format "\t%" Messages[i] To:DataStream
+							local	AddInfos = AddInfos[i][1]
+							if AddInfos.Count != 0 then (
+								for Msg in AddInfos do
+									Format "...\t%\n" Msg To:DataStream
+							)
+						) catch
+							Format "\t<ERROR3>: %\n" (GetCurrentException()) To:DataStream
 					)
 				) catch
-					Format "\t<ERROR>: %\n" (GetCurrentException()) To:DataStream
+					Format "\t<ERROR4>: %\n" (GetCurrentException()) To:DataStream
 				Format "\n[UPDATE LOG]\n" To:DataStream
 				try
 					Format "%" (GIMS.Core.CoreOps.UpdateStream as String) To:DataStream
@@ -756,7 +762,7 @@
 							reportID = (reportIDItems[4] as String)
 					EGIMS_GAReportException ErrorText true StackStream:ErrorStream ReportID:reportID
 					Result = OK
-				) 
+				) else
 					EGIMS_GAReportException ErrorText true StackStream:ErrorStream
 				
 				Result

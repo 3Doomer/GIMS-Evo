@@ -1,6 +1,7 @@
 /*#PC*DEFINE	CurrentGame	Shared*/
+
 (
-	local	CoreVersion = 12,
+	local	CoreVersion = 13,
 			IsGIMSOlder = true,
 			AreVersionsDifferrent = true
 	try (
@@ -42,7 +43,9 @@ catch (
 		TargetHeapSize /= 2L
 )
 
-	global		/*Syntax Sugar*/
+_CompileError = undefined
+
+global		/*Syntax Sugar*/
 				Have, No, Supplied, Ternary,
 				TryAccess, TryGetProperty,
 				FloatCompare,
@@ -538,11 +541,16 @@ fn GetTimeStamp = (
 		EGIMS_ResumeMAX()
 		MAX Modify Mode
 		ModPanel.SetCurrentObject tMod UI:true
+		local	isSelected = ((ModPanel.GetCurrentObject()) == tMod)
 		if (
-			((ModPanel.GetCurrentObject()) != tMod) and
+			(not isSelected) and
 			Retry
 		) then
 			EGIMS_SelectModifier tMod Retry:false
+		else (
+			if not isSelected then
+				throw "Can't select the modifier!"
+		)
 		OK
 	)
 	
@@ -763,7 +771,7 @@ fn GetTimeStamp = (
 	)
 	EGIMS_StopTelemetry User:false
 	fn EGIMS_StartTelemetry = (
-		if not GIMS.IsDevBuild then (
+		--if not GIMS.IsDevBuild then (
 			EGIMS_StopTelemetry User:false
 			Callbacks.AddScript #PreSystemShutdown "EGIMS_StopTelemetry User:false" ID:#EGIMS_StopTelemetry
 			local	TheMaxVersion = (MaxVersion()),
@@ -771,12 +779,12 @@ fn GetTimeStamp = (
 					ws = (GUIMgr.ScaleGUICoord GUIMgr.MainWindowSize)
 			EGIMS_TelemetryLib.Start \
 				EGIMS_UUID \
-				GIMS.Core.ConfigProps.BuildDate \
+				(EGIMS_GetCoreVersion()) \
 				("3DsMAX-" + (TheMaxVersion[1] as String) + "." + (TheMaxVersion[2] as String) + "." + (TheMaxVersion[3] as String)) \
 				(GUIMgr.ScreenSize as String) \
 				(((ws[1] as Integer) as String) + "x" + ((ws[2] as Integer) as String))
 			EGIMS_TelemetryEnabled = true
-		)
+		--)
 		OK
 	)
 	
@@ -850,7 +858,7 @@ fn GetTimeStamp = (
 	)
 	
 	/*Cleanup*/
-	UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback
+	try (UnRegisterRedrawViewsCallback EGIMS_VPRedrawCallback) catch ()
 	Callbacks.RemoveScripts #SceneNodeAdded ID:#EGIMS_SetLocks
 	Callbacks.RemoveScripts #PostModifierAdded ID:#EGIMS_SetModRules
 	Callbacks.RemoveScripts #SelectionSetChanged ID:#EGIMS_MP3_matlist_GetMaterial
@@ -1117,19 +1125,22 @@ fn GetTimeStamp = (
 							Counts = MessageInfo[3],
 							AddInfos = MessageInfo[4]
 					for i = 1 to Messages.Count do (
-						local	Count = Counts[i]
-						if Count > 1 then
-							Format "\t% times: %" Count Messages[i] To:DataStream
-						else
-							Format "\t%" Messages[i] To:DataStream
-						local	AddInfos = AddInfos[i][1]
-						if AddInfos.Count != 0 then (
-							for Msg in AddInfos do
-								Format "...\t%\n" Msg To:DataStream
-						)
+						try (
+							local	Count = Counts[i]
+							if Count > 1 then
+								Format "\t% times: %" Count Messages[i] To:DataStream
+							else
+								Format "\t%" Messages[i] To:DataStream
+							local	AddInfos = AddInfos[i][1]
+							if AddInfos.Count != 0 then (
+								for Msg in AddInfos do
+									Format "...\t%\n" Msg To:DataStream
+							)
+						) catch
+							Format "\t<ERROR1>: %" (GetCurrentException()) To:DataStream
 					)
 				) catch
-					Format "\t<ERROR>: %" (GetCurrentException()) To:DataStream
+					Format "\t<ERROR2>: %" (GetCurrentException()) To:DataStream
 				Format "\n\n[WARNINGS]\n" To:DataStream
 				try (
 					local	MessageInfo = SystemMgr.Warnings,
@@ -1137,19 +1148,22 @@ fn GetTimeStamp = (
 							Counts = MessageInfo[3],
 							AddInfos = MessageInfo[4]
 					for i = 1 to Messages.Count do (
-						local	Count = Counts[i]
-						if Count > 1 then
-							Format "\t% times: %" Count Messages[i] To:DataStream
-						else
-							Format "\t%" Messages[i] To:DataStream
-						local	AddInfos = AddInfos[i][1]
-						if AddInfos.Count != 0 then (
-							for Msg in AddInfos do
-								Format "...\t%\n" Msg To:DataStream
-						)
+						try (
+							local	Count = Counts[i]
+							if Count > 1 then
+								Format "\t% times: %" Count Messages[i] To:DataStream
+							else
+								Format "\t%" Messages[i] To:DataStream
+							local	AddInfos = AddInfos[i][1]
+							if AddInfos.Count != 0 then (
+								for Msg in AddInfos do
+									Format "...\t%\n" Msg To:DataStream
+							)
+						) catch
+							Format "\t<ERROR3>: %\n" (GetCurrentException()) To:DataStream
 					)
 				) catch
-					Format "\t<ERROR>: %\n" (GetCurrentException()) To:DataStream
+					Format "\t<ERROR4>: %\n" (GetCurrentException()) To:DataStream
 				Format "\n[UPDATE LOG]\n" To:DataStream
 				try
 					Format "%" (GIMS.Core.CoreOps.UpdateStream as String) To:DataStream
@@ -1855,7 +1869,7 @@ fn GetTimeStamp = (
 				/*<PROFILERSTART>*//*LogProfiler #Start "BufferMgr.StoreLastPosition"; local PWS = (*//*<PROFILERSTARTED>*/
 				/*<ERRHANDLERSTART>*/try (
 				
-					/*TODO remove, debug*
+					/*TO DO remove, debug*
 					LogProfiler #PlainInfo "Stored new last position [From, To]:\t" AddParam:[LastPositions[BufferID], (TellPos BufferID)]
 					/**/
 									
@@ -1922,7 +1936,7 @@ fn GetTimeStamp = (
 					case Modes[BufferID] of (
 						#StreamTxt: (
 						
-							/*TODO remove, debug*
+							/*TO DO remove, debug*
 							LogProfiler #PlainInfo "Skip [From, Count, LastPos]:\t" AddParam:[TellPos BufferID, SkipCount, LastPositions[BufferID]]
 							/**/
 											
@@ -2321,7 +2335,7 @@ fn GetTimeStamp = (
 						)
 						#StreamTxt: (
 						
-							/*TODO remove, debug*
+							/*TO DO remove, debug*
 							LogProfiler #PlainInfo "ReadVal [Seek, From, LastPos]:\t" AddParam:[Ternary NoSeek 0 1, TellPos BufferID, LastPositions[BufferID]]
 							/**/
 
@@ -2329,7 +2343,7 @@ fn GetTimeStamp = (
 							local	StringOps = GIMS.Core.StringOps
 							Res = (ReadLine Buffers[BufferID])
 						
-							/*TODO remove, debug*
+							/*TO DO remove, debug*
 							LogProfiler #PlainInfo "\tReadVal result:\t" AddParam:Res
 							/**/
 							
@@ -3490,10 +3504,12 @@ fn GetTimeStamp = (
 		fn GetAncestor Obj HTree:undefined = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "GetAncestor"; local PWS = (*//*<PROFILERSTARTED>*/
 			/*<ERRHANDLERSTART>*/try (
-				if Have HTree then
-					InsertItem Obj HTree 1
-				while Have Obj.Parent do
-					Obj = (GetAncestor Obj.Parent HTree:HTree)
+				if Have Obj then (
+					if Have HTree then
+						InsertItem Obj HTree 1
+					while Have Obj.Parent do
+						Obj = (GetAncestor Obj.Parent HTree:HTree)
+				)
 				Obj
 			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
@@ -3976,7 +3992,7 @@ fn GetTimeStamp = (
 							)
 						)
 						
-						/*TODO remove, normals debug*
+						/*TO DO remove, normals debug*
 						local	tLine = (SplineShape Name:"Normals" Parent:Result WireColor:Blue),
 								SplineCount = 0,
 								Verts = #()
@@ -4618,7 +4634,7 @@ fn GetTimeStamp = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh"; local PWS = (*//*<PROFILERSTARTED>*/
 			local	Obj = (Copy SrcObj)
 			/*<ERRHANDLERSTART>*/try (
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "DumpMesh"/*<>*/
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "DumpMesh"/*<>*/
 				local	GATimeStart = (GetTimeStamp()),
 						Result = true,
 						IsFinite = Bit.IsFinite,
@@ -4688,7 +4704,7 @@ fn GetTimeStamp = (
 				)
 
 				/*detach zero SG faces*/
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+DetachZeroSG"/*<>*/
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+DetachZeroSG"/*<>*/
 				/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh+FaceSGs"; local PWS = (*//*<PROFILERSTARTED>*/
 				/*<ERRHANDLERSTART>*/try (	
 				if IsEPoly then (
@@ -4725,7 +4741,7 @@ fn GetTimeStamp = (
 				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+Verts"/*<>*/				
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+Verts"/*<>*/				
 				/*get verts*/
 				/*<ERRHANDLERSTART>*/try (
 				NumVerts = Obj.NumVerts
@@ -4734,7 +4750,7 @@ fn GetTimeStamp = (
 				UpdateProgress #None 0
 				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 				
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+Faces"/*<>*/
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+Faces"/*<>*/
 				/*get faces*/
 				/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh+Faces"; local PWS = (*//*<PROFILERSTARTED>*/
 				/*<ERRHANDLERSTART>*/try (
@@ -4785,7 +4801,7 @@ fn GetTimeStamp = (
 				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+Siblings"/*<>*/
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+Siblings"/*<>*/
 				/*get poly siblings*/
 				/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh+Siblings"; local PWS = (*//*<PROFILERSTARTED>*/
 				/*<ERRHANDLERSTART>*/try (
@@ -4860,7 +4876,7 @@ fn GetTimeStamp = (
 				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+Material info"/*<>*/
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+Material info"/*<>*/
 				
 				/*get material info*/
 				/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh+MaterialInfo"; local PWS = (*//*<PROFILERSTARTED>*/
@@ -4930,7 +4946,7 @@ fn GetTimeStamp = (
 				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+Face groups"/*<>*/
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+Face groups"/*<>*/
 				
 				/*get face smooth groups*/
 				/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh+FaceGroups"; local PWS = (*//*<PROFILERSTARTED>*/
@@ -4944,7 +4960,7 @@ fn GetTimeStamp = (
 							UsedFaceMatIDs = (FaceMatIDs as BitArray),
 							MatIDCount = UsedFaceMatIDs.Count
 							
-					/*<TODO remove, debug>*
+					/*<TO DO remove, debug>*
 					LogProfiler #PlainInfo "DumpMesh" AddParam:Obj 
 					LogProfiler #PlainInfo "\tUsedFaceMatIDs" AddParam:UsedFaceMatIDs 
 					LogProfiler #PlainInfo "\tMatIDCount" AddParam:MatIDCount 
@@ -4956,7 +4972,7 @@ fn GetTimeStamp = (
 					MatGroupSizes.Count = MatIDCount
 					if SplitSG then (
 
-						/*<TODO remove, debug>*LogProfiler #PlainInfo "\t\t*Smoothed"/*<>*/
+						/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t\t*Smoothed"/*<>*/
 						
 						/*<ERRHANDLERSTART>*/try (
 						local	GroupSGIDs = #()
@@ -4971,7 +4987,7 @@ fn GetTimeStamp = (
 							while No GroupID do
 								GroupID = ID
 									
-							/*<TODO remove, debug>*
+							/*<TO DO remove, debug>*
 							LogProfiler #PlainInfo "\tFACE" AddParam:FaceID 
 							LogProfiler #PlainInfo "\t\tFaceMatID" AddParam:FaceMatID 
 							LogProfiler #PlainInfo "\t\tFaceSG" AddParam:FaceSG 
@@ -4981,7 +4997,7 @@ fn GetTimeStamp = (
 							if No GroupID then (
 								MatGroupCount += 1
 										
-								/*<TODO remove, debug>*LogProfiler #PlainInfo "\tNEW GROUP" AddParam:MatGroupCount /*<>*/
+								/*<TO DO remove, debug>*LogProfiler #PlainInfo "\tNEW GROUP" AddParam:MatGroupCount /*<>*/
 					
 								GroupMatIDs[MatGroupCount] = FaceMatID
 								GroupSGIDs[MatGroupCount] = FaceSG
@@ -4993,7 +5009,7 @@ fn GetTimeStamp = (
 								MatGroupSizes[GroupID] += 1
 								local	GroupSize = MatGroupSizes[GroupID]
 										
-								/*<TODO remove, debug>*
+								/*<TO DO remove, debug>*
 								LogProfiler #PlainInfo "\tOLD GROUP" AddParam:MatGroupCount 
 								LogProfiler #PlainInfo "\t\tGroupSize" AddParam:GroupSize 
 								/*<>*/
@@ -5006,14 +5022,14 @@ fn GetTimeStamp = (
 						/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 					) else (
 
-						/*<TODO remove, debug>*LogProfiler #PlainInfo "\t\t*Not smoothed"/*<>*/
+						/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t\t*Not smoothed"/*<>*/
 				
 						/*<ERRHANDLERSTART>*/try (
 						for FaceID = 1 to NumFaces do (
 							local	FaceMatID = FaceMatIDs[FaceID],
 									GroupID = (FindItem GroupMatIDs FaceMatID)
 									
-							/*<TODO remove, debug>*
+							/*<TO DO remove, debug>*
 							LogProfiler #PlainInfo "\tFACE" AddParam:FaceID 
 							LogProfiler #PlainInfo "\t\tFaceMatID" AddParam:FaceMatID 
 							LogProfiler #PlainInfo "\t\tFaceSG" AddParam:FaceSG 
@@ -5023,7 +5039,7 @@ fn GetTimeStamp = (
 							if (GroupID == 0) then (
 								MatGroupCount += 1
 										
-								/*<TODO remove, debug>*LogProfiler #PlainInfo "\tNEW GROUP" AddParam:MatGroupCount /*<>*/
+								/*<TO DO remove, debug>*LogProfiler #PlainInfo "\tNEW GROUP" AddParam:MatGroupCount /*<>*/
 					
 								GroupMatIDs[MatGroupCount] = FaceMatID
 								MatGroupSizes[MatGroupCount] = 1
@@ -5034,7 +5050,7 @@ fn GetTimeStamp = (
 								MatGroupSizes[GroupID] += 1
 								local	GroupSize = MatGroupSizes[GroupID]
 										
-								/*<TODO remove, debug>*
+								/*<TO DO remove, debug>*
 								LogProfiler #PlainInfo "\tOLD GROUP" AddParam:MatGroupCount 
 								LogProfiler #PlainInfo "\t\tGroupSize" AddParam:GroupSize 
 								/*<>*/
@@ -5045,7 +5061,7 @@ fn GetTimeStamp = (
 						/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 					)
 
-					/*<TODO remove, debug>*LogProfiler #PlainInfo "\t\t+Cleanup and storage"/*<>*/
+					/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t\t+Cleanup and storage"/*<>*/
 				
 					--remove unused items
 					GroupMatIDs.Count = MatGroupCount
@@ -5053,7 +5069,7 @@ fn GetTimeStamp = (
 					for i = 1 to MatGroupCount do (
 						MatGroupedFaces[i].Count = MatGroupSizes[i]
 							
-						/*<TODO remove, debug>*
+						/*<TO DO remove, debug>*
 						LogProfiler #PlainInfo "\t\tMatGroupSize" AddParam:MatGroupSizes[i] 
 						LogProfiler #PlainInfo "\t\tMatGroupedFaces" AddParam:MatGroupedFaces[i] 
 						/*<>*/
@@ -5072,7 +5088,7 @@ fn GetTimeStamp = (
 				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+Normals"/*<>*/
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+Normals"/*<>*/
 				
 				local	HaveSkinData = (Supplied SkinData),
 						NeedNormals = (
@@ -5202,7 +5218,7 @@ fn GetTimeStamp = (
 				if HaveFaceDegrees then
 					Free FaceDegrees
 
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+Skinning"/*<>*/
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+Skinning"/*<>*/
 				
 				/*get skin data*/
 				/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh+SkinData"; local PWS = (*//*<PROFILERSTARTED>*/
@@ -5218,7 +5234,7 @@ fn GetTimeStamp = (
 					if No SkinMod then
 						throw "No Skin Modifier Found"
 
-					/*<TODO remove, debug>*LogProfiler #PlainInfo "\t\t+Bones"/*<>*/
+					/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t\t+Bones"/*<>*/
 				
 					EGIMS_SelectModifier SkinMod
 					local	AllSkinBoneCount = 0,
@@ -5251,34 +5267,47 @@ fn GetTimeStamp = (
  							UsedBoneIndices
 					UpdateProgress #None 0
 
-					/*<TODO remove, debug>*LogProfiler #PlainInfo "\t\t+Weights"/*<>*/
+					/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t\t+Weights"/*<>*/
 				
+					--create skinning data
+					
+					for VertID = obj.NumVerts to 1 by -1 do (
+						local	WeightCount = (GetVertexWeightCount SkinMod VertID),
+								SkinBones = #(),
+								SkinWeights = #()
+						SkinBones.Count = WeightCount
+						SkinWeights.Count = WeightCount
+						SkinVertBoneIDs[VertID] = SkinBones
+						SkinVertWeights[VertID] = SkinWeights
+					)
+					
 					--collect skinning data
+					
 					if NeedUsedBoneIndices then (
 
-						/*<TODO remove, debug>*LogProfiler #PlainInfo "\t\t+NeedUsedBoneIndices"/*<>*/
+						/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t\t+NeedUsedBoneIndices"/*<>*/
 				
 						/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh+SkinData+NeedUsedBoneIndices"; local PWS = (*//*<PROFILERSTARTED>*/
 						/*<ERRHANDLERSTART>*/try (
 						UsedBoneIndices = #{}
 						UsedBoneIndices.Count = AllSkinBoneCount
-						--Print #AllSkinBones	--<TODO> remove, debug
-						--Print AllSkinBones	--<TODO> remove, debug
+						--Print #AllSkinBones	--<TO DO> remove, debug
+						--Print AllSkinBones	--<TO DO> remove, debug
 						for VertID = NumVerts to 1 by -1 do (
-							local	WeightCount = (GetVertexWeightCount SkinMod VertID),
-									SkinBones = #(),
-									SkinWeights = #(),
+							local	SkinBones = SkinVertBoneIDs[VertID],
+									SkinWeights = SkinVertWeights[VertID],
+									WeightCount = SkinWeights.Count,
 									StoredWeightCount = 0
-							SkinBones.Count = WeightCount
-							SkinWeights.Count = WeightCount
 							for WeightID = 1 to WeightCount do (
 								local	Weight = (GetVertexWeight SkinMod VertID WeightID),
 										IsWeightValid = (Weight > 0.0001)
 								if IsWeightValid then (
 									local	BoneID = (GetVertexWeightBoneID SkinMod VertID WeightID),
-											BoneName = (GetBoneName SkinMod BoneID 0),
-											FoundID = (QuickSearch AllSkinBones BoneName PropertyName:#Name)
-									--Format "Searched for \"%\", found %\n" BoneName FoundID	--<TODO> remove, debug
+											BoneName = (GetBoneName SkinMod BoneID 0)
+									if No BoneName then
+										throw "Can't find the bone name in skin referenced bone ID: " BoneID
+									local	FoundID = (QuickSearch AllSkinBones BoneName PropertyName:#Name)
+									--Format "Searched for \"%\", found %\n" BoneName FoundID	--<TO DO> remove, debug
 									if FoundID == 0 then
 										throw "Can't find the bone in skin referenced bones: " BoneName
 									local	tBone = AllSkinBones[FoundID],
@@ -5294,35 +5323,33 @@ fn GetTimeStamp = (
 							)
 							SkinBones.Count = StoredWeightCount
 							SkinWeights.Count = StoredWeightCount
-							SkinVertBoneIDs[VertID] = SkinBones
-							SkinVertWeights[VertID] = SkinWeights
 						)
-						--Format "% UsedBoneIndices:\t%\n" UsedBoneIndices.NumberSet UsedBoneIndices	--<TODO> remove, debug
+						--Format "% UsedBoneIndices:\t%\n" UsedBoneIndices.NumberSet UsedBoneIndices	--<TO DO> remove, debug
 						/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 						/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					) else (	--not NeedUsedBoneIndices
 
-						/*<TODO remove, debug>*LogProfiler #PlainInfo "\t\t+not NeedUsedBoneIndices"/*<>*/
+						/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t\t+not NeedUsedBoneIndices"/*<>*/
 				
 						/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh+SkinData+NotNeedUsedBoneIndices"; local PWS = (*//*<PROFILERSTARTED>*/
 						/*<ERRHANDLERSTART>*/try (
-						--Print #AllSkinBones	--<TODO> remove, debug
-						--Print AllSkinBones	--<TODO> remove, debug
+						--Print #AllSkinBones	--<TO DO> remove, debug
+						--Print AllSkinBones	--<TO DO> remove, debug
 						for VertID = NumVerts to 1 by -1 do (
-							local	WeightCount = (GetVertexWeightCount SkinMod VertID),
-									SkinBones = #(),
-									SkinWeights = #(),
+							local	SkinBones = SkinVertBoneIDs[VertID],
+									SkinWeights = SkinVertWeights[VertID],
+									WeightCount = SkinWeights.Count,
 									StoredWeightCount = 0
-							SkinBones.Count = WeightCount
-							SkinWeights.Count = WeightCount
 							for WeightID = 1 to WeightCount do (
 								local	Weight = (GetVertexWeight SkinMod VertID WeightID),
 										IsWeightValid = (Weight > 0.0001)
 								if IsWeightValid then (
 									local	BoneID = (GetVertexWeightBoneID SkinMod VertID WeightID),
-											BoneName = (GetBoneName SkinMod BoneID 0),
-											FoundID = (QuickSearch AllSkinBones BoneName PropertyName:#Name)
-									--Format "Searched for \"%\", found %\n" BoneName FoundID	--<TODO> remove, debug
+											BoneName = (GetBoneName SkinMod BoneID 0)
+									if No BoneName then
+										throw "Can't find the bone name in skin referenced bone ID: " BoneID
+									local	FoundID = (QuickSearch AllSkinBones BoneName PropertyName:#Name)
+									--Format "Searched for \"%\", found %\n" BoneName FoundID	--<TO DO> remove, debug
 									if FoundID == 0 then
 										throw "Can't find the bone in skin referenced bones: " BoneName
 									local	tBone = AllSkinBones[FoundID],
@@ -5336,22 +5363,21 @@ fn GetTimeStamp = (
 							)
 							SkinBones.Count = StoredWeightCount
 							SkinWeights.Count = StoredWeightCount
-							SkinVertBoneIDs[VertID] = SkinBones
-							SkinVertWeights[VertID] = SkinWeights
 						)
 						/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 						/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					)
 							
-					/*<TODO remove, debug>*
+					/*<TO DO remove, debug>*
 					LogProfiler #PlainInfo "\t\t\tSkinVertBoneIDs" AddParam:SkinVertBoneIDs 
 					LogProfiler #PlainInfo "\t\t\tSkinVertWeights" AddParam:SkinVertWeights 
 					/*<>*/
 					
 					--fix vertex bone counts
+					
 					if HaveSkinVertBoneCount then (
 
-						/*<TODO remove, debug>*LogProfiler #PlainInfo "\t\t+HaveSkinVertBoneCount"/*<>*/
+						/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t\t+HaveSkinVertBoneCount"/*<>*/
 				
 						/*<PROFILERSTART>*//*LogProfiler #Start "ObjectMgr.DumpMesh+SkinData+HaveSkinVertBoneCount"; local PWS = (*//*<PROFILERSTARTED>*/
 						/*<ERRHANDLERSTART>*/try (
@@ -5409,6 +5435,7 @@ fn GetTimeStamp = (
 					)
 					
 					--check bone count limit
+					
 					if HaveSkinMaxBoneCount then (
 						local	SkinBoneCount = UsedBoneIndices.NumberSet
 						if SkinBoneCount > SkinMaxBoneCount then (
@@ -5426,21 +5453,23 @@ fn GetTimeStamp = (
 						)
 					)
 							
-					/*<TODO remove, debug>*
+					/*<TO DO remove, debug>*
 					LogProfiler #PlainInfo "\t\t\tSkinVertBoneIDs" AddParam:SkinVertBoneIDs 
 					LogProfiler #PlainInfo "\t\t\tSkinVertWeights" AddParam:SkinVertWeights 
 					/*<>*/
 										
 					--cleanup
+					
 					Free AllSkinBones
 					if NeedUsedBoneIndices then
 						Free UsedBoneIndices
 						
 					--store skin data
+					
 					SkinData[1] = SkinVertBoneIDs
 					SkinData[2] = SkinVertWeights
 							
-					/*<TODO remove, debug>*LogProfiler #PlainInfo "\t\t\tSkinData" AddParam:SkinData/*<>*/
+					/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t\t\tSkinData" AddParam:SkinData/*<>*/
 					
 					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 				)
@@ -5452,7 +5481,7 @@ fn GetTimeStamp = (
 					Select OldSelection
 				)
 
-				/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+Vertex color and map channels"/*<>*/
+				/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+Vertex color and map channels"/*<>*/
 				
 				/*get vert colors with alphas and map channels data*/
 				local	MapsToCollect = #(),
@@ -5469,8 +5498,7 @@ fn GetTimeStamp = (
 							FGetNumMapVerts = OpProvider.GetNumMapVerts,
 							FGetNumMapFaces = OpProvider.GetNumMapFaces,
 							FGetMapSupport = OpProvider.GetMapSupport,
-							FGetNumMaps = OpProvider.GetNumMaps,
-							FDefaultMapFaces = OpProvider.DefaultMapFaces
+							FGetNumMaps = OpProvider.GetNumMaps
 					if
 						UVCount == 0 and
 						HaveTangents
@@ -5494,7 +5522,8 @@ fn GetTimeStamp = (
 
 					/*activate maps and get vert counts*/
 					local	MapChannelPresence = #{},
-							MapChannelCount = MapsToCollect.Count
+							MapChannelCount = MapsToCollect.Count,
+							FBuildMapFaces = OpProvider.BuildMapFaces
 					if IsEPoly then (
 						local	FSetNumMapFaces = OpProvider.SetNumMapFaces
 						for i = MapChannelCount to 1 by -1 do (
@@ -5503,6 +5532,7 @@ fn GetTimeStamp = (
 							MapChannelPresence[i] = HaveChannel
 							local	MapVertCount = NumVerts
 							if HaveChannel then (
+								FBuildMapFaces Obj MapID Keep:true
 								local	MapFaceCount = (FGetNumMapFaces Obj MapID)
 								if MapFaceCount != NumFaces then (
 									AddResult #Error (
@@ -5533,19 +5563,19 @@ fn GetTimeStamp = (
 								)
 								MapVertCount = (FGetNumMapVerts Obj MapID)
 							)
-							/*TODO remove, debug*
+							/*TO DO remove, debug*
 							Format "Map % Presence % VertCount %\n" i HaveChannel MapVertCount
 							/**/
 							MapVertCounts[i] = MapVertCount
 						)
 					) else (	--not IsEPoly
-						local	BuildMapFaces = OpProvider.BuildMapFaces
 						for i = MapChannelCount to 1 by -1 do (
 							local	MapID = MapsToCollect[i],
 									HaveChannel = (FGetMapSupport Obj MapID)
 							MapChannelPresence[i] = HaveChannel
 							local	MapVertCount = NumVerts
 							if HaveChannel then (
+								FBuildMapFaces Obj MapID Keep:true
 								local	MapFaceCount = (FGetNumMapFaces Obj MapID)
 								if MapFaceCount != NumFaces then (
 									AddResult #Error (
@@ -5560,7 +5590,6 @@ fn GetTimeStamp = (
 											v8:NumFaces \
 											v9:".\nThis will be fixed automatically, but can cause some incorrect results."
 									)
-									BuildMapFaces Obj MapID Keep:true
 									MapFaceCount = (FGetNumMapFaces Obj MapID)
 									if MapFaceCount != NumFaces then (
 										AddResult #Error (
@@ -5576,7 +5605,7 @@ fn GetTimeStamp = (
 								)
 								MapVertCount = (FGetNumMapVerts Obj MapID)
 							)
-							/*TODO remove, debug*
+							/*TO DO remove, debug*
 							Format "Map % Presence % VertCount %\n" i HaveChannel MapVertCount
 							/**/
 							MapVertCounts[i] = MapVertCount
@@ -5602,7 +5631,7 @@ fn GetTimeStamp = (
 
 						/*get color with alpha*/
 						if HaveColors then (
-							/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+HaveColors"/*<>*/
+							/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+HaveColors"/*<>*/
 							local	ColorFaces = #(),
 									ColorVerts = #(),
 									CPVCount = (
@@ -5682,7 +5711,7 @@ fn GetTimeStamp = (
 
 						/*get color2*/
 						if HaveColors2 then (
-							/*<TODO remove, debug>*LogProfiler #PlainInfo "\t+HaveColors2"/*<>*/
+							/*<TO DO remove, debug>*LogProfiler #PlainInfo "\t+HaveColors2"/*<>*/
 							local	ColorFaces = #(),
 									ColorVerts = #(),
 									CPVCount = (
@@ -6635,7 +6664,7 @@ fn GetTimeStamp = (
 					else
 						0
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Arr, #Val, #StartID, #EndID, #Comparator, #PropertyName, #Descending, #GetInsertionPoint), #(Arr, Val, StartID, EndID, Comparator, PropertyName, Descending, GetInsertionPoint)))/*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		
@@ -11469,7 +11498,7 @@ fn GetTimeStamp = (
 							(HeapSizeGrowthStep > HeapSizeGrowthMin)
 						then (
 							TargetHeapSize = (HeapSize + HeapSizeGrowthStep)
-							/*<TODO remove, debug>*
+							/*<TO DO remove, debug>*
 							LogProfiler #PlainInfo "Increasing HeapSize from\t" AddParam:HeapSize
 							LogProfiler #PlainInfo "\tto\t" AddParam:TargetHeapSize
 							/*<>*/
@@ -11485,7 +11514,7 @@ fn GetTimeStamp = (
 							) do
 								HeapSizeGrowthStep /= 2L
 							TargetHeapSize = HeapSize
-							/*<TODO remove, debug>*
+							/*<TO DO remove, debug>*
 							LogProfiler #PlainInfo "\tresult\t" AddParam:HeapSize
 							LogProfiler #PlainInfo "\tstep\t" AddParam:HeapSizeGrowthStep
 							/*<>*/
@@ -11686,7 +11715,7 @@ fn GetTimeStamp = (
 							Colour.Theme,
 							Colour.Accent,
 							Colour.Warning,
-							Colour.Transparent,
+							Colour.CBlack,
 							Colour.Info
 						), #(
 							"Black",
@@ -12287,7 +12316,7 @@ fn GetTimeStamp = (
 					EGIMS_EHStoreMemInfo()
 				catch ()
 			
-				/*TODO remove, debug*
+				/*TO DO remove, debug*
 				LogProfiler #PlainInfo "ExceptionHandler 1:\t" AddParam:#(Action, ExceptionText, AddInfo)
 				/**/
 				
@@ -12346,7 +12375,7 @@ fn GetTimeStamp = (
 					local	IsFirstThrow = (not (MatchPattern ExceptionText Pattern:"*<THROW>*")),
 							CurEx
 						
-					/*TODO remove, debug*
+					/*TO DO remove, debug*
 					LogProfiler #PlainInfo "ExceptionHandler 2:\t" AddParam:#(IsFirstThrow, ExceptionText, AddInfo)
 					/**/
 				
@@ -12362,7 +12391,7 @@ fn GetTimeStamp = (
 						if ExceptionText.Count > 300 then
 							ExceptionText = (Append (SubString ExceptionText 1 300) " <...>")
 							
-						/*TODO remove, debug*
+						/*TO DO remove, debug*
 						LogProfiler #PlainInfo "ExceptionHandler 3:\t" AddParam:#(ExceptionText, AddInfo)
 						/**/
 					
@@ -12383,7 +12412,7 @@ fn GetTimeStamp = (
 								Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:false To:StackStream
 							)
 								
-							/*TODO remove, debug*
+							/*TO DO remove, debug*
 							LogProfiler #PlainInfo "ExceptionHandler 4:\t" AddParam:#(ExceptionText, AddInfo)
 							/**/
 					
@@ -12417,13 +12446,13 @@ fn GetTimeStamp = (
 								Format "\n[OldErrorStream]\n\n%" OldErrorStream To:ErrorStream
 						)
 								
-						/*TODO remove, debug*
+						/*TO DO remove, debug*
 						LogProfiler #PlainInfo "ExceptionHandler 5:\t" AddParam:#(ExceptionText, AddInfo)
 						/**/
 					
 						_ExceptionHandler_PrintAddInfo AddInfo ErrorStream CharLimit:(if IsDevBuild then unsupplied else 300)
 								
-						/*TODO remove, debug*
+						/*TO DO remove, debug*
 						LogProfiler #PlainInfo "ExceptionHandler 6:\t" AddParam:#(ExceptionText, AddInfo)
 						/**/
 					
@@ -12445,9 +12474,9 @@ fn GetTimeStamp = (
 							) catch ()
 							if Have fsErrorStream then
 								Close fsErrorStream
-							/*if IsDevBuild then (
+							--if IsDevBuild then (
 								try (
-									Append esPath ".FULL.txt"
+									esPath = ((GIMS.Shared.BackupPath as String) + "ErrorStream.FULL.txt")
 									DeleteFile esPath
 									fsErrorStream = (CreateFile esPath)
 									if Have fsErrorStream then
@@ -12455,7 +12484,7 @@ fn GetTimeStamp = (
 								) catch ()
 								if Have fsErrorStream then
 									Close fsErrorStream
-							)*/
+							--)
 						) else (
 							local	fsErrorStream
 							try (
@@ -12467,7 +12496,7 @@ fn GetTimeStamp = (
 								Close fsErrorStream
 						)
 								
-						/*TODO remove, debug*
+						/*TO DO remove, debug*
 						LogProfiler #PlainInfo "ExceptionHandler 7:\t" AddParam:#(ExceptionText, AddInfo)
 						/**/
 					
@@ -12486,13 +12515,13 @@ fn GetTimeStamp = (
 								throw "Not enough space on the disk, operation aborted."
 							)
 							if IsDevBuild then
-								MessageBox ("An error has occured.\nThe information's in the clipboard, and here:\n\t" + esPath)
+								MessageBox ("An error has occured.\nThe information's copied to the clipboard, and saved here:\n\t" + esPath)
 							DestroyDialog EGIMS_ReportRollout
 							if NoMetro then
 								CreateDialog EGIMS_ReportRollout
 							else (
 									
-							/*TODO remove, debug*
+							/*TO DO remove, debug*
 							LogProfiler #PlainInfo "ExceptionHandler 8:\t" AddParam:#(ExceptionText, AddInfo)
 							/**/
 					
@@ -12503,20 +12532,20 @@ fn GetTimeStamp = (
 							ErrorStreamSize = 0
 						)
 								
-						/*TODO remove, debug*
+						/*TO DO remove, debug*
 						LogProfiler #PlainInfo "ExceptionHandler 9:\t" AddParam:#(ExceptionText, AddInfo)
 						/**/
 					
 					) catch
 						CurEx = (GetCurrentException())
 							
-					/*TODO remove, debug*
+					/*TO DO remove, debug*
 					LogProfiler #PlainInfo "ExceptionHandler 10:\t" AddParam:#(ExceptionText, AddInfo)
 					/**/
 					
 					if Have CurEx then (
 								
-						/*TODO remove, debug*
+						/*TO DO remove, debug*
 						LogProfiler #PlainInfo "ExceptionHandler 11:\t" AddParam:#(CurEx, AddInfo)
 						/**/
 						
@@ -12538,7 +12567,7 @@ fn GetTimeStamp = (
 					)
 					if Action != #Report then (						
 								
-						/*TODO remove, debug*
+						/*TO DO remove, debug*
 						LogProfiler #PlainInfo "ExceptionHandler 12:\t" AddParam:#(CurEx, AddInfo)
 						/**/
 						
@@ -12571,10 +12600,13 @@ fn GetTimeStamp = (
 							TypeCast = ValueOps.TypeCast,
 							Files = GIMS.CurrentGame.Core.ConfigProps.Files,
 							FilesPath = GIMS.CurrentGame.FilesPath,
-							Extension = (TypeCast GIMS.Extension name),
 							CoreFileName = (TypeCast GIMS.CoreFile name),
 							FormatText = ValueOps.FormatText,
-							ProcessPostedMessages = GIMS.ProcessPostedMessages
+							ProcessPostedMessages = GIMS.ProcessPostedMessages,
+							IsDevBuild = GIMS.IsDevBuild,
+							ExtDev = GIMS.ScriptExtDev,
+							ExtEnc = GIMS.ScriptExtEnc,
+							FileExt = (if IsDevBuild then ExtDev else ExtEnc)
 					Format "Including files\n" To:GIMS.Core.CoreOps.UpdateStream
 					for i = 1 to Files.count do (
 						ProcessPostedMessages()
@@ -12582,18 +12614,23 @@ fn GetTimeStamp = (
 								FileName = (GetFileNameFile File),
 								FileType = (GetFileNameType File)
 						if
-							(TypeCast (FileName + FileType) name) != CoreFileName and
-							(TypeCast FileType name) == Extension and
+							(TypeCast FileName Name) != CoreFileName and
+							(
+								(FileType == ExtDev) or
+								(FileType == ExtEnc)
+							) and
 							(not (MatchPattern FileName Pattern:"I_*"))
 						then (
+							local	FilePath = (FilesPath + FileName + FileExt)
+							if
+								(not IsDevBuild) or
+								(not (DoesFileExist FilePath))
+							then
+								FilePath = (FilesPath + FileName + ExtEnc)
+								
 							/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
 							/*<ERRHANDLERSTART>*/try (
-								FileIn (
-									FormatText \
-										v1:FilesPath \
-										v2:FileName \
-										v3:(Extension as String)
-								)
+								FileIn FilePath
 							/*<ERRHANDLER>*/) catch (
 								local	CET = (GIMS.CurrentGame.Name + " " + FileName + ": " + GetCurrentException())
 								local	ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS
@@ -13066,7 +13103,7 @@ fn GetTimeStamp = (
 									TelemetryThread.Start();
 									TelemetryEnabled = true;
 									GAReportEvent(\"3DsMax\", userAgent, baseAppVersion, \"Telemetry\", \"Start\", userAgent, 0);
-															}
+								}
 								public static void Stop(string baseAppVersion) {
 									if (TelemetryThread != null) {
 										TelemetryEnabled = false;
@@ -13809,30 +13846,33 @@ fn GetTimeStamp = (
 				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			),
-			fn Download URLList Location ShowGUI Timeout:5000 = (
+			fn Download Servers URLList Location ShowGUI = (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
 				/*<ERRHANDLERSTART>*/try (
+					
+					--))))	TODO use Servers with URLList
+					
 					if URLList.Count != 0 then (
-						local	Result = true
+						local	Result = true,
+								Timeout = (if Quiet then 5000 else 30000)
 						if (GIMS.DoWaitAsync CheckConnection URLList[1] Timeout:Timeout) then (
 							local	hash = (GetTimeStamp()),
 									DownloadUrlToDisk = DragAndDrop.DownloadUrlToDisk
 							for DownFile in URLList while Result do (
-								local	TargetFile = (Location + (FileNameFromPath DownFile))
+								local	TargetFile = (Location + (FileNameFromPath DownFile)),
+										IsDownloaded = (DownloadUrlToDisk (DownFile + "?is=" + (hash as String)) TargetFile 0)
 								if
-									(not (DoesFileExist TargetFile)) and (
-										(not (DownloadUrlToDisk (DownFile + "?is=" + (hash as String)) TargetFile 0)) or
-										(not (DoesFileExist TargetFile))
-									)
+									(not IsDownloaded) or
+									(not (DoesFileExist TargetFile))
 								then
-									Result = false
+									Result = false 
 							)
 						) else
 							Result = false
-						if not Result then (
-							for DownFile in URLList do
-								DeleteFile (Location + (FileNameFromPath DownFile))
-						)
+						--if not Result then (
+						--	for DownFile in URLList do
+						--		DeleteFile (Location + (FileNameFromPath DownFile))
+						--)
 						Result
 					) else
 						true
@@ -13846,14 +13886,14 @@ fn GetTimeStamp = (
 					local	DownloadPath = CurrentGame.DownloadPath,
 							ValueOps = GIMS.Core.ValueOps,
 							FormatText = ValueOps.FormatText,
-							ServerURL = CurrentGame.ServerURL,
+							ServerURLs = CurrentGame.ServerURLs,
 							Tag = CurrentGame.Tag,
 							--Download = GIMS.Download,
 							Result = (
 								if (
-										Download #(
+										Download ServerURLs #(
 											FormatText \
-												v1:ServerURL \
+												v1:"GIMS/" \
 												v2:Tag \
 												v3:"/Files/" \
 												v4:GIMS.ConfigFile
@@ -13861,9 +13901,9 @@ fn GetTimeStamp = (
 								) then (
 									Format "Downloaded config file\n" To:UpdateStream
 									if (
-											Download #(
+											Download ServerURLs #(
 												FormatText \
-													v1:ServerURL \
+													v1:"GIMS/" \
 													v2:Tag \
 													v3:"/Files/ChangeLog.GCF"
 											) DownloadPath (not Quiet)
@@ -13923,10 +13963,9 @@ fn GetTimeStamp = (
 											for i = 1 to DLMask.Count where DLMask[i] do ( /*collect files to download and set DLSize*/
 												Append ToDownload (
 													FormatText \
-														v1:ServerURL \
-														v2:Tag \
-														v3:FilesSubPath \
-														v4:NewFiles[i]
+														v1:Tag \
+														v2:FilesSubPath \
+														v3:NewFiles[i]
 												)
 												DLSize += NewSizes[i] 
 											)
@@ -14001,8 +14040,9 @@ fn GetTimeStamp = (
 					EGIMS_GAReportEvent		"Core" "Update" (if Setup then "Setup" else "Update") (if UpdateMissing then 1 else 0) Game:CurrentGame
 					local	ToDownload = UpdateState[10],
 							DownloadPath = UpdateState[12],
+							--Download = GIMS.Download,
 							Result = (
-								if (/*GIMS.*/Download ToDownload DownloadPath true) then ( /*download needed files*/
+								if (Download CurrentGame.ServerURLs ToDownload DownloadPath true) then ( /*download needed files*/
 									Format "Download success\n" To:UpdateStream
 									local	BackupPath = CurrentGame.BackupPath,
 											ConfigProps = UpdateState[2],
@@ -14137,7 +14177,7 @@ fn GetTimeStamp = (
 									) else
 										SubResult = (not ForceUpdate) /*no shared connection: return true if not forced*/
 									if SubResult == false then (
-										if (QueryBox (CurrentGame.Name + " core update's failed.\nPlease, check the internet connection and try again later, or seek for support.\n\nContact support?") Title:("GIMS " + CurrentGame.Name + " update")) then (
+										if (QueryBox (CurrentGame.Name + " core update's failed.\nPlease, check the internet connection and try again later, or contact the support.\n\nICQ: 466645558\nSkype: treedoomer\n3Doomer2@gmail.com\n\nContact support?") Title:("GIMS " + CurrentGame.Name + " update")) then (
 											ShellLaunch CurrentGame.RussianSupport ""
 											ShellLaunch CurrentGame.IntlSupport ""
 										)
@@ -14298,14 +14338,15 @@ fn GetTimeStamp = (
 							if (QueryBox ("Welcome to the GIMS " + GIMS.CurrentGame.Name + " core setup.\n\nPlease, check your internet connection if you want to continue.") Title:("GIMS " + GIMS.CurrentGame.Name + " core setup")) then (
 								Format "Setup allowed\n" To:UpdateStream
 								local	Files = (GetFiles (GIMS.CurrentGame.BasePath + "*")),
+										--Download = GIMS.Download,
 										TypeCast = GIMS.Core.ValueOps.TypeCast,
 										FileDelete = SystemMgr.FileDelete
 								for tFile in Files where (TypeCast (GetFileNameFile tFile) name) != #Paths do
 									FileDelete tFile
 								if (
-									/*GIMS.*/Download #(
+									Download GIMS.CurrentGame.ServerURLs #(
 										GIMS.Core.ValueOps.FormatText \
-											v1:GIMS.CurrentGame.ServerURL \
+											v1:"GIMS/" \
 											v2:GIMS.CurrentGame.Tag \
 											v3:"/Files/" \
 											v4:GIMS.ConfigFile
@@ -14315,7 +14356,7 @@ fn GetTimeStamp = (
 									Result = (LoadGame IsFirstLaunch Setup:true)
 								) else (
 									Format "Config download failed\n" To:UpdateStream
-									if (QueryBox "Can't download the configuration file for " + GIMS.CurrentGame.Name + " core.\nPlease check the internet connection and try again in 30 minutes, or seek for support.\n\nContact support?" Title:("GIMS " + GIMS.CurrentGame.Name + " core loading")) then (
+									if (QueryBox "Can't download the configuration file for " + GIMS.CurrentGame.Name + " core.\nPlease check the internet connection and try again in 30 minutes, or contact the support.\n\nICQ: 466645558\nSkype: treedoomer\n3Doomer2@gmail.com\n\nContact support?" Title:("GIMS " + GIMS.CurrentGame.Name + " core loading")) then (
 										shellLaunch GIMS.CurrentGame.RussianSupport ""
 										shellLaunch GIMS.CurrentGame.IntlSupport ""
 									)
@@ -16329,7 +16370,7 @@ fn GetTimeStamp = (
 	if not Reported then (
 		Reported = true
 		try
-			throw GIMS.Core.SystemMgr.ErrorStream
+			_CompileError = GIMS.Core.SystemMgr.ErrorStream
 		catch
 		--	Reported = false
 		--if not Reported then
@@ -16338,3 +16379,6 @@ fn GetTimeStamp = (
 )/*<ERRHANDLEREND>*/
 /*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 )
+
+if _CompileError != undefined then
+	throw _CompileError

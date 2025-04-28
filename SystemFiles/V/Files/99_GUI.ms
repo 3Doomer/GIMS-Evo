@@ -571,10 +571,14 @@
 							for Mtl in LoadedMtl where (IsKindOf Mtl EGIMS_V_material) do
 								Mtl.UpdateDelegateParams()
 						)
-						TheObj.Material = LoadedMtl
-						
-						GetMaterialList()
-						GIMS.Core.SystemMgr.CheckResult KeepLayout:true
+						if LoadedMtl == OK then
+							MessageBox "File load error" title:"GIMS V material editor"
+						else (
+							TheObj.Material = LoadedMtl
+							
+							GetMaterialList()
+							GIMS.Core.SystemMgr.CheckResult KeepLayout:true
+						)
 					)
 				) else
 					MessageBox "Failed: object's deleted" title:"GIMS V material editor"
