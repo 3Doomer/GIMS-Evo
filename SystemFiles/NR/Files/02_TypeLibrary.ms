@@ -1,6 +1,6 @@
 /*#PC*DEFINE	CurrentGame	NR*/
 /*<PROFILERSTART>*//*(LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-/*<ERRHANDLERSTART>*/try (
+/*<ERRHANDLERSTART>*/--try (
 	
 	/*Common*/
 	
@@ -46,7 +46,7 @@
 		ValueTypeIDs = #(),
 		fn SetValueTypes VDTypeMap TargetTypeIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if Supplied TargetTypeIDs then (
 					if (IsKindOf TargetTypeIDs Array) then
 						ValueTypeIDs = TargetTypeIDs
@@ -58,12 +58,12 @@
 				for i = ValueCount to 1 by -1 do
 					ValueTypes[i] = VDTypeMap[ValueTypeIDs[i]]
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Read BufferID = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	BufferMgr = GIMS.Core.BufferMgr,
 						ReadVal = BufferMgr.ReadVal
 				ElemName = (GIMS.Core.ValueOps.TypeCast (ReadVal BufferID MAXType:#NTString) Name)
@@ -74,7 +74,7 @@
 				ValueTypeIDs = (ReadVal BufferID MAXType:#Array BinType:#UInt Size:ValueCount)
 				GIMS.Core.ArrayOps.Modify ValueTypeIDs 1 #Add CopyArray:false
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
@@ -97,7 +97,7 @@
 		Channels = #(),
 		fn GetVDMap VDMaps &FoundVDMap ElemNames:unsupplied = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				/*<VERBOSE_START>*//*
 				Format "VD map "
 				*//*<VERBOSE_END>*/
@@ -201,12 +201,12 @@
 				Format ": %\n" VDMap
 				*//*<VERBOSE_END>*/
 				VDMap
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Read VDMaps ReportProgress:true = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				/*<VERBOSE_START>*//*Format "\nRIP read\t%\tVDMaps: %\n\n" ObjName VDMaps*//*<VERBOSE_END>*/
 				local	ValueOps = GIMS.Core.ValueOps,
 						SystemMgr = GIMS.Core.SystemMgr,
@@ -323,7 +323,7 @@
 					Result
 				) else
 					false
-			/*<ERRHANDLER>*/) catch (
+			/*<ERRHANDLER>*//*) catch (
 				GIMS.Core.BufferMgr.CheckEOF = false
 				local	CET = (GetCurrentException())
 				if (MatchPattern (CET as String) Pattern:"*End of file reached*") then (
@@ -337,7 +337,7 @@
 				) else (
 					local	ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#DiskPath, #ObjName), #(DiskPath, ObjName))
 				)
-			)/*<ERRHANDLEREND>*/
+			)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn _Create_ModUV \
@@ -355,7 +355,7 @@
 			ApplyVScale = \
 		(
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if ApplyUOffset then (
 					if ApplyUScale then (
 						if IsUScaleNegative then
@@ -389,7 +389,7 @@
 					)
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Create \
@@ -412,7 +412,7 @@
 			ReportProgress:true = \
 		(
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				/*<VERBOSE_START>*//*Format "\nRIP create\t%\tVDMaps: %\n\n" ObjName VDMaps*//*<VERBOSE_END>*/
 				local	Result = true,
 						ValueOps = GIMS.Core.ValueOps,
@@ -1374,7 +1374,7 @@
 					Result.Transform = ParentNode.Transform
 				)
 				Result
-			/*<ERRHANDLER>*/) catch (
+			/*<ERRHANDLER>*//*) catch (
 				local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS \
 					AddInfo:#(
 					#(
@@ -1423,7 +1423,7 @@
 						ProMode
 					)
 				)
-			)/*<ERRHANDLEREND>*/
+			)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
@@ -1435,5 +1435,5 @@
 					grcRipFile = strRipFile
 	)
 	GIMS.CurrentGame.Core.TypeLibrary = strTypeLibrary()
-/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 /*<PROFILEREND>*//*); LogProfiler #End 0; PWS)*//*<PROFILERENDED>*/

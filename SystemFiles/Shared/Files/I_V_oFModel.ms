@@ -28,7 +28,7 @@ rollout rol "GTA V model" (
 	)
 	fn _SkelReset_HWalk Obj = (
 		/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-		/*<ERRHANDLERSTART>*/try (
+		/*<ERRHANDLERSTART>*/--try (
 		if
 			(IsKindOf Obj EGIMS_V_Model_Bone) and
 			Obj.IsInitialTMSet
@@ -36,7 +36,7 @@ rollout rol "GTA V model" (
 			Obj.Transform = (Obj.InitialTM * Obj.Parent.Transform)
 		for Child in Obj.Children do
 			_SkelReset_HWalk Child
-		/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+		/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 		/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 	)
 	on SkelReset Pressed do (

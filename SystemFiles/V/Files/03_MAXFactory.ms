@@ -1,7 +1,7 @@
 /*#PC*DEFINE	CurrentGame	V*/
 (
 /*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-/*<ERRHANDLERSTART>*/try (
+/*<ERRHANDLERSTART>*/--try (
 	struct /*#PC*PATH	GIMS.CurrentGame.Core.MAXFactory.ObjectMgr*/strObjectMgr (
 		/*Shortcuts*/
 			/*MAX*/
@@ -28,7 +28,7 @@
 		fn _CheckBones_UnifyIDs TheBones BoneIDs UsedBones RemappedBoneIDs ModelName UnifyDefaultID = (
 			local	BoneID, NewID
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr._CheckBones_UnifyIDs"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				for tBone in TheBones do (
 					BoneID = (tBone.Id + 1)
 					if UsedBones[BoneID] then (
@@ -59,12 +59,12 @@
 					_CheckBones_UnifyIDs tBone.Children BoneIDs UsedBones RemappedBoneIDs ModelName UnifyDefaultID
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#BoneIDs, #ModelName, #UsedBones, #NewID, #BoneID), #(BoneIDs, ModelName, UsedBones, NewID, BoneID)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#BoneIDs, #ModelName, #UsedBones, #NewID, #BoneID), #(BoneIDs, ModelName, UsedBones, NewID, BoneID)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn _CheckBones_CheckMirrorIDs TheBones BoneIDs RemappedBoneIDs ModelName = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr._CheckBones_CheckMirrorIDs"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				for tBone in TheBones do (
 					local	MirrorBoneId = (tBone.MirrorBoneId + 1),
 							BoneID = (tBone.Id + 1),
@@ -92,12 +92,12 @@
 					_CheckBones_CheckMirrorIDs tBone.Children BoneIDs RemappedBoneIDs ModelName
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#BoneIDs, #ModelName), #(BoneIDs, ModelName)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#BoneIDs, #ModelName), #(BoneIDs, ModelName)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn CheckBones TheBones BoneIDs ModelName UnifyDefaultID = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.CheckBones"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	UsedBones = #{},
 						RemappedBoneIDs = #{}
 				UsedBones.Count = BoneIDs.NumberSet
@@ -105,12 +105,12 @@
 				_CheckBones_UnifyIDs TheBones BoneIDs UsedBones RemappedBoneIDs ModelName UnifyDefaultID
 				_CheckBones_CheckMirrorIDs TheBones BoneIDs RemappedBoneIDs ModelName
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#BoneIDs, #ModelName), #(BoneIDs, ModelName)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#BoneIDs, #ModelName), #(BoneIDs, ModelName)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn GetMaterialLevelsAndSPSList MatList = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.GetMaterialLevelsAndSPSList"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	BucketList = #(),
 						SPSList = #()
 				for i = MatList.Count to 1 by -1 do (
@@ -119,12 +119,12 @@
 					SPSList[i] = SPS
 				)
 				#(BucketList, SPSList)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn SPSToGIMSParamType ParamType = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.SPSToGIMSParamType"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				case ParamType of (
 					#svt_sampler:
 						#String
@@ -165,12 +165,12 @@
 					Default:
 						EGIMS_EHAbort ("Unknown SPS parameter type: " + (ParamType as String))
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn _GetExcludedTextures_GetFromMtl Obj Mtl TexInfos PathString = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr._GetExcludedTextures_GetFromMtl"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	TexValues = Mtl.TexValues,
 					TexParams = Mtl.TexParams,
 					TexValueNames = Mtl.TexValueNames,
@@ -210,12 +210,12 @@
 				)
 			)
 			PathString
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Mtl, #PathString), #(Mtl, PathString)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Mtl, #PathString), #(Mtl, PathString)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn GetExcludedTextures Obj TexInfos:#(#(), #()) = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.GetExcludedTextures"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	ObjClass = (ClassOf Obj)
 				if
 					ObjClass == Editable_Mesh or
@@ -231,12 +231,12 @@
 				for Child in Obj.Children where not Child.IsFrozen do
 					GetExcludedTextures Child TexInfos:TexInfos
 				TexInfos
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #TexInfos), #(Obj, TexInfos)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #TexInfos), #(Obj, TexInfos)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn PrepareMeshForExport Mode Obj Mtl MatLevelsAndSPSList = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				--prepare and store modifiers
 				local	Result = true,
 						ModData = (StoreModData Obj CollapseToMesh:true)
@@ -328,12 +328,12 @@
 				--restore modifiers
 				RestoreModData Obj ModData
 				Result
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn GetCNodeProgressEntryCount CNode = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.GetCNodeProgressEntryCount"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	Result = 0,
 						Children = CNode.Children
 				for CNodeChild in Children do (
@@ -366,12 +366,12 @@
 					)
 				)
 				Result
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn MakeColMatsWritableAndGetColors Materials MaterialCount = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.MakeColMatsWritableAndGetColors"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	HaveColorFlag = false,
 						MaterialColors = unsupplied
 				for Mtl in Materials while not HaveColorFlag do
@@ -411,12 +411,12 @@
 					)
 				)
 				MaterialColors
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Materials, #MaterialCount), #(Materials, MaterialCount)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Materials, #MaterialCount), #(Materials, MaterialCount)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn MergeVert Verts Pos VertexColors SuppliedVertexColors = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.MergeVert"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				/*actual merging, but very slow because Search_Compare_MaxDiff forces loop search*
 				local	AddData = (AppendIfUniq Verts Pos GetID:true Search_Compare_MaxDiff:0.01 GetFlagWithID:true Comparator:OrderComparator)
 				if
@@ -432,12 +432,12 @@
 					Append VertexColors [1, 1, 1, 1]
 				Verts.Count
 				/**/
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn GetSimpleObjMaterial Obj ParamSource = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.GetSimpleObjMaterial"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	ObjMtl = Obj.Material
 				(
 					if (IsKindOf ObjMtl MultiMaterial) then (
@@ -450,12 +450,12 @@
 					) else
 						(GetStandartized ObjMtl NeedMultiMtl:false)
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn CalcBoneIndices CNode BoneIDs BoneCount = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.CalcBoneIndices"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	ParamSource = CNode.ParamSource,
 						Children = CNode.Children,
 						ObjClass = (ClassOf ParamSource)
@@ -470,12 +470,12 @@
 				for Child in Children do
 					BoneCount = (CalcBoneIndices Child BoneIDs BoneCount)
 				BoneCount
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn StoreDrawableCollision ParentParamSource ModelResult ColResult = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.CalcBoneIndices"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if (
 					(IsKindOf ParentParamSource EGIMS_V_Model) or
 					(IsKindOf ParentParamSource EGIMS_V_Model_ModelMod) or
@@ -493,7 +493,7 @@
 					*/
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn StructFromScene \
@@ -513,7 +513,7 @@
 			ProgressData:undefined = \
 		(
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				at Time 0 (
 					local	Obj = CNode.Obj,
 							ParamSource = CNode.ParamSource,
@@ -537,7 +537,7 @@
 					
 						Editable_Mesh: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+Editable_Mesh"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							local	ParentParamSourceClass = (ClassOf ParentParamSource),
 									ParamSourceClass = (
 										case ParentParamSourceClass of (
@@ -582,12 +582,12 @@
 									Materials:Materials \
 									RestrictedTypes:RestrictedTypes AllowedTypes:AllowedTypes \
 							)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						Editable_Poly: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+Editable_Poly"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							local	ParentParamSourceClass = (ClassOf ParentParamSource),
 									ParamSourceClass = (
 										case ParentParamSourceClass of (
@@ -632,7 +632,7 @@
 									RestrictedTypes:RestrictedTypes AllowedTypes:AllowedTypes \
 									Materials:Materials
 							)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 					
@@ -640,7 +640,7 @@
 					
 						EGIMS_V_CollisionDict: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_CollisionDict"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then (
 									ProgressData = [0, 0, (GetCNodeProgressEntryCount CNode)]
@@ -687,12 +687,12 @@
 									Items:Items
 								)
 							)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_Composite: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_Composite"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then (
 									ProgressData = [0, 0, 1 + (GetCNodeProgressEntryCount CNode)]
@@ -790,12 +790,12 @@
 							Result.ChildTransforms = ChildTransforms
 							Result.ChildFlags = ChildFlags
 							StoreDrawableCollision ParentParamSource Ancestor Result
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_Plane: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_Plane"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -831,12 +831,12 @@
 							Result.MaterialColors = (MakeColMatsWritableAndGetColors Materials 1)
 							Result.Materials = Materials
 							StoreDrawableCollision ParentParamSource Ancestor Result
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_Disc: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_Disc"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -868,12 +868,12 @@
 							Result.MaterialColors = (MakeColMatsWritableAndGetColors Materials 1)
 							Result.Materials = Materials
 							StoreDrawableCollision ParentParamSource Ancestor Result
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_Cylinder: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_Cylinder"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -905,12 +905,12 @@
 							Result.MaterialColors = (MakeColMatsWritableAndGetColors Materials 1)
 							Result.Materials = Materials
 							StoreDrawableCollision ParentParamSource Ancestor Result
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_Box: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_Box"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -975,12 +975,12 @@
 							Result.MaterialColors = (MakeColMatsWritableAndGetColors Materials 1)
 							Result.Materials = Materials
 							StoreDrawableCollision ParentParamSource Ancestor Result
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_Sphere: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_Sphere"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -1010,12 +1010,12 @@
 							Result.MaterialColors = (MakeColMatsWritableAndGetColors Materials 1)
 							Result.Materials = Materials
 							StoreDrawableCollision ParentParamSource Ancestor Result
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_Capsule: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_Capsule"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -1048,12 +1048,12 @@
 							Result.MaterialColors = (MakeColMatsWritableAndGetColors Materials 1)
 							Result.Materials = Materials
 							StoreDrawableCollision ParentParamSource Ancestor Result
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_PrimBox: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_PrimBox"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -1072,12 +1072,12 @@
 										(ObjMeshVerts[3].Pos * ObjCoordsysTM)	--3 or 7
 									)
 							Result = #(#Box, undefined, (GetSimpleObjMaterial Obj ParamSource), VertPositions)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_PrimSphere: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_PrimSphere"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -1088,12 +1088,12 @@
 							) else
 								UpdateProgress #None undefined
 							Result = #(#Sphere, undefined, (GetSimpleObjMaterial Obj ParamSource), (Obj.Pos * CoordsysTM), ParamSource.Radius)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_PrimCapsule: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_PrimCapsule"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -1108,12 +1108,12 @@
 									TopPos = ([0, 0, HalfHeight] * ObjCoordsysTM),
 									BottomPos = ([0, 0, -HalfHeight] * ObjCoordsysTM)
 							Result = #(#Capsule, undefined, (GetSimpleObjMaterial Obj ParamSource), TopPos, BottomPos, ParamSource.Radius)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Col_PrimCylinder: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Col_PrimCylinder"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then
 									UpdateProgress #Progress [1, 0, 1]
@@ -1128,13 +1128,13 @@
 									TopPos = ([0, 0, HalfHeight] * ObjCoordsysTM),
 									BottomPos = ([0, 0, -HalfHeight] * ObjCoordsysTM)
 							Result = #(#Cylinder, undefined, (GetSimpleObjMaterial Obj ParamSource), TopPos, BottomPos, ParamSource.Radius)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_CollisionMesh: (
 							local	ObjMtl
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_CollisionMesh"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 							if AllowProgress then (
 								if SetOwnProgress then (
 									ProgressData = [0, 0, 4]
@@ -1205,7 +1205,7 @@
 										MatPropMapping:ColMaterialPropMapping
 								) then (
 									/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-									/*<ERRHANDLERSTART>*/try (
+									/*<ERRHANDLERSTART>*/--try (
 									local	FacesCount = Faces.Count,
 											VertCount = Verts.Count
 									if SuppliedVertexColors then (
@@ -1410,7 +1410,7 @@
 										UpdateProgress #Progress ProgressData
 									) else
 										UpdateProgress #None undefined
-									/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+									/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 									/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 								) else (
 									if AllowProgress then (
@@ -1424,7 +1424,7 @@
 									UpdateProgress #Progress ProgressData
 								)
 							)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass, #ObjMtl), #(Obj, ParamSource, SetOwnProgress, ObjClass, (if Have ObjMtl then (try ObjMtl.MaterialList catch (ClassOf ObjMtl)) else undefined))))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass, #ObjMtl), #(Obj, ParamSource, SetOwnProgress, ObjClass, (if Have ObjMtl then (try ObjMtl.MaterialList catch (ClassOf ObjMtl)) else undefined))))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 					
@@ -1432,7 +1432,7 @@
 						
 						EGIMS_V_ModelDict: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_ModelDict"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								if AllowProgress then (
 									if SetOwnProgress then (
 										ProgressData = [0, 0, (GetCNodeProgressEntryCount CNode)]
@@ -1477,7 +1477,7 @@
 										Items:Items
 									)
 								)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Model_ModelMod: (
@@ -1500,7 +1500,7 @@
 						)
 						EGIMS_V_Model: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Model"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								if AllowProgress then (
 									if SetOwnProgress then (
 										ProgressData = [0, 0, 3 + (GetCNodeProgressEntryCount CNode)]
@@ -1726,12 +1726,12 @@
 									UpdateProgress #Progress ProgressData
 								) else
 									UpdateProgress #None 0
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Model_BoneMod: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Model_BoneMod"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								StructFromScene \
 									CNode \
 									ObjClass:EGIMS_V_Model_Bone \
@@ -1746,12 +1746,12 @@
 									AllowedTypes:AllowedTypes \
 									AllowProgress:AllowProgress \
 									ProgressData:ProgressData
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Model_Bone: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Model_Bone"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								if AllowProgress then (
 									if SetOwnProgress then (
 										ProgressData = [0, 0, (GetCNodeProgressEntryCount CNode)]
@@ -1850,12 +1850,12 @@
 										ParentResult.Children
 								)
 								Append ParentBones Result
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Model_LightMod: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Model_LightMod"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								StructFromScene \
 									CNode \
 									ObjClass:EGIMS_V_Model_Light \
@@ -1868,12 +1868,12 @@
 									RestrictedTypes:RestrictedTypes AllowedTypes:AllowedTypes \
 									AllowProgress:AllowProgress \
 									ProgressData:ProgressData
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_Model_Light: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_Model_Light"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								if AllowProgress then (
 									if SetOwnProgress then (
 										ProgressData = [0, 0, 1 + (GetCNodeProgressEntryCount CNode)]
@@ -1937,12 +1937,12 @@
 								AppendMHL GIMS.CurrentGame.Core.DB.TextureNames ProjectedTextureName Comparator:OrderComparator
 								LightAttr.ProjectedTextureHash = (GetJenkinsHash ProjectedTextureName)
 								Append LightAttributes.Items LightAttr
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_ModelMesh: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_ModelMesh"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								if AllowProgress then (
 									if SetOwnProgress then (
 										ProgressData = [0, 0, 1 + (GetCNodeProgressEntryCount CNode)]
@@ -2108,7 +2108,7 @@
 												RAWTangents = (if NeedTangents then #() else unsupplied),
 												RAWColors = (if NeedColors then #() else unsupplied),
 												RAWColors2 = (if NeedColors2 then #() else unsupplied)
-										/*<ERRHANDLERSTART>*/try (
+										/*<ERRHANDLERSTART>*/--try (
 											local	CTM = (
 														if Skinned then (
 															if Have AncestorNode then
@@ -2139,7 +2139,7 @@
 													MatPropMapping:Rules.ModelMaterialPropMapping \
 													CoordsysTM:CTM \
 											) then (
-												/*<ERRHANDLERSTART>*/try (
+												/*<ERRHANDLERSTART>*/--try (
 													--prepare
 													if No Ancestor.LodGroup then
 														Ancestor.LodGroup = (GIMS.CurrentGame.Core.TypeLibrary.grcLodGroup())
@@ -2166,7 +2166,7 @@
 
 													--split face groups to fit limits
 													/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_ModelMesh+SplitFaceGroups"; local PWS = (*//*<PROFILERSTARTED>*/
-													/*<ERRHANDLERSTART>*/try (
+													/*<ERRHANDLERSTART>*/--try (
 														if Skinned then (
 															RAWSkinBones = RAWSkinData[1]
 															RAWSkinWeights = RAWSkinData[2]
@@ -2185,7 +2185,7 @@
 																NewFaces.Count = Faces.Count
 																
 																--process faces
-																/*<ERRHANDLERSTART>*/try (
+																/*<ERRHANDLERSTART>*/--try (
 																	for FaceID in Faces do (
 																		if not MoveToNewGroup then (
 																			UsedVertCount += 3
@@ -2197,10 +2197,10 @@
 																			NewFaces[NewGroupSize] = FaceID
 																		)
 																	)
-																/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+																/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 																
 																--add a new group and fix current
-																/*<ERRHANDLERSTART>*/try (
+																/*<ERRHANDLERSTART>*/--try (
 																	GroupsToSplit[GroupID] = false
 																	if MoveToNewGroup then (
 																		NewFaces.Count = NewGroupSize
@@ -2210,10 +2210,10 @@
 																		GroupCount += 1
 																		GroupsToSplit[GroupCount] = true
 																	)
-																/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+																/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 															)
 														)
-													/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+													/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 													/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 													
 													--collect mesh data
@@ -2235,7 +2235,7 @@
 														)
 													) else (
 														/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_ModelMesh+CollectMeshData"; local PWS = (*//*<PROFILERSTARTED>*/
-														/*<ERRHANDLERSTART>*/try (
+														/*<ERRHANDLERSTART>*/--try (
 															local	grcMeshVertex = GIMS.CurrentGame.Core.TypeLibrary.grcMeshVertex,
 																	RAWMapFaceGroups = (if NeedUVs then RAWUVData[1] 		else unsupplied),
 																	RAWMapVertGroups = (if NeedUVs then RAWUVData[2] 		else unsupplied),
@@ -2611,10 +2611,10 @@
 															
 															--store mesh
 															Append LodGroup.LODGroups[ParamSource.Type] LODMesh
-														/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#FaceGroups), #(FaceGroups)))/*<ERRHANDLEREND>*/
+														/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#FaceGroups), #(FaceGroups)))*//*<ERRHANDLEREND>*/
 														/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 													)
-												/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(
+												/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(
 													#(
 														#RAWVerts,
 														#RAWFaces,
@@ -2634,9 +2634,9 @@
 														RAWColors,
 														RAWColors2
 													)
-												))/*<ERRHANDLEREND>*/
+												))*//*<ERRHANDLEREND>*/
 											)
-										/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+										/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 										
 										--cleanup
 										Dispose RAWVerts
@@ -2714,12 +2714,12 @@
 									)
 									/**/
 								)
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						EGIMS_V_TexDict: (
 							/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.ObjectMgr.StructFromScene+EGIMS_V_TexDict"; local PWS = (*//*<PROFILERSTARTED>*/
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								local	ObjList = ParamSource.ObjList
 								if AllowProgress then (
 									if SetOwnProgress then (
@@ -2775,7 +2775,7 @@
 								Free TexInfos[1]
 								Free TexInfos[2]
 								Free TexInfos
-							/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#Obj, #ParamSource, #SetOwnProgress, #ObjClass), #(Obj, ParamSource, SetOwnProgress, ObjClass)))*//*<ERRHANDLEREND>*/
 							/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 						)
 						
@@ -2785,7 +2785,7 @@
 					)
 				)
 				Result
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(
 				#(
 					#Obj,
 					#ObjClass
@@ -2802,12 +2802,12 @@
 							(ClassOf CNode.Obj)
 						)
 					)
-				)))/*<ERRHANDLEREND>*/
+				)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn StructFromFile File TexPaths = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	FileType = (GetFileNameType File)
 				FileType = (SubString FileType 2 FileType.Count)
 				local	Type = (TypeCast FileType name),
@@ -2860,7 +2860,7 @@
 					)
 				)
 				Result
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#File, #TexPaths), #(File, TexPaths)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#File, #TexPaths), #(File, TexPaths)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
@@ -2871,7 +2871,7 @@
 		/*Ops*/
 		fn GetStandartized Mtl NeedMultiMtl:true DoOwnProgress:false DoSort:true TargetMtl:unsupplied BaseIndex:0 = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.MAXFactory.MaterialOps.GetStandartized"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				case (ClassOf Mtl) of (
 					MultiMaterial: (
 						if not NeedMultiMtl then (
@@ -3202,7 +3202,7 @@
 						NewMtl
 					)
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
@@ -3360,6 +3360,6 @@
 
 	GIMS.CurrentGame.Core.MAXFactory = MAXFactory
 	
-/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 /*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 )

@@ -3777,7 +3777,7 @@ struct strBounds (
 			/*4		?near stairs(zone at start-end\left-right)? / ?walking accurately?*/
 		f1C = 0, /*WORD*/
 		fn Read BufferID = (
-			OFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+			/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 				local	SCore = GIMS.Core,
 						tLine = (SCore.BufferMgr.ReadVal BufferID FilterStr:"\t ")
 				tLine = (SCore.StringOps.oFTypeExec tLine #IntArray IDMask:#{1..tLine.Count})

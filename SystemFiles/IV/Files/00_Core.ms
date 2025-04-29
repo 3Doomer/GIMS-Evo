@@ -743,6 +743,30 @@
 		)
 	)
 	struct CoreOpsstr (
+		fn FirstLaunchCleanup = (
+			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
+			/*<ERRHANDLERSTART>*/--try (
+				local	SS = (StringStream "")
+				Apropos "EGIMS_IV_matlist_Item*" To:SS
+				Apropos "EGIMS_IV_TexEditor_*" To:SS
+				Apropos "EGIMS_IV_FloatEditor_*" To:SS
+				Apropos "EGIMS_IV_Float2Editor_*" To:SS
+				Apropos "EGIMS_IV_Float3Editor_*" To:SS
+				Apropos "EGIMS_IV_Float4Editor_*" To:SS
+				Apropos "EGIMS_IV_Float2x3Editor_*" To:SS
+				Apropos "EGIMS_IV_Float3x4Editor_*" To:SS
+				Apropos "EGIMS_IV_Float4x2Editor_*" To:SS
+				Apropos "EGIMS_IV_Float4x4Editor_*" To:SS
+				Apropos "EGIMS_IV_Float4x5Editor_*" To:SS
+				Seek SS 0
+				local	DeleteCode = " = undefined"
+				while not (EOF SS) do
+					Execute ((FilterString (ReadLine SS) " ")[1] + DeleteCode)
+				GIMS.Core.SystemMgr.DoGC()
+				OK
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
+			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
+		),
 		fn PreLoad = (
 			local	GCore = GIMS.CurrentGame.Core,
 					OpenIVCheckFile = GCore.OpenIVCheckFile,

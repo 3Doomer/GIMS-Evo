@@ -1,7 +1,7 @@
 /*#PC*DEFINE	CurrentGame	MP3*/
 (
 /*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-/*<ERRHANDLERSTART>*/try (
+/*<ERRHANDLERSTART>*/--try (
 	(
 		local	DialogsToDestroy = #(
 					EGIMS_MP3_matlist,
@@ -61,7 +61,7 @@
 		fn UnifyMultimaterial Index:unsupplied = (
 			local	TheMtlID
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				OldMtlID = (
 					if Supplied Index then
 						Index
@@ -88,7 +88,7 @@
 					MtlInitTimer.Active
 				) do
 					ProcessPostedMessages()
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#MtlID, #LastMtlID, #OldMtlID), #(MtlID, LastMtlID, OldMtlID)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#MtlID, #LastMtlID, #OldMtlID), #(MtlID, LastMtlID, OldMtlID)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)		
@@ -98,7 +98,7 @@
 		)
 		fn EditMaterial DestroyEars:false = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if DestroyEars then (
 					local	CurrentMtlID = MtlID
 					DestroyDialog EGIMS_MP3_mateditor
@@ -131,12 +131,12 @@
 					EGIMS_MP3_mateditor.Init()
 				)
 				Result
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn SelectItem Index = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				DestroyDialog EGIMS_MP3_mateditor
 				if Have TheObj then (
 					local	TheObjMaterial = TheObj.Material
@@ -161,14 +161,14 @@
 						)
 					)
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn UpdateThumbnail Index Preview:false = (
 			local	CurrentRenderer = Renderers.Current
 			Renderers.Current = Renderers.Medit
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_SuspendMAX()
 				Callbacks.RemoveScripts #SelectionSetChanged id:#EGIMS_MP3_matlist_GetMaterial
 				Callbacks.RemoveScripts #NodePostMaterial id:#EGIMS_MP3_matlist_OnMaterialChanged
@@ -274,16 +274,16 @@
 				Callbacks.AddScript #selectionSetChanged "EGIMS_MP3_matlist.GetMaterialList()" ID:#EGIMS_MP3_matlist_GetMaterial
 				Callbacks.AddScript #NodePostMaterial "EGIMS_MP3_matlist.OnMaterialChanged()" ID:#EGIMS_MP3_matlist_OnMaterialChanged
 				EGIMS_ResumeMAX()
-			/*<ERRHANDLER>*/) catch (
+			/*<ERRHANDLER>*//*) catch (
 				local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS
-			)/*<ERRHANDLEREND>*/
+			)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			Renderers.Current = CurrentRenderer
 			OK
 		)
 		fn DeleteMaterial Index = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	TheObjMaterial = TheObj.Material,
 						MaterialList = TheObjMaterial.MaterialList,
 						MaterialIDList = TheObjMaterial.MaterialIDList,
@@ -301,24 +301,24 @@
 				)
 				RemoveSubRollout List Rollouts[Rollouts.Count]
 				MaterialList.Count -= 1
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn InitMatRollout Index = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	MaterialRolloutName = (GIMS.MP3.Core.GUI.MaterialRolloutName + (Index as String)),
 						MaterialRollout = (Execute MaterialRolloutName)
 				if Have MaterialRollout then
 					MaterialRollout.Init Index
 				else
 					throw (Append "Can't find material rollout " MaterialRolloutName)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn AddMatRollout Index = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	MaterialRolloutName = (GIMS.MP3.Core.GUI.MaterialRolloutName + (Index as String)),
 						MaterialRollout = (Execute MaterialRolloutName)
 				if Have MaterialRollout then (
@@ -333,31 +333,31 @@
 				)
 				if not MaterialRollout.isDisplayed then
 					AddSubRollout List MaterialRollout
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn LoadList = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				MtlAddTimer.Ticks = 0
 				MtlAddTimer.Active = true
 				MtlInitTimer.Ticks = 0
 				MtlInitTimer.Active = true
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn ClearList = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	Rollouts = List.Rollouts
 				for i = Rollouts.Count to 1 by -1 do
 					RemoveSubRollout List Rollouts[i]
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn UpdateHeader = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if Have TheObj then (
 					local	MatCount = TheObj.Material.MaterialList.Count
 					ObjName.Text = (
@@ -386,20 +386,20 @@
 					)
 				) else
 					ObjName.text = "Unknown selection"
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn FixGUI = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				List.Width = ((GetDialogSize EGIMS_MP3_matlist).x - (Padding * 2))
 				List.Pos.x = Padding
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn IsObjectAcceptable Obj = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				(
 					(IsKindOf Obj Editable_Poly) or
 					(IsKindOf Obj Editable_Mesh) or
@@ -409,12 +409,12 @@
 					(Have Obj.Modifiers[#Edit_Mesh])
 				) and
 				(TryAccess Obj #Mesh)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#MtlID, #LastMtlID), #(MtlID, LastMtlID)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#MtlID, #LastMtlID), #(MtlID, LastMtlID)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn GetMaterialList = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				MtlAddTimer.Active = false
 				MtlInitTimer.Active = false
 				FixGUI()
@@ -458,7 +458,7 @@
 					TheObj = undefined
 				)
 				UpdateHeader()
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
@@ -477,7 +477,7 @@
 					MtlInitTimer.Ticks -= 1
 			) catch (
 				MtlInitTimer.Active = false
-				/*<ERRHANDLER>*/local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true*//*<ERRHANDLEREND>*/
 			)
 			OK
 		)
@@ -490,13 +490,13 @@
 					AddMatRollout Ticks
 			) catch (
 				MtlAddTimer.Active = false
-				/*<ERRHANDLER>*/local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true*//*<ERRHANDLEREND>*/
 			)
 			OK
 		)
 		on MMCopy pressed do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if
 					Have TheObj and
 					not (IsDeleted TheObj)
@@ -504,13 +504,13 @@
 					CpyMMtl = TheObj.Material
 				else
 					MessageBox "Failed: object's deleted" title:"GIMS MP3 material editor"
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS AddInfo:#(#(#MtlID, #LastMtlID), #(MtlID, LastMtlID)) NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS AddInfo:#(#(#MtlID, #LastMtlID), #(MtlID, LastMtlID)) NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on MMPaste pressed do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if
 					Have TheObj and
 					not (IsDeleted TheObj)
@@ -519,13 +519,13 @@
 					GetMaterialList()
 				) else
 					MessageBox "Failed: object's deleted" title:"GIMS MP3 material editor"
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS AddInfo:#(#(#MtlID, #LastMtlID), #(MtlID, LastMtlID)) NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS AddInfo:#(#(#MtlID, #LastMtlID), #(MtlID, LastMtlID)) NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on LibSave pressed do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if not (IsDeleted TheObj) then (
 					local	LibPath = (GetSaveFileName Caption:"Save GIMS MP3 material library" Types:"GIMS MP3 material library (*.GMP3EML)|*.GMP3EML")
 					if Have LibPath then (
@@ -534,13 +534,13 @@
 					)
 				) else
 					MessageBox "Failed: object's deleted" title:"GIMS MP3 material editor"
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on LibLoad pressed do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if not (IsDeleted TheObj) then (
 					local LibPath = (GetOpenFileName Caption:"Load GIMS MP3 material library" Types:"GIMS MP3 material library (*.GMP3EML)|*.GMP3EML")
 					if Have LibPath then (
@@ -557,52 +557,52 @@
 					)
 				) else
 					MessageBox "Failed: object's deleted" title:"GIMS MP3 material editor"
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on LockSh changed state do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if state then (
 					local NewPos = (GetDialogPos EGIMS_MP3_matlist)
 					SetDialogPos EGIMS_MP3_mateditor [(NewPos.x + (GetDialogSize EGIMS_MP3_matlist).x + 20), NewPos.y]
 				)
 				EGIMS_MP3_mateditor.LockSh.checked = state
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)		
 		on EGIMS_MP3_matlist moved NewPos do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if LockSh.checked then
 					SetDialogPos EGIMS_MP3_mateditor [(NewPos.x + (GetDialogSize EGIMS_MP3_matlist).x + 20), NewPos.y]
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on EGIMS_MP3_matlist Open do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				List.Height = ((GetDialogSize EGIMS_MP3_matlist).y - List.Pos.y - 5)
 				Callbacks.AddScript #selectionSetChanged "EGIMS_MP3_matlist.GetMaterialList()" ID:#EGIMS_MP3_matlist_GetMaterial
 				Callbacks.AddScript #NodePostMaterial "EGIMS_MP3_matlist.OnMaterialChanged()" ID:#EGIMS_MP3_matlist_OnMaterialChanged
 				GetMaterialList()
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on EGIMS_MP3_matlist Close do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				MtlAddTimer.Active = false
 				MtlInitTimer.Active = false
 				Callbacks.RemoveScripts #selectionSetChanged id:#EGIMS_MP3_matlist_GetMaterial
 				Callbacks.RemoveScripts #NodePostMaterial id:#EGIMS_MP3_matlist_OnMaterialChanged
 				DestroyDialog EGIMS_MP3_mateditor
 				MtlID = 0
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
@@ -615,15 +615,15 @@
 		
 		on cpy picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_MP3_matlist.CpyTexPath = EGIMS_MP3_matlist.RC[3].FileName
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on pst picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	CpyTexPath = EGIMS_MP3_matlist.CpyTexPath,
 					TheBMP = (try (OpenBitmap CpyTexPath) catch undefined)
 			if Have TheBMP then (
@@ -638,13 +638,13 @@
 					EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
 			) else
 				MessageBox ("Can't load the texture from \"" + CpyTexPath + "\" file!") title:"GIMS MP3 material editor"
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on clr picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	TexMapData = EGIMS_MP3_matlist.RC[1],
 						TheMtl = TexMapData[1],
 						ParamName = TexMapData[2]
@@ -653,7 +653,7 @@
 				TexMapBtn.tooltip = (TexMapBtn.caption = "Empty")
 				if (TheMtl.IsDelegateLinkedParam ParamName) then
 					EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
@@ -665,10 +665,10 @@
 		)
 		on EGIMS_MP3_TexMapRC Open do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	TexMapData = EGIMS_MP3_matlist.RC[1]
 				clr.Enabled = (Have (TexMapData[1].GetParam TexMapData[2] #sp_sampler))
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
@@ -715,7 +715,7 @@
 		
 		fn BrakePaint = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				PaintBtn.Checked = false
 				ThePainterInterface.EndPaintSession()
 				DestroyDialog EGIMS_MP3_BlendProps
@@ -736,12 +736,12 @@
 				EGIMS_MP3_BlendEditor.OnBlend = false
 				if EGIMS_MP3_matlist.OnPreview then
 					GIMS.Core.MaterialOps.ReplaceShader EGIMS_MP3_matlist
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn SetMapPaintData BasePoint = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				Free PaintMapVertIDs
 				local	MapChannelID = MapVertPaintData.x,
 						Radius = (EGIMS_MP3_matlist.Radius / 2),
@@ -774,7 +774,7 @@
 					)
 					FaceIndex += 1
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn SelectLayer = (	--!	TODO codereview
@@ -863,7 +863,7 @@
 			) catch (
 				ThePainterInterface.UndoCancel() 
 				BrakePaint()
-				/*<ERRHANDLER>*/local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS*//*<ERRHANDLEREND>*/
 				throw
 			)
 		)
@@ -873,7 +873,7 @@
 		)
 		fn FillChannel ID:unsupplied Factor:0 = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	FaceIndex = 1
 				if Supplied ID then (
 					for FaceID in Faces do (
@@ -897,29 +897,29 @@
 				)
 				Update TheObj
 				RedrawViews()
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		on FillLyr Pressed do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				FillChannel Factor:1
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on EraseLyr Pressed do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				FillChannel()
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on FillAll Pressed do (	--!	TODO codereview
 			throw "TODO"
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	StartMapID = (
 					case ShaderName of (
 						#gta_terrain_va_2lyr:
@@ -932,14 +932,14 @@
 				)
 				for i = StartMapID to 6 do
 					FillChannel ID:i Factor:1
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on EraseAll Pressed do (	--!	TODO codereview
 			throw "TODO"
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	StartMapID = (
 					case ShaderName of (
 						#gta_terrain_va_2lyr:
@@ -952,14 +952,14 @@
 				)
 				for i = StartMapID to 6 do
 					FillChannel ID:i
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on PaintBtn Changed State do (	--!	TODO codereview
 			throw "TODO"
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if State then (
 					local	FaceSelectModes
 					case (ClassOf TheObj) of (
@@ -1101,24 +1101,24 @@
 					BrakePaint()
 				Update TheObj
 				RedrawViews()
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on EGIMS_MP3_BlendEditor Close do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if PaintBtn.State then
 					BrakePaint()
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on EGIMS_MP3_BlendEditor Open do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				TheObj = EGIMS_MP3_matlist.TheObj
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
@@ -1173,17 +1173,17 @@
 		
 		fn DoTexmapRC SlotControl TexmapName = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local Texmap = (TheMtl.GetParam TexmapName #sp_sampler),
 						TheBMP = (try Texmap.Bitmap catch ())
 				EGIMS_MP3_matlist.RC = #(#(TheMtl, TexmapName), SlotControl, TheBMP)
 				PopUpMenu EGIMS_MP3_TexMapRC
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn _Init_AddSubRollout SPSParam EditorName EditorTitle UIHint = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	ParamName = SPSParam.aName,
 						SubRolName = ((EditorName as String) + ParamName),
 						SubRol = (Execute SubRolName)
@@ -1203,12 +1203,12 @@
 					AddSubRollout editor SubRol
 				SubRol.Init EditorTitle UIHint TheMtl SPSParam
 				SubRol
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn GetParamInfo SPSParam UIMin:0 UIMax:100 = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	ResourceName, UIName, UIHint,
 						ResourceType
 				for Anno in SPSParam.Annotations do (
@@ -1248,12 +1248,12 @@
 					UIMin,
 					UIMax
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn InitArrayEditor SubRol ValueDimensions vValue DefaultValue UIMin UIMax = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	MaxX = (ValueDimensions.x as Integer),
 						MaxY = (ValueDimensions.y as Integer),
 						HaveValue = true
@@ -1277,12 +1277,12 @@
 						ControlID += 1
 					)
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn BuildSPSInfo SPS = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	SPSFullTipSS = (StringStream ""),
 						SPSTipSS = (StringStream ""),
 						SPSToGIMSParamType = GIMS.CurrentGame.Core.MAXFactory.ObjectMgr.SPSToGIMSParamType,
@@ -1463,12 +1463,12 @@
 				Free SPSFullTipSS
 				SPSTip.ToolTip = (Append "[Vertex components]\n\n" SPSFullTip)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#SPS), #(SPS)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#SPS), #(SPS)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn Init SPSData:unsupplied = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if EGIMS_MP3_mateditor.Open then (
 					mdl_AVF.Checked = TheMtl.AlignedVertexFormat
 					U_Offset.Controller = TheMtl.U_Offset.Controller
@@ -1722,12 +1722,12 @@
 					cNRParamList.Visible = true
 					cAddNRParam.Visible = true
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		on cAddNRParam Pressed do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	GID = mdl_shtype.Selection,
 						SID = mdl_spslist.Selection,
 						SPS = Shaders[3][GID][SID],
@@ -1739,12 +1739,12 @@
 						SPSParam.DefaultValue
 				)
 				Init SPSData:#(SPS, GID, SID)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		on mdl_shtype selected id do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	SPSGroup = Shaders[3][id],
 						SPSCount = SPSGroup.Count,
 						SID = mdl_spslist.Selection
@@ -1753,36 +1753,36 @@
 				local	SPS = SPSGroup[SID]
 				TheMtl.SPSName = SPS.aName
 				Init SPSData:#(SPS, id, SID)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on mdl_spslist selected id do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	GID = mdl_shtype.Selection,
 						SPS = Shaders[3][GID][id]
 				TheMtl.SPSName = SPS.aName
 				Init SPSData:#(SPS, GID, id)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on ResetUV Pressed do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				U_Offset.Value = 0
 				V_Offset.Value = 0
 				U_Tiling.Value = 1
 				V_Tiling.Value = 1
 				Opacity.Value = 1
 				EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		on EGIMS_MP3_mateditor open do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_MP3_matlist.LockSh.enabled = true
 				Shaders = GIMS.MP3.Core.DB.Shaders
 				local	DefaultData = Shaders[4],
@@ -1795,41 +1795,41 @@
 					SPSNameList[i] = SPSGroup[i].aName
 				mdl_spslist.items = SPSNameList
 				mdl_spslist.selection = (DefaultData.y as Integer)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on EGIMS_MP3_mateditor close do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_MP3_matlist.SelectItem 0
 				EGIMS_MP3_matlist.LockSh.enabled = false
 				if EGIMS_MP3_BlendEditor.OnBlend then
 					EGIMS_MP3_BlendEditor.BrakePaint()
 				if EGIMS_MP3_matlist.OnPreview then
 					GIMS.Core.MaterialOps.ReplaceShader EGIMS_MP3_matlist
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on LockSh changed state do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if state then (
 					local NewPos = (GetDialogPos EGIMS_MP3_mateditor)
 					SetDialogPos EGIMS_MP3_matlist [(NewPos.x - (GetDialogSize EGIMS_MP3_matlist).x - 20), NewPos.y]
 				)
 				EGIMS_MP3_matlist.LockSh.checked = state
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)		
 		on EGIMS_MP3_mateditor moved NewPos do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if LockSh.checked then
 					SetDialogPos EGIMS_MP3_matlist [(NewPos.x - (GetDialogSize EGIMS_MP3_matlist).x - 20), NewPos.y]
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
@@ -1861,17 +1861,17 @@
 		
 		fn UpdateMatLinks = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				TheObjMaterial = TheObj.Material
 				MaterialList = TheObjMaterial.MaterialList
 				MaterialIDList = TheObjMaterial.MaterialIDList
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on EGIMS_MP3_MaterialRC Open do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				TheObj = EGIMS_MP3_matlist.TheObj
 				UpdateMatLinks()
 				MtlID = EGIMS_MP3_matlist.MtlID
@@ -1881,13 +1881,13 @@
 				PasteReference.enabled = (Have CpyMtl)
 				PasteDuplicate.enabled = (Have CpyMtl)
 				FaceApply.enabled = (GIMS.Core.MaterialOps.CheckFaceSelection EGIMS_MP3_matlist)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on CreateNew picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	MtlID = (GIMS.Core.ArrayOps.GetFirstUnusedIndex (MaterialIDList as array)),
 						NewListID = (MaterialList.Count + 1)
 				EGIMS_MP3_matlist.UnifyMultimaterial()
@@ -1909,12 +1909,12 @@
 				EGIMS_MP3_matlist.UpdateHeader()
 				EGIMS_MP3_matlist.SelectItem NewListID
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		on DelSubMtl picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_MP3_matlist.UnifyMultimaterial()
 				UpdateMatLinks()
 				if MaterialList.Count == 1 then (
@@ -1935,13 +1935,13 @@
 					EGIMS_MP3_matlist.UpdateHeader()
 				)
 				EGIMS_MP3_matlist.SelectItem MtlID
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		fn GetObjClass Obj = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if (
 					(IsKindOf Obj Editable_Poly) or
 					(IsKindOf Obj.BaseObject Editable_Poly) or
@@ -1958,12 +1958,12 @@
 					else
 						undefined
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		on FaceApply picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if not (IsDeleted TheObj) then (
 					if $ == TheObj then (
 						local	FaceSelectModes, FSetFaceMatID, FGetFaceSelection,
@@ -2011,13 +2011,13 @@
 						MessageBox "Can't apply the material - another object's selected" title:"GIMS MP3 material editor"
 				) else
 					MessageBox "Can't apply the material - object's deleted" title:"GIMS MP3 material editor"
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on FaceSelect picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if not (IsDeleted TheObj) then (
 					local	FGetFaceMatID, FSetFaceSelection, TargetSubObjectLevel, ModName
 					case (GetObjClass TheObj) of (
@@ -2060,7 +2060,7 @@
 						MessageBox "Can't select faces with that material - object isn't an Editable Mesh/Poly" title:"GIMS MP3 material editor"
 				) else
 					messagebox "Can't select faces with that material - object's deleted" title:"GIMS MP3 material editor"
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true AddInfo:
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true AddInfo:
 				#(
 					#(
 						#Object,
@@ -2072,62 +2072,62 @@
 						TheObj.Modifiers
 					)
 				)
-			)/*<ERRHANDLEREND>*/
+			)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on CopySet picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_MP3_matlist.CpyMtl = CurrentMtl
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on PasteReference picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_MP3_matlist.UnifyMultimaterial()
 				UpdateMatLinks()
 				MaterialList[MtlID] = CpyMtl
 				EGIMS_MP3_matlist.SelectItem MtlID
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on PasteDuplicate picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_MP3_matlist.UnifyMultimaterial()
 				UpdateMatLinks()
 				MaterialList[MtlID] = (Copy CpyMtl)
 				EGIMS_MP3_matlist.SelectItem MtlID
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on Unify picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_MP3_matlist.UnifyMultimaterial()
 				UpdateMatLinks()
 				MaterialList[MtlID] = (Copy CurrentMtl)
 				EGIMS_MP3_matlist.SelectItem MtlID
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 -- 		on PreviewInScene picked do (
 -- 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
--- 			/*<ERRHANDLERSTART>*/try (
+-- 			/*<ERRHANDLERSTART>*/--try (
 -- 				GIMS.Core.MaterialOps.ReplaceShader EGIMS_MP3_matlist
--- 			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+-- 			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 -- 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 -- 			OK
 -- 		)
 		on StorageSave picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if not (IsDeleted TheObj) then (
 					local	LibPath = (GetSaveFileName Caption:"Save GIMS MP3 material" Types:"GIMS MP3 material (*.EGMP3M)|*.EGMP3M")
 					if Have LibPath then (
@@ -2136,13 +2136,13 @@
 					)
 				) else
 					MessageBox "Failed: object's deleted" title:"GIMS MP3 material editor"
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on StorageLoad picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if not (IsDeleted TheObj) then (
 					local LibPath = (GetOpenFileName Caption:"Load GIMS MP3 material" Types:"GIMS MP3 material (*.EGMP3M)|*.EGMP3M")
 					if Have LibPath then (
@@ -2158,23 +2158,23 @@
 				DestroyDialog EGIMS_MP3_mateditor
 				EGIMS_MP3_matlist.MtlID = MtlID
 				EGIMS_MP3_matlist.EditMaterial DestroyEars:true
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on PreviewInVFB picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID Preview:true
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
 		on ShowSubMtl picked do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				CurrentMtl.ShowInViewport = (not ShowSubMtl.checked)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			OK
 		)
@@ -2203,7 +2203,7 @@
 				HyperLink ActiveTip \"<EDITING>\" Align:#Left Color:Red Pos:[EGIMS_MP3_matlist_Item%.Width - Padding - 60, ObjMtlID.Pos.y] Enabled:false Visible:false
 				fn UpdateHeader = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	TheObjMaterial = TheObj.Material,
 								Mtl = TheObjMaterial.MaterialList[Index],
 								Names = TheObjMaterial.Names,
@@ -2239,41 +2239,41 @@
 								v4:MatTitle
 						)
 						OK
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				fn SetSelected Flag = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						ActiveTip.Visible = Flag
 						if Flag then
 							EGIMS_MP3_matlist_Item%.Open = true
 						OK
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				fn FixGUI = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	Height = (ImageSize.y + TricePadding),
 									Rol = EGIMS_MP3_matlist.List.Rollouts[Index],
 									Width = Rol.Width
 						Rol.Height = Height
 						MaterialName.Width = (Width - ImageSize.x - TricePadding)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				fn InitControls = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						ObjMtlID.Value = TheObj.Material.MaterialIDList[Index]
 						MaterialName.Text = MatName
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				fn Init MatIndex EraseBitmap:true = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if EraseBitmap then
 							MaterialBMP.Bitmap = undefined
 						Index = MatIndex
@@ -2282,12 +2282,12 @@
 						UpdateHeader()
 						InitControls()
 						SetSelected false
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				on EGIMS_MP3_matlist_Item% RolledUp Flag do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if Flag then (
 							if Have TheObj then (
 								InitControls()
@@ -2301,37 +2301,37 @@
 							then
 								EGIMS_MP3_matlist.SelectItem 0
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				fn SelectItem = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if not (IsDeleted TheObj) then
 							EGIMS_MP3_matlist.SelectItem Index
 						else (
 							MessageBox \"Failed: object's deleted!\" title:\"GIMS MP3 material editor\"
 							false
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				on MaterialBMP Click do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if Have TheObj then (
 							if EGIMS_MP3_matlist.MtlID != Index then
 								SelectItem()
 						) else
 							MessageBox \"This material isn't loaded yet. Please wait...\" title:\"GIMS MP3 material editor\"
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				fn OpenOptions = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if Have TheObj then (
 							if not (IsDeleted TheObj) then (
 								if (
@@ -2343,7 +2343,7 @@
 								MessageBox \"Failed: object's deleted!\" title:\"GIMS MP3 material editor\"
 						) else
 							MessageBox \"This material isn't loaded yet. Please wait...\" title:\"GIMS MP3 material editor\"
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
@@ -2353,7 +2353,7 @@
 					OpenOptions()
 				on ObjMtlID Changed MID do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if Have TheObj then (
 							if not (IsDeleted TheObj) then (
 								local	MaterialIDList = TheObj.Material.MaterialIDList
@@ -2379,13 +2379,13 @@
 								MessageBox \"Failed: object's deleted!\" title:\"GIMS V material editor\"
 						) else
 							MessageBox \"This material isn't loaded yet. Please wait...\" title:\"GIMS V material editor\"
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on MaterialName Entered MtlName do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if Have TheObj then (
 							if not (IsDeleted TheObj) then (
 								MatName = MtlName
@@ -2399,7 +2399,7 @@
 								MessageBox \"Failed: object's deleted!\" title:\"GIMS MP3 material editor\"
 						) else
 							MessageBox \"This material isn't loaded yet. Please wait...\" title:\"GIMS MP3 material editor\"
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
@@ -2416,7 +2416,7 @@
 				
 				fn Init iTitle UIHint iTheMtl iParam = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_TexEditor_%.Title = iTitle
 						Param = iParam
 						TheMtl = iTheMtl
@@ -2429,30 +2429,30 @@
 							Hint = UIHint
 							HintBtn.ToolTip = (\"Hint: \" + Hint)
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				
 				on HintBtn pressed do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						MessageBox Hint Title:\"GIMS MP3 SPS parameter hint\"
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 			
 				on c_tex rightclick do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_mateditor.DoTexmapRC c_tex Param.aName
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on c_tex pressed do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	ParamName = Param.aName,
 									ParamType = Param.aType,
 									OldMap = (TheMtl.GetParam ParamName ParamType),
@@ -2462,15 +2462,15 @@
 							if (TheMtl.IsDelegateLinkedParam ParamName) then
 								EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on c_texinc changed State do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						TheMtl.SetParam Param.aName Param.aType unsupplied IsTexInternal:State
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
@@ -2487,7 +2487,7 @@
 				
 				fn Init iTitle UIHint iTheMtl iParam = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_FloatEditor_%.Title = iTitle
 						Param = iParam
 						TheMtl = iTheMtl
@@ -2500,35 +2500,35 @@
 							Hint = UIHint
 							HintBtn.ToolTip = (\"Hint: \" + Hint)
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				
 				on HintBtn pressed do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						MessageBox Hint Title:\"GIMS MP3 SPS parameter hint\"
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				
 				on c_val ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val.Value
 						t_val.text = (val as String)
 						local	ParamName = Param.aName
 						TheMtl.SetParam ParamName Param.aType val
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val.text = (power = \"0.0\")
 						try
@@ -2539,7 +2539,7 @@
 						TheMtl.SetParam ParamName Param.aType c_val.value
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
@@ -2560,7 +2560,7 @@
 				
 				fn Init iTitle UIHint iTheMtl iParam = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_Float2Editor_%.Title = iTitle
 						Param = iParam
 						TheMtl = iTheMtl
@@ -2573,22 +2573,22 @@
 							Hint = UIHint
 							HintBtn.ToolTip = (\"Hint: \" + Hint)
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				
 				on HintBtn pressed do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						MessageBox Hint Title:\"GIMS MP3 SPS parameter hint\"
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				
 				on c_val ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val.Value
 						t_val.text = (val as String)
 						local	ParamName = Param.aName,
@@ -2598,13 +2598,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val.text = (power = \"0.0\")
 						try
@@ -2618,13 +2618,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on c_val2 ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val2.Value
 						t_val2.text = (val as String)
 						local	ParamName = Param.aName,
@@ -2633,13 +2633,13 @@
 						OldValue[2] = val
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val2 changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val2.text = (power = \"0.0\")
 						try
@@ -2653,7 +2653,7 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
@@ -2677,7 +2677,7 @@
 				
 				fn Init iTitle UIHint iTheMtl iParam = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_Float3Editor_%.Title = iTitle
 						Param = iParam
 						TheMtl = iTheMtl
@@ -2695,22 +2695,22 @@
 							l_Y.Text = \"G\"
 							l_Z.Text = \"B\"
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				
 				on HintBtn pressed do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						MessageBox Hint Title:\"GIMS MP3 SPS parameter hint\"
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				
 				on c_val ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val.Value
 						t_val.text = (val as String)
 						local	ParamName = Param.aName,
@@ -2720,13 +2720,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val.text = (power = \"0.0\")
 						try
@@ -2740,13 +2740,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on c_val2 ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val2.Value
 						t_val2.text = (val as String)
 						local	ParamName = Param.aName,
@@ -2756,13 +2756,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val2 changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val2.text = (power = \"0.0\")
 						try
@@ -2776,13 +2776,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on c_val3 ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val3.Value
 						t_val3.text = (val as String)
 						local	ParamName = Param.aName,
@@ -2792,13 +2792,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val3 changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val3.text = (power = \"0.0\")
 						try
@@ -2812,7 +2812,7 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
@@ -2839,7 +2839,7 @@
 				
 				fn Init iTitle UIHint iTheMtl iParam = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_Float4Editor_%.Title = iTitle
 						Param = iParam
 						TheMtl = iTheMtl
@@ -2858,22 +2858,22 @@
 							l_Z.Text = \"B\"
 							l_W.Text = \"A\"
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				
 				on HintBtn pressed do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						MessageBox Hint Title:\"GIMS MP3 SPS parameter hint\"
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				
 				on c_val ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val.Value
 						t_val.text = (val as String)
 						local	ParamName = Param.aName,
@@ -2883,13 +2883,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val.text = (power = \"0.0\")
 						try
@@ -2903,13 +2903,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on c_val2 ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val2.Value
 						t_val2.text = (val as String)
 						local	ParamName = Param.aName,
@@ -2919,13 +2919,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val2 changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val2.text = (power = \"0.0\")
 						try
@@ -2939,13 +2939,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on c_val3 ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val3.Value
 						t_val3.text = (val as String)
 						local	ParamName = Param.aName,
@@ -2955,13 +2955,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val3 changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val3.text = (power = \"0.0\")
 						try
@@ -2975,13 +2975,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on c_val4 ButtonUp do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						local	val = c_val4.Value
 						t_val4.text = (val as String)
 						local	ParamName = Param.aName,
@@ -2991,13 +2991,13 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
 				on t_val4 changed power do (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						if power.Count == 0 then
 							t_val4.text = (power = \"0.0\")
 						try
@@ -3011,7 +3011,7 @@
 						TheMtl.SetParam ParamName ParamType OldValue
 						if (TheMtl.IsDelegateLinkedParam ParamName) then
 							EGIMS_MP3_matlist.UpdateThumbnail EGIMS_MP3_matlist.MtlID
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 					OK
 				)
@@ -3037,7 +3037,7 @@
 			
 				fn Init iTitle UIHint iTheMtl iParam = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_Float2x3Editor_%.Title = iTitle
 						Param = iParam
 						TheMtl = iTheMtl
@@ -3050,7 +3050,7 @@
 							Hint = UIHint
 							HintBtn.ToolTip = (\"Hint: \" + Hint)
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				
@@ -3107,7 +3107,7 @@
 			
 				fn Init iTitle UIHint iTheMtl iParam = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_Float3x4Editor_%.Title = iTitle
 						Param = iParam
 						TheMtl = iTheMtl
@@ -3120,7 +3120,7 @@
 							Hint = UIHint
 							HintBtn.ToolTip = (\"Hint: \" + Hint)
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				
@@ -3182,7 +3182,7 @@
 				
 				fn Init iTitle UIHint iTheMtl iParam = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_Float4x4Editor_%.Title = iTitle
 						Param = iParam
 						TheMtl = iTheMtl
@@ -3195,7 +3195,7 @@
 							Hint = UIHint
 							HintBtn.ToolTip = (\"Hint: \" + Hint)
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				
@@ -3262,7 +3262,7 @@
 
 				fn Init iTitle UIHint iTheMtl iParam = (
 					/*<PROFILERSTART>*//*local PWS; LogProfiler #Start (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*/
-					/*<ERRHANDLERSTART>*/try (
+					/*<ERRHANDLERSTART>*/--try (
 						EGIMS_MP3_Float4x5Editor_%.Title = iTitle
 						Param = iParam
 						TheMtl = iTheMtl
@@ -3275,7 +3275,7 @@
 							Hint = UIHint
 							HintBtn.ToolTip = (\"Hint: \" + Hint)
 						)
-					/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+					/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 					/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				)
 				
@@ -3307,7 +3307,7 @@
 	/*Internal ops*/
 		fn Export_Write Sender Args InitLayout:true = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if args.Button.value__ == 1048576 then (
 					local	GUIMgr = GIMS.Core.GUIMgr,
 							AddResult = GIMS.Core.SystemMgr.AddResult,
@@ -3332,12 +3332,12 @@
 					CacheMgrWrite GIMS.CurrentGame.Core.DB.TextureNames (GCachePath + "TextureNames.Cache")
 					GUIMgr.EndProgress true
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Export_GetCNodeFaceCount CNode TotalFaceCount = (
 			/*<PROFILERSTART>*//*LogProfiler #Start "V.GUI.Export_GetObjMemoryInfos"; local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	ObjClass = (ClassOf CNode.ParamSource),
 						IsPoly = (ObjClass == Editable_Poly)
 				if (
@@ -3380,12 +3380,12 @@
 					)
 				)
 				TotalFaceCount
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Export Sender Args = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if args.Button.value__ == 1048576 then (
 					local	GUIMgr = GIMS.Core.GUIMgr,
 							UpdateProgress = GUIMgr.UpdateProgress,
@@ -3438,12 +3438,12 @@
 						GUIMgr.EndProgress true Continueable:HaveObjects
 					)
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Export_Select Sender Args = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if args.Button.value__ == 1048576 then (
 					local	ObjectMgr = GIMS.Core.ObjectMgr,
 							GUIMgr = GIMS.Core.GUIMgr,
@@ -3457,12 +3457,12 @@
 							ObjStrings = (GIMS.Core.GUI.BuildCNodeTree ListControl Objs ObjTree)
 					ObjectMgr.ExchangeData = #(#(GIMS.CurrentGame, 2, #Export_StructsFromObjs, 2), Objs, ObjStrings, SavePath, GetPathString)
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Export_StructsFromObjs Sender Args = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if args.Button.value__ == 1048576 then (
 					local	GUIMgr = GIMS.Core.GUIMgr,
 							ObjectMgr = GIMS.Core.ObjectMgr,
@@ -3532,12 +3532,12 @@
 					else
 						Export_Write Sender Args InitLayout:false
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Import_Files Sender Args = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	ObjectMgr = GIMS.Core.ObjectMgr,
 						SystemMgr = GIMS.Core.SystemMgr,
 						AddResult = SystemMgr.AddResult,
@@ -3613,22 +3613,22 @@
 						AddResult #Error "Can't import anything."
 					GUIMgr.EndProgress true
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Import Sender Args = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if args.Button.value__ == 1048576 then (
 					GIMS.Core.ObjectMgr.ExchangeData = #(undefined, (GIMS.Core.GUI.SelectFiles "Select the resources to load" true "Max Payne 3 openFormats|*.odr;*.odd"))
 					Import_Files Sender Args
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn ChangeGamePath Sender Args = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if args.Button.value__ == 1048576 then (
 					local	Game = GIMS.CurrentGame
 					if (QueryBox "Are you really want to change the game path?" Title:("GIMS for " + Game.Name)) then (
@@ -3637,21 +3637,21 @@
 						Game.Start Game
 					)
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn ShowMatEditor Sender Args = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if args.Button.value__ == 1048576 then (
 					DestroyDialog EGIMS_MP3_matlist
 					CreateDialog EGIMS_MP3_matlist Style:#(#style_titlebar, #style_border, #style_sysmenu, #style_minimizebox)
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
 	GIMS.CurrentGame.Core.GUI = GUIstr()
-/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 /*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 )

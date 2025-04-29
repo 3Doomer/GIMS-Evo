@@ -1,7 +1,7 @@
 /*#PC*DEFINE	CurrentGame	Shared*/
 (
 /*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-/*<ERRHANDLERSTART>*/try (
+/*<ERRHANDLERSTART>*/--try (
 	/*Globalization*/
 	global		EGIMS_GUI_Item,
 				EGIMS_GUI_Layout,
@@ -9,6 +9,21 @@
 				GTAIVunimat,
 				GTA_IV_material,
 				EGIMS_IV_material,
+				EGIMS_IV_Car_Wheel,
+				EGIMS_IV_ColComposite,
+				EGIMS_IV_CollisionDict,
+				EGIMS_IV_CollisionMesh,
+				EGIMS_IV_FragType,
+				EGIMS_IV_FragType_Child,
+				EGIMS_IV_FragType_Group,
+				EGIMS_IV_Model,
+				EGIMS_IV_ModelDict,
+				EGIMS_IV_ModelMesh,
+				EGIMS_IV_Model_Bone,
+				EGIMS_IV_Model_Light,
+				EGIMS_IV_NavMesh,
+				EGIMS_IV_NavMesh_Obstacle,
+				EGIMS_IV_NavMesh_Portal,
 				EGIMS_AE_material,
 				EGIMS_AE_Model,
 				EGIMS_AE_Collision,
@@ -928,7 +943,7 @@
 		)
 		fn PrintMtl IncludeTextures:false = (
 			if Have gims_flt then (
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local Res
 					if IncludeTextures then (
 						local DiffuseMap_1 = "",
@@ -1143,25 +1158,25 @@
 						)
 					)
 					Res
-				/*<ERRHANDLER>*/) catch (
+				/*<ERRHANDLER>*//*) catch (
 					append err_text ("CORE->GTA_IV_material::PrintMtl error:"+(getcurrentexception()) as String)
 					throw
-				)/*<ERRHANDLEREND>*/
+				)*//*<ERRHANDLEREND>*/
 			)
 		)
 		fn AsFormatsText Mode = (
 			if Have gims_flt then (
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					case Mode of (
 						#Bounds:
 							(gims_matgrp[3][this.CollisionData[1].x][this.CollisionData[1].y] + " " + ((this.CollisionData[1].z as Integer) - 1) as String + " " + (this.CollisionData[2].x as Integer) as String)
 						#Shader:
 							undefined
 					)
-				/*<ERRHANDLER>*/) catch (
+				/*<ERRHANDLER>*//*) catch (
 					append err_text ("CORE->GTA_IV_material::AsFormatsText error:"+(getcurrentexception()) as String)
 					throw
-				)/*<ERRHANDLEREND>*/
+				)*//*<ERRHANDLEREND>*/
 			)
 		)
 	)
@@ -1195,6 +1210,82 @@
 		)
 	)
 	
+	plugin 	Helper 			EGIMS_IV_Car_Wheel	 		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x6f92167c, 0x574b9d6d)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_ColComposite		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x2429dbb1, 0x24ed29ba)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_CollisionDict		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x553dcaa2, 0x5726884f)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_CollisionMesh		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x48292f1f, 0x3c035f9c)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_FragType	 		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x437eb6b8, 0x586961d1)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_FragType_Child		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x5d4bf5bd, 0x1ac192de)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_FragType_Group		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x6ee6683e, 0x2d41a273)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_Model	 			Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x587abf0b, 0x29bacd00)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_ModelDict	 		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x525508b4, 0x48dda5b5)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_ModelMesh	 		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x746b0689, 0x3790d982)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_Model_Bone	 		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x355bd9a, 0x1bc2aa17)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_Model_Light	 	Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0xfa813b7, 0x3df6f4e4)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_NavMesh	 		Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x740a0870, 0x37f38719)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_NavMesh_Obstacle	Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x789eda15, 0x5c1712a6)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+	plugin 	Helper 			EGIMS_IV_NavMesh_Portal	 	Category:"IV_STALE" 		Name:"IV_STALE" 		ClassID:#(0x7dfc26b6, 0x7490b13b)		Invisible:true	Extends:Dummy		ReplaceUI:true	(
+		rollout rol "IV_STALE" (
+			Label	Tip	"IV_STALE"
+		)
+	)
+
 	/*IV end*/
 	
 	/*AE*/
@@ -1212,7 +1303,7 @@
 
 			on DiffMap set Val do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	MAXFactory = GIMS.Core.MAXFactory
 					if
 						Have MAXFactory and
@@ -1222,13 +1313,13 @@
 						Delegate.DiffuseMap = Maps[1]
 						Delegate.OpacityMap = Maps[2]
 					)
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				OK
 			)
 			on NormalSpecMap set Val do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	MAXFactory = GIMS.Core.MAXFactory
 					if
 						Have MAXFactory and
@@ -1239,13 +1330,13 @@
 						Delegate.BumpMapAmount = 100
 						Delegate.SpecularLevelMap = Maps[2]
 					)
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				OK
 			)
 			on RGBAlpha set Val do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	MAXFactory = GIMS.Core.MAXFactory
 					if
 						Have MAXFactory and
@@ -1273,7 +1364,7 @@
 							)
 						)
 					)
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				OK
 			)
@@ -1298,50 +1389,50 @@
 						
 			on ResetUV pressed do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					GIMS.Core.MAXFactory.MaterialOps.ResetUV this
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				OK
 			)
 			
 			on cDiffMap rightclick do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					GIMS.Core.MAXFactory.MaterialOps.AlterProperty this #DiffMap undefined ControlRollout:MainRollout MapControl:cDiffMap IsMap:true
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				OK
 			)
 			on cNormalSpecMap rightclick do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					GIMS.Core.MAXFactory.MaterialOps.AlterProperty this #NormalSpecMap undefined ControlRollout:MainRollout MapControl:cDiffMap IsMap:true
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				OK
 			)
 			
 			on cDiffMap pressed do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					GIMS.Core.MAXFactory.MaterialOps.OpenMap this DiffMap #DiffMap ControlRollout:MainRollout MapControl:cDiffMap
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				OK
 			)
 			on cNormalSpecMap pressed do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					GIMS.Core.MAXFactory.MaterialOps.OpenMap this NormalSpecMap #NormalSpecMap ControlRollout:MainRollout MapControl:cNormalSpecMap
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				OK
 			)
 			
 			on MainRollout Open do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	MAXFactory = GIMS.Core.MAXFactory
 					if Have MAXFactory then (
 						local	Maps = #(
@@ -1354,18 +1445,18 @@
 								)
 						MAXFactory.MaterialOps.UpdateMapButtons MainRollout MapControls Maps
 					)
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 				OK
 			)
 		)
 		on Create do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	MAXFactory = GIMS.Core.MAXFactory
 				if Have MAXFactory then
 					MAXFactory.MaterialOps.InitUV this
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
@@ -1401,13 +1492,13 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	BoxCentricMesh = GIMS.Core.DB.BoxCentricMesh
 			if _Faces.Count == 0 then
 				_Faces = BoxCentricMesh[2]
 			_Verts = (GIMS.Core.ArrayOps.Modify BoxCentricMesh[1] [Width, Depth, Height] #Multiply)
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:params (
@@ -1432,13 +1523,13 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	SphereMesh = GIMS.Core.DB.SphereMesh
 			if _Faces.Count == 0 then
 				_Faces = SphereMesh[2]
 			_Verts = (GIMS.Core.ArrayOps.Modify SphereMesh[1] (Radius * 2) #Multiply)
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:rol (
@@ -1493,7 +1584,7 @@
 	plugin 	Helper 			EGIMS_AE_WeaponInstance		Category:"AE_Weapons" 			Name:"Equipment" 							ClassID:#(573902332, 370725879)			Invisible:true	Extends:Dummy		ReplaceUI:true	(
 		fn UpdateState = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	trol = this.rol,
 					WeaponClass = this.WeaponClass
 			trol.cWeaponClass.Selection = WeaponClass
@@ -1509,7 +1600,7 @@
 				trol.cSizeZ.Enabled = false
 				delegate.BoxSize = [50, 50, 50]
 			)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:rol (
@@ -1577,17 +1668,17 @@
 				)
 		fn IsDelegateLinkedParam aName = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if No BSearch then (
 					((GIMS.Core.ArrayOps.QuickSearch DelegateLinkedParams (GIMS.Core.ValueOps.TypeCast aName Name)) != 0)
 				) else
 					(Have (BSearch aName DelegateLinkedParams StriCmp))
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn UpdateDelegate aName aType vValue = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				aName = (GIMS.Core.ValueOps.TypeCast aName Name)
 				if aType == #sp_sampler then (
 					if (
@@ -1684,12 +1775,12 @@
 					)
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType, #vValue), #(aName, aType, vValue)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType, #vValue), #(aName, aType, vValue)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn UpdateDelegateParams = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	ParamNameGroups = #(
 							this.FloatValueNames,
 							this.TexValueNames,
@@ -1725,12 +1816,12 @@
 						UpdateDelegate ParamNames[j] ParamGroupType ParamValues[j]
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn SetParam aName aType vValue IsTexInternal:false = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	IsBaseType = (
 							aType == #sp_float or
 							aType == #sp_float2 or
@@ -1827,12 +1918,12 @@
 				)
 				if SuppliedValue then
 					UpdateDelegate aName aType vValue
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType, #vValue), #(aName, aType, vValue)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType, #vValue), #(aName, aType, vValue)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn CheckParam aName aType = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	IsBaseType = (
 							aType == #sp_float or
 							aType == #sp_float2 or
@@ -1862,12 +1953,12 @@
 							)
 						)
 				((GIMS.Core.ArrayOps.QuickSearch Names aName) != 0)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn GetParam aName aType GetIsTexInternal:false GetParamIDToo:false ParamID:unsupplied = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	IsBaseType = (
 							aType == #sp_float or
 							aType == #sp_float2 or
@@ -1937,12 +2028,12 @@
 					#(Result, ParamID)
 				else
 					Result
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn EnsureHaveParams tSPSName DB QuickSearch TypeCast = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	DBShaders = DB.Shaders
 				if Have DBShaders then (
 					local	SPSGroups = DBShaders[3],
@@ -1977,7 +2068,7 @@
 						Delegate.SelfIllumination = 0
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		
@@ -2016,7 +2107,7 @@
 			
 			on SPSName set tSPSName do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	MAXFactory = GIMS.Core.MAXFactory
 					if
 						Have MAXFactory and
@@ -2027,7 +2118,7 @@
 							EnsureHaveParams tSPSName DB GIMS.Core.ArrayOps.QuickSearch GIMS.Core.ValueOps.TypeCast
 					)
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 		)
@@ -2037,12 +2128,12 @@
 		)
 		on Create do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	MAXFactory = GIMS.Core.MAXFactory
 				if Have MAXFactory then
 					MAXFactory.MaterialOps.InitUV this
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
@@ -2054,7 +2145,7 @@
 			
 			fn _SkelReset_HWalk Obj = (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 				if
 					(IsKindOf Obj EGIMS_MP3_Model_Bone) and
 					Obj.IsInitialTMSet
@@ -2062,7 +2153,7 @@
 					Obj.Transform = (Obj.InitialTM * Obj.Parent.Transform)
 				for Child in Obj.Children do
 					_SkelReset_HWalk Child
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on SkelReset Pressed do (
@@ -2097,7 +2188,7 @@
 			
 			fn _SkelReset_HWalk Obj = (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 				if
 					(IsKindOf Obj EGIMS_MP3_Model_Bone) and
 					Obj.IsInitialTMSet
@@ -2105,7 +2196,7 @@
 					Obj.Transform = (Obj.InitialTM * Obj.Parent.Transform)
 				for Child in Obj.Children do
 					_SkelReset_HWalk Child
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on SkelReset Pressed do (
@@ -2663,7 +2754,7 @@
 		)
 		fn Init Obj = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			ParentObj = Obj
 			ParentObj.UseFarAtten = true
 			ParentObj.ShowFarAtten = true
@@ -2687,7 +2778,7 @@
 				HotSpot = ParentObj.HotSpot
 			)
 			this.rol.Init()
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
@@ -2713,7 +2804,7 @@
 			
 			fn UpdateObjList = (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 				local	ObjListCount = ObjList.Count,
 						Items = #(),
 						ItemCount = 0
@@ -2732,7 +2823,7 @@
 				cObjList.Items = Items
 				cObjList.Selection = 0
 				bnSel.Enabled = false
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on cObjList SelectionEnd do (
@@ -2784,7 +2875,7 @@
 		local	DelegateLinkedParams, DelegateLinkMults, DelegateLinkTypes
 		fn UpdateDelegateLinks = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	MAXFactory = (GIMS.Core.CoreOps.TryGetGameMAXFactory #V)
 				if Supplied MAXFactory then (
 					DelegateLinkedParams = MAXFactory.DelegateLinkedParams
@@ -2793,32 +2884,32 @@
 					true
 				) else
 					false
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn GetDelegateLinkID aName = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				try (
 					(GIMS.Core.ArrayOps.QuickSearch DelegateLinkedParams (GIMS.Core.ValueOps.TypeCast aName Name))
 				) catch
 					(FindItem DelegateLinkedParams ((aName as String) as Name))
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn IsDelegateLinkedParam aName = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if No BSearch then
 					((GetDelegateLinkID aName) != 0)
 				else
 					(Have (BSearch aName DelegateLinkedParams StriCmp))
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn UpdateDelegate aName aType vValue HandleMapChanged:unsupplied TypeCast:unsupplied = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if (UpdateDelegateLinks()) then (
 					if not Supplied HandleMapChanged then (
 						HandleMapChanged = GIMS.Core.MAXFactory.MaterialOps.HandleMapChanged
@@ -3003,12 +3094,12 @@
 					)
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType, #vValue), #(aName, aType, vValue)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType, #vValue), #(aName, aType, vValue)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn UpdateDelegateParams = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				if (UpdateDelegateLinks()) then (
 					local	HandleMapChanged = GIMS.Core.MAXFactory.MaterialOps.HandleMapChanged,
 							TypeCast = GIMS.Core.ValueOps.TypeCast,
@@ -3051,12 +3142,12 @@
 					)
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn SetParam aName aType vValue IsTexInternal:false TheTexParams:unsupplied = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	IsBaseType = (
 							aType == #svt_float or
 							aType == #svt_float2 or
@@ -3174,12 +3265,12 @@
 				)
 				if SuppliedValue then
 					UpdateDelegate aName aType vValue
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType, #vValue), #(aName, aType, vValue)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType, #vValue), #(aName, aType, vValue)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn CheckParam aName aType = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	IsBaseType = (
 							aType == #svt_float or
 							aType == #svt_float2 or
@@ -3211,12 +3302,12 @@
 							)
 						)
 				((GIMS.Core.ArrayOps.QuickSearch Names aName) != 0)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn GetParam aName aType GetIsTexInternal:false GetTexParams:false GetParamIDToo:false ParamID:unsupplied = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	IsBaseType = (
 							aType == #svt_float or
 							aType == #svt_float2 or
@@ -3298,12 +3389,12 @@
 					else
 						Result
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		fn EnsureHaveParams tSPSName DB QuickSearch TypeCast = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	DBShaders = DB.Shaders
 				if Have DBShaders then (
 					local	SPSGroups = DBShaders[3],
@@ -3338,13 +3429,13 @@
 						Delegate.SelfIllumination = 0
 				)
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS AddInfo:#(#(#aName, #aType), #(aName, aType)))*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		
 		fn UpdateControls = (	--TODO remove after moving the collision material editor to GIMS
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	CollisionData = This.CollisionData,
 						Part1 = CollisionData[1],
 						Part2 = CollisionData[2],
@@ -3392,7 +3483,7 @@
 					BitIndex += 1
 				)				
 				Success
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		
@@ -3441,7 +3532,7 @@
 			
 			on CollisionData set vValue do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	NoDiffuse = true,	--TODO remake because param can present, but not used in SPS
 							NameArrays = #(
 								FloatValueNames,
@@ -3486,12 +3577,12 @@
 					)
 					UpdateControls()
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS AddInfo:#(#(#vValue), #(vValue)) NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS AddInfo:#(#(#vValue), #(vValue)) NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on SPSName set tSPSName do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	MAXFactory = GIMS.Core.MAXFactory
 					if
 						Have MAXFactory and
@@ -3502,7 +3593,7 @@
 							EnsureHaveParams tSPSName DB GIMS.Core.ArrayOps.QuickSearch GIMS.Core.ValueOps.TypeCast
 					)
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 		)
@@ -3543,7 +3634,7 @@
 			
 			fn SetMatIndex = (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	DB = (GIMS.Core.CoreOps.TryGetGameDB #V)
 					if Supplied DB then (
 						local	Part = CollisionData[2]
@@ -3551,57 +3642,57 @@
 						CollisionData = (GIMS.Core.ValueOps.UpdateMatrix CollisionData 2 Part)
 					)
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on cMatGroup selected vValue do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					cMtl.Selection = 1
 					SetMatIndex()
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on cMtl selected vValue do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					SetMatIndex()
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on cCollisionColor changed vValue do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					CollisionData = (GIMS.Core.ValueOps.UpdateMatrix CollisionData 1 [vValue.r, vValue.g, vValue.b])
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on cCollisionOpacity changed vValue do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	Part = CollisionData[2]
 					Part.x = vValue
 					CollisionData = (GIMS.Core.ValueOps.UpdateMatrix CollisionData 2 Part)
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on cUseColor changed vValue do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	Part = CollisionData[2]
 					Part.z = (Ternary vValue 1 0)
 					CollisionData = (GIMS.Core.ValueOps.UpdateMatrix CollisionData 2 Part)
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			fn SetFlags = (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	PolyFlags = 0,
 							Controls = this.MainRollout.Controls,
 							ControlIDs = #{(FindItem Controls cPF01)..(FindItem Controls cPF16)},
@@ -3616,7 +3707,7 @@
 					Part.x = PolyFlags
 					CollisionData = (GIMS.Core.ValueOps.UpdateMatrix CollisionData 3 Part)
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on cPF01 changed state do SetFlags()
@@ -3637,31 +3728,31 @@
 			on cPF16 changed state do SetFlags()
 			on cProcId changed vValue do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	Part = CollisionData[3]
 					Part.y = vValue
 					CollisionData = (GIMS.Core.ValueOps.UpdateMatrix CollisionData 3 Part)
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on cRoomId changed vValue do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					local	Part = CollisionData[3]
 					Part.z = vValue
 					CollisionData = (GIMS.Core.ValueOps.UpdateMatrix CollisionData 3 Part)
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on MainRollout Open do (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 					if not (UpdateControls()) then
 						MessageBox "You should install GIMS Evo V core to properly view or edit this material" Title:"GIMS Evo material warning"
 					OK
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 		)
@@ -3679,12 +3770,12 @@
 		)
 		on Create do (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				local	MAXFactory = GIMS.Core.MAXFactory
 				if Have MAXFactory then
 					MAXFactory.MaterialOps.InitUV this
 				OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
@@ -3729,7 +3820,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	HalfWidth = (this.Width / 2),
 					HalfLength = (this.Length / 2)
 			if _Faces.Count == 0 then
@@ -3739,7 +3830,7 @@
 				_MtlIDs[i] = MtlID
 			_Verts = #([-HalfWidth, HalfLength, 0], [HalfWidth, HalfLength, 0], [-HalfWidth, -HalfLength, 0], [HalfWidth, -HalfLength, 0])
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:params (
@@ -3765,7 +3856,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	CylinderMesh = GIMS.Core.DB.CylinderMesh,
 					Diameter = (this.Radius * 2)
 			if _Faces.Count == 0 then
@@ -3775,7 +3866,7 @@
 				_MtlIDs[i] = MtlID
 			_Verts = (GIMS.Core.ArrayOps.Modify CylinderMesh[1] #([Diameter, Diameter, this.Height], (Quat 0 -0.707107 0 0.707107)) #(#Multiply, #Multiply))
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:params (
@@ -3801,7 +3892,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	BoxCentricMesh = GIMS.Core.DB.BoxCentricMesh
 			if _Faces.Count == 0 then
 				_Faces = BoxCentricMesh[2]
@@ -3810,7 +3901,7 @@
 				_MtlIDs[i] = MtlID
 			_Verts = (GIMS.Core.ArrayOps.Modify BoxCentricMesh[1] [this.Width, this.Depth, this.Height] #Multiply)
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:params (
@@ -3840,7 +3931,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	SphereMesh = GIMS.Core.DB.SphereMesh
 			if _Faces.Count == 0 then
 				_Faces = SphereMesh[2]
@@ -3849,7 +3940,7 @@
 				_MtlIDs[i] = MtlID
 			_Verts = (GIMS.Core.ArrayOps.Modify SphereMesh[1] (this.Radius * 2) #Multiply)
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:rol (
@@ -3871,7 +3962,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	ArrayOps = GIMS.Core.ArrayOps,
 					Modify = ArrayOps.Modify,
 					JoinArraysIntoResult = ArrayOps.JoinArraysIntoResult,
@@ -3903,7 +3994,7 @@
 			Free Verts2
 			Free Verts3
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:rol (
@@ -3931,7 +4022,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	CylinderMesh = GIMS.Core.DB.CylinderMesh,
 					Diameter = (this.Radius * 2)
 			if _Faces.Count == 0 then
@@ -3941,7 +4032,7 @@
 				_MtlIDs[i] = MtlID
 			_Verts = (GIMS.Core.ArrayOps.Modify CylinderMesh[1] #([Diameter, Diameter, this.Height], ((EulerAngles 90 0 0) as Quat)) #(#Multiply, #Multiply))
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:params (
@@ -3967,7 +4058,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	BoxCentricMesh = GIMS.Core.DB.BoxCentricMesh
 			if _Faces.Count == 0 then
 				_Faces = BoxCentricMesh[2]
@@ -3976,7 +4067,7 @@
 				_MtlIDs[i] = MtlID
 			_Verts = (GIMS.Core.ArrayOps.Modify BoxCentricMesh[1] [this.Width, this.Depth, this.Height] #Multiply)
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:MainRol (
@@ -4005,7 +4096,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	SphereMesh = GIMS.Core.DB.SphereMesh,
 					MtlID = this.MtlID
 			if _Faces.Count == 0 then
@@ -4014,7 +4105,7 @@
 				_MtlIDs[i] = MtlID
 			_Verts = (GIMS.Core.ArrayOps.Modify SphereMesh[1] (this.Radius * 2) #Multiply)
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:rol (
@@ -4035,7 +4126,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	ArrayOps = GIMS.Core.ArrayOps,
 					Modify = ArrayOps.Modify,
 					JoinArraysIntoResult = ArrayOps.JoinArraysIntoResult,
@@ -4067,7 +4158,7 @@
 			Free Verts2
 			Free Verts3
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:rol (
@@ -4092,7 +4183,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	CylinderMesh = GIMS.Core.DB.CylinderMesh,
 					Diameter = (this.Radius * 2),
 					MtlID = this.MtlID
@@ -4102,7 +4193,7 @@
 				_MtlIDs[i] = MtlID
 			_Verts = (GIMS.Core.ArrayOps.Modify CylinderMesh[1] [Diameter, Diameter, this.Height] #Multiply)
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:params (
@@ -4128,7 +4219,7 @@
 		include "I_PluginMesh.ms"
 		fn RebuildMesh &_Verts &_Faces &_MtlIDs = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 			local	ArrayOps = GIMS.Core.ArrayOps,
 					Modify = ArrayOps.Modify,
 					JoinArraysIntoResult = ArrayOps.JoinArraysIntoResult,
@@ -4165,7 +4256,7 @@
 			Free Verts3
 						
 			OK
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 		parameters params rollout:rol (
@@ -4222,7 +4313,7 @@
 			
 			fn _SkelReset_HWalk Obj = (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 				if
 					(IsKindOf Obj EGIMS_V_Model_Bone) and
 					Obj.IsInitialTMSet
@@ -4230,7 +4321,7 @@
 					Obj.Transform = (Obj.InitialTM * Obj.Parent.Transform)
 				for Child in Obj.Children do
 					_SkelReset_HWalk Child
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on SkelReset Pressed do (
@@ -4290,7 +4381,7 @@
 			
 			fn UpdateObjList = (
 				/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-				/*<ERRHANDLERSTART>*/try (
+				/*<ERRHANDLERSTART>*/--try (
 				local	ObjListCount = ObjList.Count,
 						Items = #(),
 						ItemCount = 0
@@ -4309,7 +4400,7 @@
 				cObjList.Items = Items
 				cObjList.Selection = 0
 				bnSel.Enabled = false
-				/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+				/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 				/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 			)
 			on cObjList SelectionEnd do (
@@ -4647,7 +4738,7 @@
 		CreatorTool_ObjClass = unsupplied,
 		fn CallObjectCreator ObjInfo = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				CreatorTool_ObjClass = ObjInfo[1]
 				ClearSelection()
 				if
@@ -4656,15 +4747,15 @@
 				then
 					Delete Selection
 				OK
-			/*<ERRHANDLER>*/) catch (
+			/*<ERRHANDLER>*//*) catch (
 				CreatorTool_ObjClass = unsupplied
 				local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS
-			)/*<ERRHANDLEREND>*/
+			)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		),
 		fn Load = (
 			/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-			/*<ERRHANDLERSTART>*/try (
+			/*<ERRHANDLERSTART>*/--try (
 				for PlugData in #(
 					#(EGIMS_GUI_Item,				CreatorTool_EGIMS_GUI_Item),
 					#(EGIMS_GUI_Layout,				CreatorTool_EGIMS_GUI_Layout),
@@ -4793,7 +4884,7 @@
 						CoreCats[CatID] = CatNameStrings[CatNameID]
 					)
 				)
-			/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+			/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 			/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 		)
 	)
@@ -4803,6 +4894,6 @@
 		TL.Load()
 		GIMS.Core.TypeLibrary = TL
 	)
-/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)/*<ERRHANDLEREND>*/
+/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHError CET ESS)*//*<ERRHANDLEREND>*/
 /*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 )

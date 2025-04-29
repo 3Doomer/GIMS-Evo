@@ -1294,7 +1294,7 @@
 					MaterialRollout.Title = "...loading..."
 				) else (
 					local	MaterialRolloutCode = (StringStream "")
-					Format GUI.MaterialRolloutCode Index Index Index Index To:MaterialRolloutCode
+					Format GIMS.IV.Core.GUI.MaterialRolloutCode Index Index Index Index To:MaterialRolloutCode
 					MaterialRollout = (Execute (MaterialRolloutCode as String))
 					Free MaterialRolloutCode
 				)
@@ -2460,7 +2460,7 @@
 				Spinner ObjMtlID \"  ID\" Align:#Left Type:#Integer Range:[1, 1000, 1] Pos:[MiscX, MaterialName.Pos.y + MaterialName.Height + Padding] Width:SpinnerWidth
 				HyperLink ActiveTip \"<EDITING>\" Align:#Left Color:Red Pos:[ObjMtlID.Pos.x + SpinnerWidth - 30 + Padding, ObjMtlID.Pos.y] Enabled:false Visible:false
 				fn UpdateHeader = (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						local	TheObjMaterial = TheObj.Material,
 								Mtl = TheObjMaterial.MaterialList[Index],
 								Names = TheObjMaterial.Names,
@@ -2497,7 +2497,7 @@
 					/*<ERRHANDLER>*//*) catch (GIMS.Core.SystemMgr.ThrowError (GetCurrentException()) #Throw)*//*<ERRHANDLEREND>*//*<PROFILEREND>*//*); local PTE; PTE = ((GetTimeStamp()) / 10000); LogProfiler #End PTS PTE 0; PWS*//*<PROFILERENDED>*/
 				)
 				fn SetSelected Flag = (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						ActiveTip.Visible = Flag
 						if Flag then
 							EGIMS_IV_matlist_Item%.Open = true
@@ -2505,7 +2505,7 @@
 					/*<ERRHANDLER>*//*) catch (GIMS.Core.SystemMgr.ThrowError (GetCurrentException()) #Throw)*//*<ERRHANDLEREND>*//*<PROFILEREND>*//*); local PTE; PTE = ((GetTimeStamp()) / 10000); LogProfiler #End PTS PTE 0; PWS*//*<PROFILERENDED>*/
 				)
 				fn FixGUI = (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						local	Height = (ImageSize.y + TricePadding),
 								Rol = EGIMS_IV_matlist.List.Rollouts[Index]
 								Width = Rol.Width
@@ -2514,13 +2514,13 @@
 					/*<ERRHANDLER>*//*) catch (GIMS.Core.SystemMgr.ThrowError (GetCurrentException()) #Throw)*//*<ERRHANDLEREND>*//*<PROFILEREND>*//*); local PTE; PTE = ((GetTimeStamp()) / 10000); LogProfiler #End PTS PTE 0; PWS*//*<PROFILERENDED>*/
 				)
 				fn InitControls = (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						ObjMtlID.Value = TheObj.Material.MaterialIDList[Index]
 						MaterialName.Text = MatName
 					/*<ERRHANDLER>*//*) catch (GIMS.Core.SystemMgr.ThrowError (GetCurrentException()) #Throw)*//*<ERRHANDLEREND>*//*<PROFILEREND>*//*); local PTE; PTE = ((GetTimeStamp()) / 10000); LogProfiler #End PTS PTE 0; PWS*//*<PROFILERENDED>*/
 				)
 				fn Init MatIndex = (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						MaterialBMP.Bitmap = undefined
 						Index = MatIndex
 						FixGUI()
@@ -2531,7 +2531,7 @@
 					/*<ERRHANDLER>*//*) catch (GIMS.Core.SystemMgr.ThrowError (GetCurrentException()) #Throw)*//*<ERRHANDLEREND>*//*<PROFILEREND>*//*); local PTE; PTE = ((GetTimeStamp()) / 10000); LogProfiler #End PTS PTE 0; PWS*//*<PROFILERENDED>*/
 				)
 				on EGIMS_IV_matlist_Item% RolledUp Flag do (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						if Flag then (
 							if Have TheObj then (
 								InitControls()
@@ -2549,7 +2549,7 @@
 					OK
 				)
 				fn SelectItem = (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						if not (IsDeleted TheObj) then
 							EGIMS_IV_matlist.SelectItem Index
 						else (
@@ -2559,7 +2559,7 @@
 					/*<ERRHANDLER>*//*) catch (GIMS.Core.SystemMgr.ThrowError (GetCurrentException()) #Throw)*//*<ERRHANDLEREND>*//*<PROFILEREND>*//*); local PTE; PTE = ((GetTimeStamp()) / 10000); LogProfiler #End PTS PTE 0; PWS*//*<PROFILERENDED>*/
 				)
 				on MaterialBMP Click do (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						if Have TheObj then (
 							if EGIMS_IV_matlist.MtlID != Index then
 								SelectItem()
@@ -2569,7 +2569,7 @@
 					OK
 				)
 				on MaterialBMP RightClick do (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						if Have TheObj then (
 							if not (IsDeleted TheObj) then (
 								if (
@@ -2585,7 +2585,7 @@
 					OK
 				)
 				on ObjMtlID Changed MID do (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						if Have TheObj then (
 							if not (IsDeleted TheObj) then (
 								local	MaterialIDList = TheObj.Material.MaterialIDList
@@ -2612,7 +2612,7 @@
 					OK
 				)
 				on MaterialName Entered MtlName do (
-					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
+					/*<PROFILERSTART>*//*local PTS, PWS; PTS = ((GetTimeStamp()) / 10000); LogProfiler #Start 0 0 (local SS = (StringStream \"\"); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); PWS = (*//*<PROFILERSTARTED>*//*<ERRHANDLERSTART>*/--try (
 						if Have TheObj then (
 							if not (IsDeleted TheObj) then (
 								MatName = MtlName

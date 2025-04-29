@@ -3,7 +3,7 @@ local	IsCreating = false,
 
 fn UpdateUI = (
 	/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-	/*<ERRHANDLERSTART>*/try (
+	/*<ERRHANDLERSTART>*/--try (
 	local	state = this.CustomCullingPlane,
 			LightsRol = this.LightsRol
 	LightsRol.cCPX.Enabled = LightsRol.cCPAngleX.Enabled = state
@@ -12,13 +12,13 @@ fn UpdateUI = (
 	LightsRol.cCPDistance.Enabled = state
 	local	IsPoint = (this.Type == 1)
 	LightsRol.Falloff.Enabled = IsPoint
-	/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+	/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 	/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 )
 
 fn UpdateContainer = (
 	/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-	/*<ERRHANDLERSTART>*/try (
+	/*<ERRHANDLERSTART>*/--try (
 	if IsCreating != true then (
 		local	ParentObj = this.ParentObj
 		ParentObj.Type = #(#Omni, #FreeSpot, #FreeDirect)[this.Type]
@@ -33,7 +33,7 @@ fn UpdateContainer = (
 			ParentObj.Falloff = this.ConeOuterAngle
 		)
 	)
-	/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+	/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 	/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 )
 

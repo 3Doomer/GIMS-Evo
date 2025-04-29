@@ -8,7 +8,7 @@ local	RebuildMesh,
 		_AlwaysRedraw = false
 fn _RebuildMesh = (
 	/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-	/*<ERRHANDLERSTART>*/try (
+	/*<ERRHANDLERSTART>*/--try (
 	if _MeshBuildingEnabled then (
 		if _NeedUpdate or _AlwaysRedraw then (
 			_NeedUpdate = false
@@ -19,7 +19,7 @@ fn _RebuildMesh = (
 		true
 	) else
 		false
-	/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+	/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 	/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 )
 fn SuspendMeshBuilding = (
@@ -28,11 +28,11 @@ fn SuspendMeshBuilding = (
 )
 fn ResumeMeshBuilding = (
 	/*<PROFILERSTART>*//*LogProfiler #Start (local SS = (StringStream ""); Stack ShowLocals:false FirstFrameOnly:true To:SS; SS); local PWS = (*//*<PROFILERSTARTED>*/
-	/*<ERRHANDLERSTART>*/try (
+	/*<ERRHANDLERSTART>*/--try (
 	_MeshBuildingEnabled = true
 	_RebuildMesh()
 	OK
-	/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)/*<ERRHANDLEREND>*/
+	/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:"*<THROW>*") then (ESS = (StringStream "");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS NoMetro:true)*//*<ERRHANDLEREND>*/
 	/*<PROFILEREND>*//*); LogProfiler #End 0; PWS*//*<PROFILERENDED>*/
 )
 on buildMesh do (
