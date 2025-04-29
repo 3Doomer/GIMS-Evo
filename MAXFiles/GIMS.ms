@@ -54,7 +54,7 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 								#Start
 							),
 							fn FileDelete FilePath = (
-								/*<ERRHANDLERSTART>*/try (
+								/*<ERRHANDLERSTART>*/--try (
 									if (DoesFileExist FilePath) then (
 										local	Result = false
 										for i = 1 to 3 while not Result do (
@@ -70,10 +70,10 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 										Result
 									) else
 										true
-								/*<ERRHANDLER>*/) catch false/*<ERRHANDLEREND>*/
+								/*<ERRHANDLER>*//*) catch false*//*<ERRHANDLEREND>*/
 							),
 							fn FileRename SourcePath TargetPath = (
-								/*<ERRHANDLERSTART>*/try (
+								/*<ERRHANDLERSTART>*/--try (
 									if (DoesFileExist SourcePath) then (
 										if (FileDelete TargetPath) then (
 											local	Result = false,
@@ -98,10 +98,10 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 											false
 									) else
 										false
-								/*<ERRHANDLER>*/) catch false/*<ERRHANDLEREND>*/
+								/*<ERRHANDLER>*//*) catch false*//*<ERRHANDLEREND>*/
 							),
 							fn FileCopy SourcePath TargetPath = (
-								/*<ERRHANDLERSTART>*/try (
+								/*<ERRHANDLERSTART>*/--try (
 									if (DoesFileExist SourcePath) then (
 										if (FileDelete TargetPath) then (
 											local	Result = false,
@@ -126,7 +126,7 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 											false
 									) else
 										false
-								/*<ERRHANDLER>*/) catch false/*<ERRHANDLEREND>*/
+								/*<ERRHANDLER>*//*) catch false*//*<ERRHANDLEREND>*/
 							),
 							/*@<Boolean>*/ fn Start Game NoEH:false = (
 								/*@<GUIDE>
@@ -157,7 +157,7 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 									CoreFilePath = (FilesPath + CoreFileNameType)
 								)
 	
-								/*<ERRHANDLERSTART>*/try (
+								/*<ERRHANDLERSTART>*/--try (
 									GIMS.CurrentGame = Game
 									if
 										MakeDir BasePath All:true and
@@ -195,7 +195,7 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 											local	URL = (StringStream "")
 											Format "GIMS/%/%%" Tag GIMS.FilesDir CoreFileNameType To:URL
 											if (GIMS.Download ServerURLs #(URL as string) DownloadPath true) then (
-												/*<ERRHANDLERSTART>*/try (
+												/*<ERRHANDLERSTART>*/--try (
 													FileIn (DownloadPath + CoreFileNameType) Quiet:true
 													local	CoreLoader = GIMS.CoreLoader
 													case CoreLoader of (
@@ -204,25 +204,25 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 														unsupplied:
 															throw "GIMS core loader's unsupplied"
 														Default: (
-															/*<ERRHANDLERSTART>*/try (
+															/*<ERRHANDLERSTART>*/--try (
 																Result = (CoreLoader true)
-															/*<ERRHANDLER>*/) catch (
+															/*<ERRHANDLER>*//*) catch (
 																OriginalException = (GetCurrentException())
 																Append FailText ("Can't load the " + (Name as String) + " core.\n")
-															)/*<ERRHANDLEREND>*/
+															)*//*<ERRHANDLEREND>*/
 														)
 													)
-												/*<ERRHANDLER>*/) catch (
+												/*<ERRHANDLER>*//*) catch (
 													OriginalException = (GetCurrentException())
 													Append FailText ("Can't compile the " + (Name as String) + " core.\n")
-												)/*<ERRHANDLEREND>*/
+												)*//*<ERRHANDLEREND>*/
 											) else
 												Append FailText ("Failed to download the " + (Name as String) + " core. May be, it isn't released yet.\n")
 											Free URL
 										)
 									) else
 										Append FailText "Failed to create folders.\n"
-								/*<ERRHANDLER>*/) catch (
+								/*<ERRHANDLER>*//*) catch (
 									if NoEH then
 										throw()
 									OriginalException = (GetCurrentException())
@@ -277,7 +277,7 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 										Default:
 											Append FailText OriginalException
 									)
-								)/*<ERRHANDLEREND>*/
+								)*//*<ERRHANDLEREND>*/
 								if FailText.Count != Checksum then (
 									if (MatchPattern FailText Pattern:"*OutOfMemory*") then
 										throw "Your system's ran out of memory and GIMS can't do anything with it...try to restart 3D MAX."
@@ -330,7 +330,7 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 								IntlSupport = "3Doomer2@gmail.com"
 								local FailText = ("Can't initialize the " + (Name as String) + " core.\n\n"),
 										Checksum = FailText.Count
-								/*<ERRHANDLERSTART>*/try (
+								/*<ERRHANDLERSTART>*/--try (
 									if ServerURLs == undefined then
 										ServerURLs = GIMS.ServerURLs
 									else
@@ -341,7 +341,7 @@ struct /*#PC*PATH	GIMS.Shared*/ SharedCore (
 									CachePath = (BasePath + GIMS.CacheDir)
 									ResourceCachePath = (CachePath + GIMS.ResourceCacheDir)
 									DownloadPath = (BasePath + GIMS.DownloadDir)
-								/*<ERRHANDLER>*/) catch (Append FailText (GetCurrentException()))/*<ERRHANDLEREND>*/
+								/*<ERRHANDLER>*//*) catch (Append FailText (GetCurrentException()))*//*<ERRHANDLEREND>*/
 								if FailText.Count != Checksum then
 									MessageBox FailText Title:"GIMS initialization"
 							)
@@ -385,7 +385,7 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 							*/
 							local FailText = ("Can't initialize the " + (Name as String) + " core.\n\n"),
 									Checksum = FailText.Count
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								if ServerURLs == undefined then
 									ServerURLs = GIMS.ServerURLs
 								BasePath = (Append (GIMS.GIMSPath + (Tag as String)) "/")
@@ -400,7 +400,7 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 									(DoesFileExist (FilesPath + GIMS.CoreFile + GIMS.ScriptExtDev)) or
 									(DoesFileExist (FilesPath + GIMS.CoreFile + GIMS.ScriptExtEnc))
 								)
-							/*<ERRHANDLER>*/) catch (Append FailText (GetCurrentException()))/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (Append FailText (GetCurrentException()))*//*<ERRHANDLEREND>*/
 							if FailText.Count != Checksum then
 								MessageBox FailText Title:("GIMS " + (Name as String) + " initialization")
 						),
@@ -439,7 +439,7 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 									Checksum = FailText.Count,
 									Result = false
 									
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								GIMS.CurrentGame = Game
 								UnInstall()
 								if
@@ -454,27 +454,27 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 											CoreFileNameType = (GIMS.CoreFile + (if GIMS.IsDevBuild then GIMS.ScriptExtDev else GIMS.ScriptExtEnc))
 									Format "GIMS/%/%%" Tag GIMS.FilesDir CoreFileNameType To:URL
 									if (GIMS.Download ServerURLs #(URL as String) DownloadPath true) then (
-										/*<ERRHANDLERSTART>*/try (
+										/*<ERRHANDLERSTART>*/--try (
 											FileIn (DownloadPath + CoreFileNameType) Quiet:true
-											/*<ERRHANDLERSTART>*/try (
+											/*<ERRHANDLERSTART>*/--try (
 												Result = (GIMS.CoreLoader true)
-											/*<ERRHANDLER>*/) catch (
+											/*<ERRHANDLER>*//*) catch (
 												OriginalException = (GetCurrentException())
 												Append FailText ("Can't load the " + (Name as String) + " core.\n")
-											)/*<ERRHANDLEREND>*/
-										/*<ERRHANDLER>*/) catch (
+											)*//*<ERRHANDLEREND>*/
+										/*<ERRHANDLER>*//*) catch (
 											OriginalException = (GetCurrentException())
 											Append FailText ("Can't compile the " + (Name as String) + " core.\n")
-										)/*<ERRHANDLEREND>*/
+										)*//*<ERRHANDLEREND>*/
 									) else
 										Append FailText ("Failed to download the " + (Name as String) + " core. May be, it isn't released yet.\n")
 									Free URL
 								) else
 									Append FailText "Failed to create folders.\n"
-							/*<ERRHANDLER>*/) catch (
+							/*<ERRHANDLER>*//*) catch (
 								OriginalException = (GetCurrentException())
 								Append FailText ("Can't install the " + (Name as String) + " core.\n")
-							)/*<ERRHANDLEREND>*/
+							)*//*<ERRHANDLEREND>*/
 							if FailText.Count != Checksum then (
 								if (MatchPattern FailText Pattern:"*OutOfMemory*") then
 									throw "Your system's ran out of memory and GIMS can't do anything about it...try to restart 3D MAX."
@@ -515,7 +515,7 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 									OriginalException = "",
 									Checksum = FailText.Count,
 									Result = false
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								GIMS.CurrentGame = Game
 								if
 									MakeDir BasePath All:true and
@@ -533,31 +533,31 @@ struct /*#PC*PATH	GIMS.CurrentGame*/ GameCore (
 										CoreFilePath = (FilesPath + GIMS.CoreFile + GIMS.ScriptExtEnc)
 										
 									if (DoesFileExist CoreFilePath) then (
-										/*<ERRHANDLERSTART>*/try (
+										/*<ERRHANDLERSTART>*/--try (
 											local	IsFirstLaunch = (Core == undefined)
 											if IsFirstLaunch then
 												FileIn CoreFilePath Quiet:true
-											/*<ERRHANDLERSTART>*/try (
+											/*<ERRHANDLERSTART>*/--try (
 												Result = (GIMS.CoreLoader IsFirstLaunch)
-											/*<ERRHANDLER>*/) catch (
+											/*<ERRHANDLER>*//*) catch (
 												Core = undefined
 												OriginalException = (GetCurrentException())
 												Append FailText ("Can't load the " + (Name as String) + " core.\n")
-											)/*<ERRHANDLEREND>*/
-										/*<ERRHANDLER>*/) catch (
+											)*//*<ERRHANDLEREND>*/
+										/*<ERRHANDLER>*//*) catch (
 											OriginalException = (GetCurrentException())
 											Append FailText ("Can't compile the " + (Name as String) + " core.\n")
-										)/*<ERRHANDLEREND>*/
+										)*//*<ERRHANDLEREND>*/
 									) else
 										Result = (Install Game)
 								) else
 									Append FailText "Failed to create folders.\n"
-							/*<ERRHANDLER>*/) catch (
+							/*<ERRHANDLER>*//*) catch (
 								if NoEH then
 									throw()
 								OriginalException = (GetCurrentException())
 								Append FailText ("Can't start the " + (Name as String) + " core.\n")
-							)/*<ERRHANDLEREND>*/
+							)*//*<ERRHANDLEREND>*/
 							if FailText.Count != Checksum then (
 								if (MatchPattern FailText Pattern:"*OutOfMemory*") then
 									throw "Your system's ran out of memory and GIMS can't do anything about it...try to restart 3D MAX."
@@ -789,7 +789,7 @@ struct /*#PC*PATH	GIMS.GUI*/ strGUI (
 		*/
 		local FailText = "Can't initialize GIMS GUI.\n\n",
 				Checksum = FailText.Count
-		/*<ERRHANDLERSTART>*/try (
+		/*<ERRHANDLERSTART>*/--try (
 			local	SetLifetimeController = GIMS.SetLifetimeController
 			BitmapPath = (GIMS.ScriptPath + "GIMS_GUI\\")
 			ScrollOrientation = (DotNETClass "System.Windows.Forms.ScrollOrientation")
@@ -839,7 +839,7 @@ struct /*#PC*PATH	GIMS.GUI*/ strGUI (
 					)
 				)
 			)
-		/*<ERRHANDLER>*/) catch (Append FailText (GetCurrentException()))/*<ERRHANDLEREND>*/
+		/*<ERRHANDLER>*//*) catch (Append FailText (GetCurrentException()))*//*<ERRHANDLEREND>*/
 		if FailText.Count != Checksum then (
 			MessageBox FailText Title:"GIMS initialization"
 			false
@@ -854,10 +854,10 @@ global	Cores = #(),
 		SharedCoreID = 0
 if (DoesFileExist EGIMS_CoreConfigFile) then (
 	local	GECCFStream
-	/*<ERRHANDLERSTART>*/try (
+	/*<ERRHANDLERSTART>*/--try (
 		GECCFStream = (OpenEncryptedFile EGIMS_CoreConfigFile (GetHashValue "IHateShittyConfigs" 777))
 		Cores = (ReadValue GECCFStream)
-	/*<ERRHANDLER>*/) catch (Append FailText (GetCurrentException()))/*<ERRHANDLEREND>*/
+	/*<ERRHANDLER>*//*) catch (Append FailText (GetCurrentException()))*//*<ERRHANDLEREND>*/
 	if GECCFStream != undefined then
 		Close GECCFStream
 	if FailText.Count == Checksum then (
@@ -1160,7 +1160,7 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 									local FailText = \"Can't initialize GIMS.\n\n\",
 											Checksum = FailText.Count,
 											Result = true
-									/*<ERRHANDLERSTART>*/try (
+									/*<ERRHANDLERSTART>*/--try (
 										DragAndDrop.GlobalEnableDragAndDrop true
 										EscapeEnable = False
 										
@@ -1178,7 +1178,7 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 										) then
 											throw \"Invalid installation.\nCan't find the GIMS script in \\\"<3D MAX root>\\\\scripts\\\\Startup\\\\\\\" folder.\n\"
 										
-									/*<ERRHANDLER>*/) catch (Append FailText (GetCurrentException()))/*<ERRHANDLEREND>*/
+									/*<ERRHANDLER>*//*) catch (Append FailText (GetCurrentException()))*//*<ERRHANDLEREND>*/
 									if FailText.Count != Checksum then (
 										MessageBox FailText Title:\"GIMS initialization\"
 										Result = false
@@ -1197,7 +1197,7 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 									*/
 									local FailText = \"Can't initialize GIMS.\n\n\",
 											Checksum = FailText.Count
-									/*<ERRHANDLERSTART>*/try (
+									/*<ERRHANDLERSTART>*/--try (
 										try (
 											DotNET.SetLifetimeControl
 											SupportsLifetimeControl = true
@@ -1227,7 +1227,7 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 										Append RoamingApplicationPath \"\\\\\"
 										Append CommonApplicationPath \"\\\\\"
 										GIMSPath = (LocalApplicationPath + \"\\GIMS\\\\\")
-									/*<ERRHANDLER>*/) catch (Append FailText (GetCurrentException()))/*<ERRHANDLEREND>*/
+									/*<ERRHANDLER>*//*) catch (Append FailText (GetCurrentException()))*//*<ERRHANDLEREND>*/
 									if FailText.Count != Checksum then (
 										MessageBox FailText Title:\"GIMS initialization\"
 										false
@@ -1303,17 +1303,17 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 								)
 								%
 								on InfoButton pressed do (
-									/*<ERRHANDLERSTART>*/try (
+									/*<ERRHANDLERSTART>*/--try (
 										if GIMS.CanExec then
 											GIMS.Core.GUIMgr.SetWindow GIMS.Shared #GIMSInfo
-									/*<ERRHANDLER>*/) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS)/*<ERRHANDLEREND>*/
+									/*<ERRHANDLER>*//*) catch (local	CET = (GetCurrentException()),ESS;if not (MatchPattern CET Pattern:\"*<THROW>*\") then (ESS = (StringStream \"\");Stack ShowLocals:EGIMS_EHStackLocals FirstFrameOnly:EGIMS_EHFFO To:ESS); EGIMS_EHReport CET ESS)*//*<ERRHANDLEREND>*/
 								)
 								on LangButton pressed do (
 									if GIMS.CanExec then
 										CreateDialog EGIMS_LangSelectRollout
 								)
 							)
-							/*<ERRHANDLERSTART>*/try (
+							/*<ERRHANDLERSTART>*/--try (
 								if GIMS.Load() then (
 									GIMS.Shared.Init GIMS
 									%
@@ -1323,7 +1323,7 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 										%
 									)
 								)
-							/*<ERRHANDLER>*/) catch (MessageBox (Append \"Failed to start the Evo GIMS utility!\\n\\n\" (GetCurrentException())) Title:\"GIMS Evo initialization\")/*<ERRHANDLEREND>*/
+							/*<ERRHANDLER>*//*) catch (MessageBox (Append \"Failed to start the Evo GIMS utility!\\n\\n\" (GetCurrentException())) Title:\"GIMS Evo initialization\")*//*<ERRHANDLEREND>*/
 						)
 						GIMSstr = undefined"
 			) \
@@ -1338,12 +1338,12 @@ if (DoesFileExist EGIMS_CoreConfigFile) then (
 				(GUIInits as string) \
 				(GUIPostInits as string) \
 			To:CompileSet
--- 			/*<ERRHANDLERSTART>*/try (
+-- 			/*<ERRHANDLERSTART>*/--try (
 				Execute (CompileSet as string)
--- 			/*<ERRHANDLER>*/) catch (
+-- 			/*<ERRHANDLER>*//*) catch (
 -- 				Append FailText "\nCan't load GIMS Evo! CompileSet's corrupted. Error:\n\n"
 -- 				Append FailText (GetCurrentException())
--- 			)/*<ERRHANDLEREND>*/
+-- 			)*//*<ERRHANDLEREND>*/
 			Free CompileSet
 			Free GUIDefinition
 			Free GUICallbacks
